@@ -42,6 +42,10 @@ class KrutikAdmin {
   // =========================================================================
 
   apiUrl(endpoint) {
+    // If running on a cloud domain (e.g. Vercel, custom domain) or on port 3000, use relative paths
+    if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+      return endpoint;
+    }
     if (window.location.protocol === 'file:' || (window.location.port && window.location.port !== '3000')) {
       return `http://localhost:3000${endpoint}`;
     }
@@ -81,12 +85,15 @@ class KrutikAdmin {
           body: JSON.stringify({ email, password })
         });
       } catch (networkErr) {
-        // Fallback to absolute localhost:3000 if relative fetch failed
-        res = await fetch('http://localhost:3000/api/admin/login', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email, password })
-        });
+        if (window.location.hostname === 'localhost' || window.location.protocol === 'file:') {
+          res = await fetch('http://localhost:3000/api/admin/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, password })
+          });
+        } else {
+          throw networkErr;
+        }
       }
 
       const data = await res.json();

@@ -823,8 +823,12 @@ const server = http.createServer(async (req, res) => {
   });
 });
 
-server.listen(PORT, () => {
-  console.log(`Krutik Vastu Art Finder Master Server running at http://localhost:${PORT}`);
-  console.log(`Admin Dashboard URL: http://localhost:${PORT}/admin.html`);
-  console.log(`Supabase Connected Project: ${SUPABASE_CONFIG.project_id} (${SUPABASE_CONFIG.url})`);
-});
+if (require.main === module) {
+  server.listen(PORT, () => {
+    console.log(`Krutik Vastu Art Finder Master Server running at http://localhost:${PORT}`);
+    console.log(`Admin Dashboard URL: http://localhost:${PORT}/admin.html`);
+    console.log(`Supabase Connected Project: ${SUPABASE_CONFIG.project_id} (${SUPABASE_CONFIG.url})`);
+  });
+}
+
+module.exports = server;
