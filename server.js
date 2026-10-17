@@ -25,9 +25,13 @@ const ADMIN_SESSIONS = new Map(); // token -> { createdAt, expiresAt }
 const SESSION_TTL_MS = 24 * 60 * 60 * 1000; // 24 hours
 const SECRET_SALT = 'krutik-vastu-secret-salt-2026';
 
-// Initialize Directories
-if (!fs.existsSync(DATA_DIR)) fs.mkdirSync(DATA_DIR, { recursive: true });
-if (!fs.existsSync(UPLOADS_DIR)) fs.mkdirSync(UPLOADS_DIR, { recursive: true });
+// Initialize Directories safely (read-only filesystem safe)
+try {
+  if (!fs.existsSync(DATA_DIR)) fs.mkdirSync(DATA_DIR, { recursive: true });
+  if (!fs.existsSync(UPLOADS_DIR)) fs.mkdirSync(UPLOADS_DIR, { recursive: true });
+} catch (e) {
+  // Read-only filesystem in serverless environments
+}
 
 // Helpers for Data Persistence
 function readJSON(file, defaultVal = []) {
@@ -38,7 +42,7 @@ function readJSON(file, defaultVal = []) {
       return JSON.parse(data);
     }
   } catch (err) {
-    console.error(`Error reading ${file}:`, err.message);
+    // Read error fallback
   }
   return defaultVal;
 }
@@ -49,23 +53,33 @@ function writeJSON(file, data) {
     fs.writeFileSync(filePath, JSON.stringify(data, null, 2), 'utf8');
     return true;
   } catch (err) {
-    console.error(`Error writing ${file}:`, err.message);
     return false;
   }
 }
 
-// Database In-Memory Cache
-let PRODUCTS_CACHE = readJSON('products.json', []);
-let MAPPINGS_CACHE = readJSON('mappings.json', {});
-let QUESTIONS_CACHE = readJSON('questions.json', []);
-let SETTINGS_CACHE = readJSON('settings.json', {
+// Statically require default JSON files so Vercel bundler bundles them
+let DEFAULT_PRODUCTS = [];
+let DEFAULT_MAPPINGS = {};
+let DEFAULT_QUESTIONS = [];
+let DEFAULT_SETTINGS = {
   admin_password_hash: "KrutikVastu2026!",
   supabase_project_id: SUPABASE_CONFIG.project_id,
   supabase_project_url: SUPABASE_CONFIG.url,
   supabase_region: SUPABASE_CONFIG.region,
   site_title: "Krutik Vastu Art Finder",
   last_synced_at: new Date().toISOString()
-});
+};
+
+try { DEFAULT_PRODUCTS = require('./data/products.json'); } catch (e) {}
+try { DEFAULT_MAPPINGS = require('./data/mappings.json'); } catch (e) {}
+try { DEFAULT_QUESTIONS = require('./data/questions.json'); } catch (e) {}
+try { DEFAULT_SETTINGS = require('./data/settings.json'); } catch (e) {}
+
+// Database In-Memory Cache
+let PRODUCTS_CACHE = readJSON('products.json', DEFAULT_PRODUCTS);
+let MAPPINGS_CACHE = readJSON('mappings.json', DEFAULT_MAPPINGS);
+let QUESTIONS_CACHE = readJSON('questions.json', DEFAULT_QUESTIONS);
+let SETTINGS_CACHE = readJSON('settings.json', DEFAULT_SETTINGS);
 
 // URL Validation Rule
 function isValidKrutikUrl(urlStr) {
@@ -195,6 +209,13 @@ function verifyAdminToken(req) {
 
 // Request Body Parser
 function parseJsonBody(req) {
+  // If already parsed (e.g. by Vercel Serverless helper)
+  if (req.body) {
+    if (typeof req.body === 'object') return Promise.resolve(req.body);
+    if (typeof req.body === 'string') {
+      try { return Promise.resolve(JSON.parse(req.body)); } catch (e) { return Promise.resolve({}); }
+    }
+  }
   return new Promise((resolve, reject) => {
     let body = '';
     req.on('data', chunk => body += chunk);
@@ -226,8 +247,17 @@ const MIME_TYPES = {
 
 // Master HTTP Server
 const server = http.createServer(async (req, res) => {
-  const parsedUrl = new URL(req.url, `http://${req.headers.host || 'localhost:3000'}`);
-  const pathname = parsedUrl.pathname;
+  // Support Vercel serverless request path headers
+  const rawUrl = req.headers['x-matched-path'] || req.headers['x-rewrite-url'] || req.url;
+  const parsedUrl = new URL(rawUrl, `http://${req.headers.host || 'localhost:3000'}`);
+  let pathname = parsedUrl.pathname;
+
+  // Support Vercel query slug routing
+  if (req.query && req.query.slug && (!pathname || pathname === '/api' || pathname.endsWith('index.js') || pathname.endsWith('slug.js'))) {
+    const slugStr = Array.isArray(req.query.slug) ? req.query.slug.join('/') : req.query.slug;
+    pathname = '/api/' + slugStr;
+  }
+
   const method = req.method.toUpperCase();
 
   // CORS Headers
