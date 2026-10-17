@@ -1,0 +1,455 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Krutik Vastu Art Finder — Step 03: Wall Orientation</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&amp;family=Public+Sans:wght@300;400;500;600;700&amp;family=Raleway:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            surface: "#F8F4EB",
+            "surface-subtle": "#FAF7F2",
+            "surface-pure": "#FFFDF8",
+            "surface-card": "#EAE0CF",
+            primary: "#C5A875",
+            "primary-focus": "#B39055",
+            "on-surface": "#222222",
+            "on-surface-variant": "#716b60",
+            "outline-variant": "rgba(197, 168, 117, 0.25)",
+            "outline-gold": "#C5A875",
+            charcoal: "#222222",
+            "charcoal-soft": "#2D2D2D",
+            indigo: {
+              900: "#1B2038",
+              800: "#252C4A",
+              700: "#323B61"
+            }
+          },
+          borderRadius: {
+            DEFAULT: "0.125rem",
+            lg: "0.25rem",
+            xl: "0.5rem",
+            full: "0.75rem"
+          },
+          fontFamily: {
+            headline: ["Playfair Display", "serif"],
+            display: ["Playfair Display", "serif"],
+            body: ["Raleway", "Public Sans", "sans-serif"],
+            label: ["Raleway", "Public Sans", "sans-serif"]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .material-symbols-outlined.fill-icon {
+      font-variation-settings: 'FILL' 1, 'wght' 400;
+    }
+    
+    /* Sacred Geometry Subtle Lattice Overlay */
+    .bg-sacred-lattice {
+      background-image: 
+        radial-gradient(circle at 50% 50%, rgba(197, 168, 117, 0.04) 1px, transparent 1px),
+        radial-gradient(circle at 0% 0%, rgba(197, 168, 117, 0.03) 1px, transparent 1px);
+      background-size: 32px 32px, 64px 64px;
+    }
+
+    /* Directional Ray Pulse on compass */
+    @keyframes compassPulse {
+      0%, 100% { opacity: 0.85; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.02); }
+    }
+    .compass-ambient {
+      animation: compassPulse 6s ease-in-out infinite;
+    }
+    
+    /* Live Feed Pulse */
+    @keyframes goldBeacon {
+      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(197, 168, 117, 0.7); }
+      70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(197, 168, 117, 0); }
+      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(197, 168, 117, 0); }
+    }
+    .pulse-gold {
+      animation: goldBeacon 2.2s infinite;
+    }
+  </style>
+<meta content="web_dashboard" name="shell-type"></head>
+<body class="bg-[#FAF7F2] text-[#222222] font-body min-h-screen flex flex-col antialiased selection:bg-[#C5A875] selection:text-[#252C4A] relative bg-sacred-lattice">
+<!-- TOP APP BAR (Shared Component: Web Header) -->
+<header class="docked full-width top-0 sticky z-50 bg-[#FAF7F2] border-b border-[#C5A875]/20 shadow-sm backdrop-blur-md">
+<div class="w-full max-w-7xl mx-auto px-6 lg:px-8 py-4 flex items-center justify-between">
+<!-- Brand Logo / Wordmark -->
+<a class="flex items-center gap-3 group" href="#">
+<div class="w-8 h-8 rounded-full border border-[#C5A875] flex items-center justify-center bg-[#252C4A] text-[#C5A875] shadow-xs">
+<span class="material-symbols-outlined text-sm font-light">flare</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline text-2xl tracking-[0.25em] text-[#222222] font-medium leading-tight">KRUTIK</span>
+<span class="font-label text-[9px] tracking-[0.3em] uppercase text-[#C5A875] -mt-0.5">Sacred Vastu Art</span>
+</div>
+</a>
+<!-- Desktop Navigation Cluster (Active: Vastu Guide) -->
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-[#716b60] hover:text-[#C5A875] transition-colors tracking-widest text-xs uppercase font-medium" href="#">Gallery</a>
+<a class="text-[#C5A875] border-b-2 border-[#C5A875] pb-1 font-medium tracking-widest text-xs uppercase" href="#">Vastu Guide</a>
+<a class="text-[#716b60] hover:text-[#C5A875] transition-colors tracking-widest text-xs uppercase font-medium" href="#">Artisans</a>
+<a class="text-[#716b60] hover:text-[#C5A875] transition-colors tracking-widest text-xs uppercase font-medium" href="#">About</a>
+</nav>
+<!-- Trailing Primary & Icon Actions -->
+<div class="flex items-center gap-4">
+<button class="px-4 py-2 border border-[#C5A875] text-[#222222] hover:bg-[#C5A875]/10 font-label text-xs uppercase tracking-widest transition-all duration-300 ease-out active:scale-95 flex items-center gap-2" type="button">
+<span class="material-symbols-outlined text-sm text-[#C5A875]">bookmark</span>
+<span class="">Save Progress</span>
+</button>
+<button aria-label="Close questionnaire" class="text-[#716b60] hover:text-[#222222] p-1 transition-colors" type="button">
+<span class="material-symbols-outlined text-xl">close</span>
+</button>
+</div>
+</div>
+</header>
+<!-- MAIN CANVAS: Two-column split layout (~60% left, ~40% right) -->
+<main class="flex-1 w-full max-w-7xl mx-auto px-6 lg:px-8 py-8 lg:py-12"><div class="flex flex-col w-full">
+<!-- Progress & Stepper Bar -->
+<div class="mb-8 lg:mb-10">
+<div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-3">
+<div class="flex items-center gap-3">
+<span class="inline-flex items-center justify-center w-2 h-2 rounded-full bg-primary pulse-gold"></span>
+<span class="font-label text-xs tracking-[0.25em] uppercase text-[#716b60] font-semibold">
+          • STEP 05 / 05
+        </span>
+<span class="text-xs text-primary/60 font-serif italic">Final Architectural Alignment</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-headline text-lg sm:text-xl text-primary font-bold tracking-wider">100%</span>
+<span class="font-label text-[10px] tracking-[0.25em] uppercase text-[#716b60] font-medium">CALIBRATED</span>
+</div>
+</div>
+<!-- 100% Fully Calibrated Gold Progress Bar -->
+<div class="w-full h-1.5 bg-[#EAE0CF] overflow-hidden rounded-full shadow-inner relative">
+<div class="h-full bg-gradient-to-r from-primary-focus via-primary to-primary w-full transition-all duration-700 ease-out"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent w-full animate-pulse"></div>
+</div>
+</div>
+<!-- Master Canvas Split: 60% Left Interactive Choice / 40% Right Dynamic Vedic Feed -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+<!-- LEFT COLUMN: Step 5 Questionnaire Focus -->
+<div class="lg:col-span-7 flex flex-col space-y-8">
+<!-- Eyebrow Pill Badge -->
+<div>
+<div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/10 border border-primary/30 shadow-xs">
+<span class="material-symbols-outlined text-sm text-primary">temple_hindu</span>
+<span class="font-label text-[11px] font-semibold tracking-[0.22em] uppercase text-[#252C4A]">
+            SPIRITUAL &amp; PHILOSOPHICAL ALIGNMENT
+          </span>
+</div>
+</div>
+<!-- Main Headline & Subtitle -->
+<div class="space-y-3">
+<h1 class="font-headline text-3xl sm:text-4xl lg:text-[42px] leading-[1.18] text-[#222222] font-semibold tracking-tight">
+          Would you prefer devotional or non-religious artwork?
+        </h1>
+<p class="font-body text-[#716b60] text-sm sm:text-base leading-relaxed max-w-2xl font-normal">
+          Specify your spiritual orientation so we can curate sacred deific forms, timeless philosophical motifs, or universal sacred geometry tuned to your sanctum.
+        </p>
+</div>
+<!-- Selection Cards -->
+<div aria-label="Spiritual Orientation Choice" class="flex flex-col space-y-4 pt-1" id="alignment-selector" role="radiogroup">
+<!-- Option 1: Devotional Artwork (Default Active / Selected) -->
+<div class="option-card group relative p-6 cursor-pointer rounded-lg bg-[#252C4A] text-[#FFFDF8] border-2 border-primary shadow-xl shadow-primary/10 transition-all duration-300 hover:shadow-2xl" data-value="devotional" onclick="selectAlignmentOption(this, 'devotional')">
+<div class="flex items-start justify-between gap-4">
+<div class="flex items-start gap-4">
+<div class="w-11 h-11 rounded-full bg-primary/20 border border-primary flex items-center justify-center shrink-0 mt-0.5 text-primary">
+<span class="material-symbols-outlined text-2xl fill-icon">brightness_7</span>
+</div>
+<div class="space-y-1.5">
+<div class="flex items-center gap-2.5">
+<span class="font-headline text-lg sm:text-xl font-medium tracking-wide text-white group-hover:text-primary transition-colors">
+                    Devotional Artwork
+                  </span>
+<span class="px-2 py-0.5 text-[9px] uppercase tracking-widest font-semibold bg-primary text-[#252C4A] rounded-full">Primary Accord</span>
+</div>
+<p class="font-body text-xs sm:text-sm text-[#FAF7F2]/80 leading-relaxed font-light">
+                  Traditional deities, sacred temple iconography, consecrated spiritual presence, and divine cosmic forms depicted through pure Vedic canons.
+                </p>
+</div>
+</div>
+<!-- Checkmark Indicator -->
+<div class="check-container shrink-0 w-6 h-6 rounded-full bg-primary text-[#252C4A] flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-base font-bold">check</span>
+</div>
+</div>
+</div>
+<!-- Option 2: Non-Religious Symbolic Artwork -->
+<div class="option-card group relative p-6 cursor-pointer rounded-lg bg-[#FFFDF8] text-[#222222] border border-[#EAE0CF] hover:border-primary/60 shadow-sm hover:shadow-md transition-all duration-300" data-value="symbolic" onclick="selectAlignmentOption(this, 'symbolic')">
+<div class="flex items-start justify-between gap-4">
+<div class="flex items-start gap-4">
+<div class="w-11 h-11 rounded-full bg-[#FAF7F2] border border-[#EAE0CF] group-hover:border-primary/40 flex items-center justify-center shrink-0 mt-0.5 text-[#716b60] group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-2xl">spa</span>
+</div>
+<div class="space-y-1.5">
+<div class="flex items-center gap-2.5">
+<span class="font-headline text-lg sm:text-xl font-medium tracking-wide text-[#222222] group-hover:text-[#252C4A] transition-colors">
+                    Non-Religious Symbolic Artwork
+                  </span>
+</div>
+<p class="font-body text-xs sm:text-sm text-[#716b60] leading-relaxed font-light">
+                  Tree of Life, sacred geometric yantras, celestial horses, blooming lotus mandalas, and natural elemental forces without deific figures.
+                </p>
+</div>
+</div>
+<!-- Indicator Placeholder -->
+<div class="check-container shrink-0 w-6 h-6 rounded-full border border-[#C5A875]/40 flex items-center justify-center">
+<span class="material-symbols-outlined text-base font-bold text-transparent">check</span>
+</div>
+</div>
+</div>
+<!-- Option 3: Open to Both -->
+<div class="option-card group relative p-6 cursor-pointer rounded-lg bg-[#FFFDF8] text-[#222222] border border-[#EAE0CF] hover:border-primary/60 shadow-sm hover:shadow-md transition-all duration-300" data-value="both" onclick="selectAlignmentOption(this, 'both')">
+<div class="flex items-start justify-between gap-4">
+<div class="flex items-start gap-4">
+<div class="w-11 h-11 rounded-full bg-[#FAF7F2] border border-[#EAE0CF] group-hover:border-primary/40 flex items-center justify-center shrink-0 mt-0.5 text-[#716b60] group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-2xl">all_inclusive</span>
+</div>
+<div class="space-y-1.5">
+<div class="flex items-center gap-2.5">
+<span class="font-headline text-lg sm:text-xl font-medium tracking-wide text-[#222222] group-hover:text-[#252C4A] transition-colors">
+                    Open to Both
+                  </span>
+</div>
+<p class="font-body text-xs sm:text-sm text-[#716b60] leading-relaxed font-light">
+                  Harmonious blend of sacred symbolism and subtle spiritual artistry tailored to directional harmony and architectural aesthetics.
+                </p>
+</div>
+</div>
+<!-- Indicator Placeholder -->
+<div class="check-container shrink-0 w-6 h-6 rounded-full border border-[#C5A875]/40 flex items-center justify-center">
+<span class="material-symbols-outlined text-base font-bold text-transparent">check</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Navigation & Confirmation Footnote -->
+<div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+<a class="inline-flex items-center gap-2 text-xs font-label uppercase tracking-[0.2em] text-[#716b60] hover:text-[#222222] transition-colors group" href="#">
+<span class="material-symbols-outlined text-sm transition-transform group-hover:-translate-x-1">arrow_back</span>
+<span class="">BACK TO ARTWORK STYLE</span>
+</a>
+<button class="w-full sm:w-auto px-8 py-3.5 bg-primary hover:bg-primary-focus text-[#252C4A] font-label font-bold text-xs uppercase tracking-[0.25em] transition-all duration-300 shadow-md hover:shadow-lg active:scale-[0.99] flex items-center justify-center gap-3" type="button">
+<span class="">NEXT: FINAL DETAILS</span>
+<span class="material-symbols-outlined text-base font-bold">arrow_forward</span>
+</button>
+</div>
+<div class="pt-4 border-t border-primary/20 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-base shrink-0">menu_book</span>
+<p class="font-body text-xs text-[#716b60] italic leading-tight">
+          Aligned with <span class="text-[#252C4A] font-semibold not-italic">Manasara &amp; Mayamata</span> Vedic treatises on sacred art resonance.
+        </p>
+</div>
+</div>
+<!-- RIGHT COLUMN: Live Vedic Alignment Sidebar -->
+<div class="lg:col-span-5 relative">
+<div class="sticky top-28 rounded-xl bg-[#252C4A] text-[#FFFDF8] p-6 lg:p-7 shadow-2xl border border-primary/30 overflow-hidden">
+<!-- Subtle Ambient Sacred Geometry Ring Background -->
+<div class="absolute -right-20 -top-20 w-64 h-64 border border-primary/10 rounded-full pointer-events-none compass-ambient"></div>
+<div class="absolute -right-10 -top-10 w-44 h-44 border border-primary/15 rounded-full pointer-events-none"></div>
+<!-- Sidebar Header & Live Status -->
+<div class="flex items-center justify-between pb-5 border-b border-white/10 relative z-10">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+<span class="font-label text-[10px] tracking-[0.25em] uppercase text-emerald-300 font-bold">ACTIVE FEED</span>
+</div>
+<span class="font-label text-[10px] tracking-[0.2em] uppercase text-primary/80">VEDIC VAULT SYNC</span>
+</div>
+<!-- Feed Subject Title & Subtitle -->
+<div class="py-5 space-y-2 relative z-10">
+<h2 class="font-headline text-xl sm:text-2xl text-white font-medium tracking-wide">
+            4 Matching Artworks for Devotional &amp; Sacred Art
+          </h2>
+<p class="font-body text-xs text-[#FAF7F2]/70 leading-relaxed font-light">
+            Curated sacred artworks matching Surya Fire element, East wall placement, and authentic 24k gold Tanjore craftsmanship.
+          </p>
+</div>
+<!-- Active Vedic Criteria Filter Badges -->
+<div class="flex flex-wrap gap-2 pb-5 border-b border-white/10 relative z-10">
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-primary/30 text-[11px] font-label tracking-wider uppercase text-primary">
+<span class="text-white/50 text-[9px]">STYLE:</span>
+<span class="">Traditional Pichwai</span>
+</div>
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-primary/30 text-[11px] font-label tracking-wider uppercase text-primary">
+<span class="text-white/50 text-[9px]">ALIGNMENT:</span>
+<span class="">Devotional Sacred</span>
+</div>
+</div>
+<!-- Consecrated Curated Artwork Cards (3 items) -->
+<div class="py-5 space-y-4 relative z-10">
+<!-- Card 1: Tanjore Gayatri Devi (98% Match) -->
+<div class="group flex items-center justify-between gap-4 p-3 rounded-lg bg-[#1B2038] hover:bg-[#323B61] transition-all duration-300 border border-white/5 hover:border-primary/40">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-14 h-14 rounded overflow-hidden shrink-0 relative bg-black/40">
+<img class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" data-alt="Exquisite authentic Tanjore 24 karat gold leaf painting of Gayatri Devi seated on a lotus throne, embossed relief work with glowing Kundan gems, dark indigo background, traditional Indian temple art masterpiece, museum lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSfBFpqiQJLoUJ7vVp3W5ompKEmeHo23sJPV3Oe_4KrrqeqBTzaj8kE9fBPUhCZ3lC9aMxDjep9CHIUXKlgpnTOz6m0B_kekctZOZdYKkyWWt8OAZfzGU5Cf2HqH1-p9-7EqLSlOY4lL7BmZNpjSIVYs_OSkv2HwdNZq1w4wlpjieF8fhmsKkpC7DFsjG0WEfA-Q7DYnx0dE0s6N7N_aTUeba9AOPx5YC6RIjkfSarcBHkjCdjr4iUmg">
+</div>
+<div class="min-w-0 space-y-0.5">
+<div class="flex items-center gap-2">
+<h3 class="font-headline text-sm font-semibold text-white truncate">Tanjore Gayatri Devi</h3>
+</div>
+<div class="font-body text-[11px] text-[#FAF7F2]/60 truncate">East Wall • Consecrated 24k Gold</div>
+<div class="inline-flex items-center gap-1 text-[11px] font-label text-primary font-bold">
+<span class="material-symbols-outlined text-[13px] fill-icon">star</span>
+<span class="">98% Vastu Resonance</span>
+</div>
+</div>
+</div>
+<a class="shrink-0 text-[11px] font-label uppercase tracking-widest text-primary hover:text-white font-semibold transition-colors flex items-center gap-0.5" href="#">
+<span class="">RESERVE</span>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</a>
+</div>
+<!-- Card 2: Golden Sri Yantra (95% Match) -->
+<div class="group flex items-center justify-between gap-4 p-3 rounded-lg bg-[#1B2038] hover:bg-[#323B61] transition-all duration-300 border border-white/5 hover:border-primary/40">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-14 h-14 rounded overflow-hidden shrink-0 relative bg-black/40">
+<img class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" data-alt="Intricate pure copper and gold foil embossed Sri Yantra sacred geometry, perfectly aligned interlocking cosmic triangles with floral petal rings, radiant warm amber lighting, luxury spiritual decor" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5MZw3zhYP8HrQtTwdQDKjvxvyFyXNZPA8WTM3nqX4I0LMh6Ga-Q1dLJnGqz9_9hZQZv0XwoN4KF0z6JKnwEAIVHSSycyjMvuRixEtvIEwtOGByKh4PRkeGKxG7wmTLEM5h-xGR17-0qtfBtcyCULdVicInjljNYsLVyubf5a7LhQbGVnrVb06-NAei5pGSFaqupVIst9Nz6Twx-xB8h08zQKf32cQ19EVc2U1XheqoZq8Rjg92J2kzQ">
+</div>
+<div class="min-w-0 space-y-0.5">
+<div class="flex items-center gap-2">
+<h3 class="font-headline text-sm font-semibold text-white truncate">Golden Sri Yantra</h3>
+</div>
+<div class="font-body text-[11px] text-[#FAF7F2]/60 truncate">Northeast Accord • Geometric Flow</div>
+<div class="inline-flex items-center gap-1 text-[11px] font-label text-primary font-bold">
+<span class="material-symbols-outlined text-[13px] fill-icon">star</span>
+<span class="">95% Vastu Resonance</span>
+</div>
+</div>
+</div>
+<a class="shrink-0 text-[11px] font-label uppercase tracking-widest text-primary hover:text-white font-semibold transition-colors flex items-center gap-0.5" href="#">
+<span class="">RESERVE</span>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</a>
+</div>
+<!-- Card 3: Surya Mandala (92% Match) -->
+<div class="group flex items-center justify-between gap-4 p-3 rounded-lg bg-[#1B2038] hover:bg-[#323B61] transition-all duration-300 border border-white/5 hover:border-primary/40">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-14 h-14 rounded overflow-hidden shrink-0 relative bg-black/40">
+<img class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" data-alt="Authentic Rajasthani hand-painted Surya sun mandala with seven celestial horses, warm saffron, vermillion, and antique gold leaf accents, heritage Rajputana spiritual painting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgkG6wuMu26FVFJLYsozvduv1iJWJZDDM08p9_z9dYP0yqVmfKDawifdnLd3MIzmaUBiOExnfQvBKVPOiaUo1Wr6k8gaI2k_5dRZ26tg1_Ik1kcf3IkgkoaxuldDq-m0-xZq7QQbucpmLMq5YaqByuw3fEydtL3CGkhYahnaZEkB3g3ZV4UnOqqRsllkQDlzKlWVgm9DZfgFThA0OJXASO683lSZfyCeKU8vAx0NgzhUs4xyiSdiXh1w">
+</div>
+<div class="min-w-0 space-y-0.5">
+<div class="flex items-center gap-2">
+<h3 class="font-headline text-sm font-semibold text-white truncate">Surya Mandala</h3>
+</div>
+<div class="font-body text-[11px] text-[#FAF7F2]/60 truncate">East Gateway • Elemental Fire</div>
+<div class="inline-flex items-center gap-1 text-[11px] font-label text-primary font-bold">
+<span class="material-symbols-outlined text-[13px] fill-icon">star</span>
+<span class="">92% Vastu Resonance</span>
+</div>
+</div>
+</div>
+<a class="shrink-0 text-[11px] font-label uppercase tracking-widest text-primary hover:text-white font-semibold transition-colors flex items-center gap-0.5" href="#">
+<span class="">RESERVE</span>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</a>
+</div>
+</div>
+<!-- Artisan Certification Footer Badge -->
+<div class="pt-4 border-t border-white/10 flex items-start gap-3 relative z-10 bg-white/[0.02] -mx-6 -mb-6 p-5">
+<div class="w-7 h-7 rounded-full bg-primary/20 border border-primary/50 flex items-center justify-center shrink-0 text-primary">
+<span class="material-symbols-outlined text-base">verified</span>
+</div>
+<div class="space-y-0.5">
+<div class="font-label text-[10px] font-bold tracking-[0.2em] uppercase text-primary">MASTER ARTISAN CERTIFIED</div>
+<p class="font-body text-[11px] text-[#FAF7F2]/70 leading-relaxed font-light">
+              Every artwork is consecrated and handcrafted by master traditional artisans in Tanjore &amp; Rajasthan.
+            </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  function selectAlignmentOption(selectedElement, type) {
+    const cards = document.querySelectorAll('#alignment-selector .option-card');
+    
+    cards.forEach(card => {
+      // Reset to light unselected card state
+      card.className = "option-card group relative p-6 cursor-pointer rounded-lg bg-[#FFFDF8] text-[#222222] border border-[#EAE0CF] hover:border-primary/60 shadow-sm hover:shadow-md transition-all duration-300";
+      
+      const iconCircle = card.querySelector('.w-11');
+      if (iconCircle) {
+        iconCircle.className = "w-11 h-11 rounded-full bg-[#FAF7F2] border border-[#EAE0CF] group-hover:border-primary/40 flex items-center justify-center shrink-0 mt-0.5 text-[#716b60] group-hover:text-primary transition-colors";
+      }
+
+      const title = card.querySelector('span.font-headline');
+      if (title) {
+        title.className = "font-headline text-lg sm:text-xl font-medium tracking-wide text-[#222222] group-hover:text-[#252C4A] transition-colors";
+      }
+
+      const desc = card.querySelector('p.font-body');
+      if (desc) {
+        desc.className = "font-body text-xs sm:text-sm text-[#716b60] leading-relaxed font-light";
+      }
+
+      const checkContainer = card.querySelector('.check-container');
+      if (checkContainer) {
+        checkContainer.className = "check-container shrink-0 w-6 h-6 rounded-full border border-[#C5A875]/40 flex items-center justify-center";
+        const checkIcon = checkContainer.querySelector('.material-symbols-outlined');
+        if (checkIcon) {
+          checkIcon.classList.add('text-transparent');
+          checkIcon.classList.remove('font-bold');
+        }
+      }
+    });
+
+    // Apply active navy and gold treatment to the selected card
+    selectedElement.className = "option-card group relative p-6 cursor-pointer rounded-lg bg-[#252C4A] text-[#FFFDF8] border-2 border-primary shadow-xl shadow-primary/10 transition-all duration-300 hover:shadow-2xl";
+    
+    const activeIconCircle = selectedElement.querySelector('.w-11');
+    if (activeIconCircle) {
+      activeIconCircle.className = "w-11 h-11 rounded-full bg-primary/20 border border-primary flex items-center justify-center shrink-0 mt-0.5 text-primary";
+    }
+
+    const activeTitle = selectedElement.querySelector('span.font-headline');
+    if (activeTitle) {
+      activeTitle.className = "font-headline text-lg sm:text-xl font-medium tracking-wide text-white group-hover:text-primary transition-colors";
+    }
+
+    const activeDesc = selectedElement.querySelector('p.font-body');
+    if (activeDesc) {
+      activeDesc.className = "font-body text-xs sm:text-sm text-[#FAF7F2]/80 leading-relaxed font-light";
+    }
+
+    const activeCheckContainer = selectedElement.querySelector('.check-container');
+    if (activeCheckContainer) {
+      activeCheckContainer.className = "check-container shrink-0 w-6 h-6 rounded-full bg-primary text-[#252C4A] flex items-center justify-center shadow-sm";
+      const checkIcon = activeCheckContainer.querySelector('.material-symbols-outlined');
+      if (checkIcon) {
+        checkIcon.classList.remove('text-transparent');
+        checkIcon.classList.add('font-bold');
+      }
+    }
+  }
+</script></main>
+<!-- FOOTER (Shared Component: Minimal Web Footer) -->
+<footer class="docked full-width bottom mt-auto border-t border-[#C5A875]/20 bg-[#FAF7F2]">
+
+</footer>
+
+
+</body></html>

@@ -1,0 +1,953 @@
+{
+  "sri-yantra-lapis": {
+    "intentions": [
+      "Peace & Positive Atmosphere",
+      "Spirituality & Devotion",
+      "Prosperity & Abundance",
+      "Growth & New Beginnings"
+    ],
+    "rooms": [
+      "Puja Room / Meditation Area",
+      "Living Room",
+      "Home Office / Study"
+    ],
+    "directions": [
+      "North-East",
+      "North"
+    ],
+    "styles": [
+      "Symbolic Vastu Art",
+      "Contemporary / Modern Art"
+    ],
+    "devotional_preferences": [
+      "Devotional Artwork",
+      "Non-Religious Symbolic Artwork"
+    ]
+  },
+  "ashwa-vigor-horses": {
+    "intentions": [
+      "Career & Success",
+      "Growth & New Beginnings",
+      "Prosperity & Abundance"
+    ],
+    "rooms": [
+      "Living Room",
+      "Home Office / Study",
+      "Entrance / Foyer"
+    ],
+    "directions": [
+      "South",
+      "North-West",
+      "East"
+    ],
+    "styles": [
+      "Symbolic Vastu Art",
+      "Contemporary / Modern Art"
+    ],
+    "devotional_preferences": [
+      "Non-Religious Symbolic Artwork"
+    ]
+  },
+  "kalpavriksha-pichwai": {
+    "intentions": [
+      "Prosperity & Abundance",
+      "Love & Harmonious Relationships",
+      "Growth & New Beginnings",
+      "Peace & Positive Atmosphere"
+    ],
+    "rooms": [
+      "Living Room",
+      "Dining Room",
+      "Bedroom",
+      "Entrance / Foyer"
+    ],
+    "directions": [
+      "East",
+      "North-East",
+      "North"
+    ],
+    "styles": [
+      "Traditional Indian Art / Pichwai",
+      "Nature & Landscapes"
+    ],
+    "devotional_preferences": [
+      "Non-Religious Symbolic Artwork",
+      "Devotional Artwork"
+    ]
+  },
+  "gayatridevi-tanjore": {
+    "intentions": [
+      "Spirituality & Devotion",
+      "Health & Vitality",
+      "Peace & Positive Atmosphere"
+    ],
+    "rooms": [
+      "Puja Room / Meditation Area",
+      "Living Room"
+    ],
+    "directions": [
+      "East",
+      "North-East"
+    ],
+    "styles": [
+      "Traditional Indian Art / Pichwai",
+      "Devotional Art"
+    ],
+    "devotional_preferences": [
+      "Devotional Artwork"
+    ]
+  },
+  "kuber-dhanakarshan": {
+    "intentions": [
+      "Prosperity & Abundance",
+      "Career & Success"
+    ],
+    "rooms": [
+      "Home Office / Study",
+      "Living Room",
+      "Entrance / Foyer"
+    ],
+    "directions": [
+      "North"
+    ],
+    "styles": [
+      "Symbolic Vastu Art",
+      "Traditional Indian Art / Pichwai"
+    ],
+    "devotional_preferences": [
+      "Devotional Artwork",
+      "Non-Religious Symbolic Artwork"
+    ]
+  },
+  "rising-dawn-pichwai": {
+    "intentions": [
+      "Peace & Positive Atmosphere",
+      "Spirituality & Devotion",
+      "Love & Harmonious Relationships"
+    ],
+    "rooms": [
+      "Puja Room / Meditation Area",
+      "Living Room",
+      "Dining Room"
+    ],
+    "directions": [
+      "North-East",
+      "East",
+      "North"
+    ],
+    "styles": [
+      "Traditional Indian Art / Pichwai",
+      "Devotional Art"
+    ],
+    "devotional_preferences": [
+      "Devotional Artwork"
+    ]
+  },
+  "surya-celestial-chariot": {
+    "intentions": [
+      "Health & Vitality",
+      "Protection & Courage",
+      "Career & Success"
+    ],
+    "rooms": [
+      "Living Room",
+      "Entrance / Foyer",
+      "Home Office / Study"
+    ],
+    "directions": [
+      "East"
+    ],
+    "styles": [
+      "Symbolic Vastu Art",
+      "Traditional Indian Art / Pichwai"
+    ],
+    "devotional_preferences": [
+      "Devotional Artwork",
+      "Non-Religious Symbolic Artwork"
+    ]
+  },
+  "mahalakshmi-padma-tanjore": {
+    "intentions": [
+      "Prosperity & Abundance",
+      "Peace & Positive Atmosphere",
+      "Spirituality & Devotion"
+    ],
+    "rooms": [
+      "Entrance / Foyer",
+      "Living Room",
+      "Puja Room / Meditation Area",
+      "Home Office / Study"
+    ],
+    "directions": [
+      "North",
+      "North-East",
+      "East"
+    ],
+    "styles": [
+      "Traditional Indian Art / Pichwai",
+      "Devotional Art"
+    ],
+    "devotional_preferences": [
+      "Devotional Artwork"
+    ],
+    "updated_at": "2026-10-17T09:27:50.707Z"
+  },
+  "ganesha-pratham-vighnaharta": {
+    "intentions": [
+      "Growth & New Beginnings",
+      "Protection & Courage",
+      "Spirituality & Devotion",
+      "Prosperity & Abundance"
+    ],
+    "rooms": [
+      "Entrance / Foyer",
+      "Living Room",
+      "Puja Room / Meditation Area",
+      "Home Office / Study"
+    ],
+    "directions": [
+      "North-East",
+      "North",
+      "East"
+    ],
+    "styles": [
+      "Traditional Indian Art / Pichwai",
+      "Devotional Art"
+    ],
+    "devotional_preferences": [
+      "Devotional Artwork"
+    ]
+  },
+  "saraswati-veena-pichwai": {
+    "intentions": [
+      "Career & Success",
+      "Growth & New Beginnings",
+      "Spirituality & Devotion"
+    ],
+    "rooms": [
+      "Home Office / Study",
+      "Puja Room / Meditation Area",
+      "Living Room"
+    ],
+    "directions": [
+      "North-East",
+      "East",
+      "North"
+    ],
+    "styles": [
+      "Traditional Indian Art / Pichwai",
+      "Devotional Art"
+    ],
+    "devotional_preferences": [
+      "Devotional Artwork"
+    ]
+  },
+  "dhyana-shiva-meditation": {
+    "intentions": [
+      "Peace & Positive Atmosphere",
+      "Spirituality & Devotion",
+      "Health & Vitality"
+    ],
+    "rooms": [
+      "Puja Room / Meditation Area",
+      "Living Room",
+      "Bedroom"
+    ],
+    "directions": [
+      "North-East",
+      "North"
+    ],
+    "styles": [
+      "Devotional Art",
+      "Nature & Landscapes"
+    ],
+    "devotional_preferences": [
+      "Devotional Artwork"
+    ]
+  },
+  "radha-krishna-vrindavan": {
+    "intentions": [
+      "Love & Harmonious Relationships",
+      "Peace & Positive Atmosphere",
+      "Spirituality & Devotion"
+    ],
+    "rooms": [
+      "Bedroom",
+      "Living Room",
+      "Dining Room"
+    ],
+    "directions": [
+      "South-West",
+      "North-East",
+      "North"
+    ],
+    "styles": [
+      "Traditional Indian Art / Pichwai",
+      "Devotional Art"
+    ],
+    "devotional_preferences": [
+      "Devotional Artwork"
+    ]
+  },
+  "himalayan-peaks-morning-sun": {
+    "intentions": [
+      "Protection & Courage",
+      "Career & Success",
+      "Simply Beautiful, Meaningful Art"
+    ],
+    "rooms": [
+      "Living Room",
+      "Home Office / Study",
+      "Bedroom"
+    ],
+    "directions": [
+      "South-West",
+      "South"
+    ],
+    "styles": [
+      "Nature & Landscapes",
+      "Contemporary / Modern Art"
+    ],
+    "devotional_preferences": [
+      "Non-Religious Symbolic Artwork"
+    ]
+  },
+  "sacred-banyan-tree-earth": {
+    "intentions": [
+      "Health & Vitality",
+      "Protection & Courage",
+      "Peace & Positive Atmosphere"
+    ],
+    "rooms": [
+      "Living Room",
+      "Dining Room",
+      "Bedroom"
+    ],
+    "directions": [
+      "South-West",
+      "East",
+      "South"
+    ],
+    "styles": [
+      "Nature & Landscapes",
+      "Symbolic Vastu Art"
+    ],
+    "devotional_preferences": [
+      "Non-Religious Symbolic Artwork"
+    ]
+  },
+  "kamadhenu-bountiful-grace": {
+    "intentions": [
+      "Prosperity & Abundance",
+      "Peace & Positive Atmosphere",
+      "Love & Harmonious Relationships"
+    ],
+    "rooms": [
+      "Living Room",
+      "Dining Room",
+      "Entrance / Foyer"
+    ],
+    "directions": [
+      "East",
+      "North-East",
+      "North"
+    ],
+    "styles": [
+      "Traditional Indian Art / Pichwai",
+      "Devotional Art"
+    ],
+    "devotional_preferences": [
+      "Devotional Artwork",
+      "Non-Religious Symbolic Artwork"
+    ]
+  },
+  "navagraha-mandala-harmony": {
+    "intentions": [
+      "Protection & Courage",
+      "Health & Vitality",
+      "Peace & Positive Atmosphere"
+    ],
+    "rooms": [
+      "Living Room",
+      "Puja Room / Meditation Area",
+      "Entrance / Foyer"
+    ],
+    "directions": [
+      "ANY"
+    ],
+    "styles": [
+      "Symbolic Vastu Art"
+    ],
+    "devotional_preferences": [
+      "Devotional Artwork",
+      "Non-Religious Symbolic Artwork"
+    ]
+  },
+  "pancha-tattva-abstract-gold": {
+    "intentions": [
+      "Peace & Positive Atmosphere",
+      "Health & Vitality",
+      "Simply Beautiful, Meaningful Art"
+    ],
+    "rooms": [
+      "Living Room",
+      "Dining Room",
+      "Home Office / Study",
+      "Other Space"
+    ],
+    "directions": [
+      "ANY"
+    ],
+    "styles": [
+      "Contemporary / Modern Art",
+      "Symbolic Vastu Art"
+    ],
+    "devotional_preferences": [
+      "Non-Religious Symbolic Artwork"
+    ]
+  },
+  "flowing-waters-prosperity": {
+    "intentions": [
+      "Prosperity & Abundance",
+      "Peace & Positive Atmosphere",
+      "Growth & New Beginnings"
+    ],
+    "rooms": [
+      "Living Room",
+      "Entrance / Foyer",
+      "Home Office / Study"
+    ],
+    "directions": [
+      "North-East",
+      "North"
+    ],
+    "styles": [
+      "Nature & Landscapes",
+      "Contemporary / Modern Art"
+    ],
+    "devotional_preferences": [
+      "Non-Religious Symbolic Artwork"
+    ]
+  },
+  "tirupati-balaji-swarna": {
+    "intentions": [
+      "Prosperity & Abundance",
+      "Protection & Courage",
+      "Spirituality & Devotion"
+    ],
+    "rooms": [
+      "Puja Room / Meditation Area",
+      "Living Room",
+      "Entrance / Foyer"
+    ],
+    "directions": [
+      "East",
+      "North-East",
+      "North"
+    ],
+    "styles": [
+      "Traditional Indian Art / Pichwai",
+      "Devotional Art"
+    ],
+    "devotional_preferences": [
+      "Devotional Artwork"
+    ]
+  },
+  "lotus-mandala-pink-gold": {
+    "intentions": [
+      "Peace & Positive Atmosphere",
+      "Spirituality & Devotion",
+      "Love & Harmonious Relationships",
+      "Simply Beautiful, Meaningful Art"
+    ],
+    "rooms": [
+      "Bedroom",
+      "Living Room",
+      "Puja Room / Meditation Area"
+    ],
+    "directions": [
+      "North-East",
+      "East",
+      "North"
+    ],
+    "styles": [
+      "Symbolic Vastu Art",
+      "Contemporary / Modern Art"
+    ],
+    "devotional_preferences": [
+      "Non-Religious Symbolic Artwork",
+      "Devotional Artwork"
+    ]
+  },
+  "mountain-citadel-southwest": {
+    "intentions": [
+      "Protection & Courage",
+      "Career & Success"
+    ],
+    "rooms": [
+      "Bedroom",
+      "Home Office / Study",
+      "Living Room"
+    ],
+    "directions": [
+      "South-West",
+      "South"
+    ],
+    "styles": [
+      "Nature & Landscapes",
+      "Contemporary / Modern Art"
+    ],
+    "devotional_preferences": [
+      "Non-Religious Symbolic Artwork"
+    ]
+  },
+  "surya-namaskar-twelve-postures": {
+    "intentions": [
+      "Health & Vitality",
+      "Growth & New Beginnings",
+      "Spirituality & Devotion"
+    ],
+    "rooms": [
+      "Puja Room / Meditation Area",
+      "Home Office / Study",
+      "Living Room"
+    ],
+    "directions": [
+      "East",
+      "North-East"
+    ],
+    "styles": [
+      "Symbolic Vastu Art",
+      "Contemporary / Modern Art"
+    ],
+    "devotional_preferences": [
+      "Devotional Artwork",
+      "Non-Religious Symbolic Artwork"
+    ]
+  },
+  "buddha-serenity-bodhi": {
+    "intentions": [
+      "Peace & Positive Atmosphere",
+      "Spirituality & Devotion",
+      "Simply Beautiful, Meaningful Art"
+    ],
+    "rooms": [
+      "Living Room",
+      "Bedroom",
+      "Home Office / Study",
+      "Puja Room / Meditation Area"
+    ],
+    "directions": [
+      "North-East",
+      "East",
+      "North"
+    ],
+    "styles": [
+      "Nature & Landscapes",
+      "Traditional Indian Art / Pichwai"
+    ],
+    "devotional_preferences": [
+      "Devotional Artwork",
+      "Non-Religious Symbolic Artwork"
+    ]
+  },
+  "swarna-kalash-foyer": {
+    "intentions": [
+      "Prosperity & Abundance",
+      "Growth & New Beginnings",
+      "Peace & Positive Atmosphere"
+    ],
+    "rooms": [
+      "Entrance / Foyer",
+      "Living Room",
+      "Puja Room / Meditation Area"
+    ],
+    "directions": [
+      "North",
+      "East",
+      "North-East"
+    ],
+    "styles": [
+      "Traditional Indian Art / Pichwai",
+      "Symbolic Vastu Art"
+    ],
+    "devotional_preferences": [
+      "Devotional Artwork",
+      "Non-Religious Symbolic Artwork"
+    ]
+  },
+  "agni-flame-mandala": {
+    "intentions": [
+      "Health & Vitality",
+      "Protection & Courage"
+    ],
+    "rooms": [
+      "Dining Room",
+      "Living Room"
+    ],
+    "directions": [
+      "South-East"
+    ],
+    "styles": [
+      "Symbolic Vastu Art",
+      "Traditional Indian Art / Pichwai"
+    ],
+    "devotional_preferences": [
+      "Devotional Artwork",
+      "Non-Religious Symbolic Artwork"
+    ]
+  },
+  "varuna-ocean-waves": {
+    "intentions": [
+      "Prosperity & Abundance",
+      "Career & Success",
+      "Simply Beautiful, Meaningful Art"
+    ],
+    "rooms": [
+      "Living Room",
+      "Home Office / Study",
+      "Dining Room"
+    ],
+    "directions": [
+      "West",
+      "North-West"
+    ],
+    "styles": [
+      "Nature & Landscapes",
+      "Contemporary / Modern Art"
+    ],
+    "devotional_preferences": [
+      "Non-Religious Symbolic Artwork"
+    ]
+  },
+  "vayu-soaring-cranes": {
+    "intentions": [
+      "Growth & New Beginnings",
+      "Love & Harmonious Relationships",
+      "Career & Success"
+    ],
+    "rooms": [
+      "Living Room",
+      "Bedroom",
+      "Dining Room"
+    ],
+    "directions": [
+      "North-West",
+      "West"
+    ],
+    "styles": [
+      "Nature & Landscapes",
+      "Symbolic Vastu Art"
+    ],
+    "devotional_preferences": [
+      "Non-Religious Symbolic Artwork"
+    ]
+  },
+  "shiva-nataraja-cosmic-dance": {
+    "intentions": [
+      "Growth & New Beginnings",
+      "Spirituality & Devotion",
+      "Protection & Courage"
+    ],
+    "rooms": [
+      "Living Room",
+      "Puja Room / Meditation Area",
+      "Other Space"
+    ],
+    "directions": [
+      "East",
+      "North-East"
+    ],
+    "styles": [
+      "Traditional Indian Art / Pichwai",
+      "Devotional Art"
+    ],
+    "devotional_preferences": [
+      "Devotional Artwork"
+    ]
+  },
+  "hanuman-veera-sanjeevani": {
+    "intentions": [
+      "Protection & Courage",
+      "Health & Vitality",
+      "Spirituality & Devotion"
+    ],
+    "rooms": [
+      "Living Room",
+      "Entrance / Foyer",
+      "Puja Room / Meditation Area"
+    ],
+    "directions": [
+      "South",
+      "South-West",
+      "East"
+    ],
+    "styles": [
+      "Devotional Art",
+      "Traditional Indian Art / Pichwai"
+    ],
+    "devotional_preferences": [
+      "Devotional Artwork"
+    ]
+  },
+  "golden-wheat-harvest": {
+    "intentions": [
+      "Prosperity & Abundance",
+      "Peace & Positive Atmosphere",
+      "Simply Beautiful, Meaningful Art"
+    ],
+    "rooms": [
+      "Dining Room",
+      "Living Room"
+    ],
+    "directions": [
+      "North-West",
+      "West",
+      "East"
+    ],
+    "styles": [
+      "Nature & Landscapes",
+      "Contemporary / Modern Art"
+    ],
+    "devotional_preferences": [
+      "Non-Religious Symbolic Artwork"
+    ]
+  },
+  "mayura-peacock-radiance": {
+    "intentions": [
+      "Protection & Courage",
+      "Love & Harmonious Relationships",
+      "Simply Beautiful, Meaningful Art"
+    ],
+    "rooms": [
+      "Living Room",
+      "Bedroom",
+      "Entrance / Foyer"
+    ],
+    "directions": [
+      "South-West",
+      "North",
+      "East"
+    ],
+    "styles": [
+      "Traditional Indian Art / Pichwai",
+      "Nature & Landscapes"
+    ],
+    "devotional_preferences": [
+      "Non-Religious Symbolic Artwork",
+      "Devotional Artwork"
+    ]
+  },
+  "chandra-mandala-silver": {
+    "intentions": [
+      "Peace & Positive Atmosphere",
+      "Love & Harmonious Relationships",
+      "Health & Vitality"
+    ],
+    "rooms": [
+      "Bedroom",
+      "Living Room",
+      "Puja Room / Meditation Area"
+    ],
+    "directions": [
+      "North-West",
+      "North"
+    ],
+    "styles": [
+      "Symbolic Vastu Art",
+      "Contemporary / Modern Art"
+    ],
+    "devotional_preferences": [
+      "Non-Religious Symbolic Artwork"
+    ]
+  },
+  "om-pranava-swarna-canvas": {
+    "intentions": [
+      "Spirituality & Devotion",
+      "Peace & Positive Atmosphere",
+      "Protection & Courage"
+    ],
+    "rooms": [
+      "Puja Room / Meditation Area",
+      "Living Room",
+      "Entrance / Foyer"
+    ],
+    "directions": [
+      "North-East",
+      "East",
+      "North"
+    ],
+    "styles": [
+      "Symbolic Vastu Art",
+      "Traditional Indian Art / Pichwai"
+    ],
+    "devotional_preferences": [
+      "Devotional Artwork",
+      "Non-Religious Symbolic Artwork"
+    ]
+  },
+  "maha-mrityunjaya-yantra": {
+    "intentions": [
+      "Health & Vitality",
+      "Protection & Courage",
+      "Spirituality & Devotion"
+    ],
+    "rooms": [
+      "Puja Room / Meditation Area",
+      "Bedroom",
+      "Living Room"
+    ],
+    "directions": [
+      "North-East",
+      "East",
+      "North"
+    ],
+    "styles": [
+      "Symbolic Vastu Art"
+    ],
+    "devotional_preferences": [
+      "Devotional Artwork"
+    ]
+  },
+  "shrinathji-lotus-charan": {
+    "intentions": [
+      "Spirituality & Devotion",
+      "Peace & Positive Atmosphere",
+      "Love & Harmonious Relationships"
+    ],
+    "rooms": [
+      "Puja Room / Meditation Area",
+      "Living Room",
+      "Entrance / Foyer"
+    ],
+    "directions": [
+      "North-East",
+      "East"
+    ],
+    "styles": [
+      "Traditional Indian Art / Pichwai",
+      "Devotional Art"
+    ],
+    "devotional_preferences": [
+      "Devotional Artwork"
+    ]
+  },
+  "universal-vedic-tree-modern": {
+    "intentions": [
+      "Growth & New Beginnings",
+      "Peace & Positive Atmosphere",
+      "Simply Beautiful, Meaningful Art"
+    ],
+    "rooms": [
+      "Living Room",
+      "Home Office / Study",
+      "Bedroom",
+      "Dining Room"
+    ],
+    "directions": [
+      "ANY"
+    ],
+    "styles": [
+      "Contemporary / Modern Art"
+    ],
+    "devotional_preferences": [
+      "Non-Religious Symbolic Artwork"
+    ]
+  },
+  "sun-salutation-sunrise-landscape": {
+    "intentions": [
+      "Health & Vitality",
+      "Growth & New Beginnings",
+      "Peace & Positive Atmosphere"
+    ],
+    "rooms": [
+      "Living Room",
+      "Bedroom",
+      "Dining Room"
+    ],
+    "directions": [
+      "East",
+      "North-East"
+    ],
+    "styles": [
+      "Nature & Landscapes"
+    ],
+    "devotional_preferences": [
+      "Non-Religious Symbolic Artwork"
+    ]
+  },
+  "lakshmi-narayana-vaikuntha": {
+    "intentions": [
+      "Prosperity & Abundance",
+      "Love & Harmonious Relationships",
+      "Spirituality & Devotion"
+    ],
+    "rooms": [
+      "Puja Room / Meditation Area",
+      "Living Room",
+      "Bedroom"
+    ],
+    "directions": [
+      "North-East",
+      "North",
+      "East"
+    ],
+    "styles": [
+      "Traditional Indian Art / Pichwai",
+      "Devotional Art"
+    ],
+    "devotional_preferences": [
+      "Devotional Artwork"
+    ]
+  },
+  "swarna-drishti-protective-lotus": {
+    "intentions": [
+      "Protection & Courage",
+      "Peace & Positive Atmosphere",
+      "Simply Beautiful, Meaningful Art"
+    ],
+    "rooms": [
+      "Entrance / Foyer",
+      "Living Room",
+      "Home Office / Study"
+    ],
+    "directions": [
+      "South",
+      "South-West",
+      "North-West"
+    ],
+    "styles": [
+      "Symbolic Vastu Art",
+      "Contemporary / Modern Art"
+    ],
+    "devotional_preferences": [
+      "Non-Religious Symbolic Artwork"
+    ]
+  },
+  "surya-mandala": {
+    "intentions": [
+      "Health & Vitality",
+      "Career & Success",
+      "Protection & Courage",
+      "Prosperity & Abundance"
+    ],
+    "rooms": [
+      "Living Room",
+      "Home Office / Study",
+      "Entrance / Foyer"
+    ],
+    "directions": [
+      "East",
+      "North-East",
+      "North"
+    ],
+    "styles": [
+      "Traditional Indian Art / Pichwai",
+      "Symbolic Vastu Art"
+    ],
+    "devotional_preferences": [
+      "Devotional Artwork",
+      "Non-Religious Symbolic Artwork"
+    ]
+  }
+}

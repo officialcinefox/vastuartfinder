@@ -1,0 +1,19 @@
+{
+  "name": "krutik-vastu-art-finder",
+  "version": "1.0.0",
+  "description": "Krutik Vastu Art Finder - Curated Vedic Sanctuaries, Sacred Artworks & 3D AR Simulator",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "vastu",
+    "art-finder",
+    "vedic",
+    "krutik",
+    "sacred-art",
+    "ar-simulator"
+  ],
+  "author": "Krutik Sacred Vastu Art",
+  "license": "MIT"
+}

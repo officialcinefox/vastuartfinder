@@ -1,0 +1,436 @@
+<!DOCTYPE html><html class="dark" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Krutik Vastu Art Finder — Discover Your Sacred Aesthetic</title>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&amp;family=Raleway:wght@300;400;500;600;700&amp;family=Public+Sans:wght@300;400;500;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#C5A875",
+            "primary-container": "#252C4A",
+            "on-primary": "#222222",
+            "on-primary-container": "#E6CFA3",
+            surface: "#F8F4EB",
+            "surface-dim": "#EAE0CF",
+            "surface-bright": "#FFFDF8",
+            "surface-card": "#252C4A",
+            "on-surface": "#1E2229",
+            "on-surface-variant": "#6B655B",
+            "outline-variant": "rgba(197, 168, 117, 0.25)",
+            "gold-accent": "#C5A875",
+            "deep-charcoal": "#222222"
+          },
+          borderRadius: {
+            DEFAULT: "0.125rem",
+            lg: "0.25rem",
+            xl: "0.5rem",
+            full: "0.75rem"
+          },
+          fontFamily: {
+            headline: ["Playfair Display", "serif"],
+            display: ["Playfair Display", "serif"],
+            body: ["Raleway", "sans-serif"],
+            label: ["Raleway", "sans-serif"],
+            sans: ["Raleway", "sans-serif"]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .sacred-glow {
+      box-shadow: 0 0 25px -4px rgba(197, 168, 117, 0.28);
+    }
+    .card-selected-glow {
+      box-shadow: 0 4px 20px -2px rgba(37, 44, 74, 0.35), 0 0 15px 1px rgba(197, 168, 117, 0.35);
+    }
+    .watermark-geometry {
+      background-image: radial-gradient(circle at center, rgba(197, 168, 117, 0.08) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface font-body min-h-screen flex flex-col relative selection:bg-primary/20 selection:text-primary">
+<!-- Subtle Sacred Geometric Background Texture Overlay -->
+<div class="fixed inset-0 pointer-events-none watermark-geometry z-0 opacity-70"></div>
+<!-- Subtle Ornamental Mandalas in Corners -->
+<svg class="fixed top-0 left-0 w-96 h-96 pointer-events-none opacity-10 text-primary -translate-x-32 -translate-y-32 z-0" fill="currentColor" viewBox="0 0 100 100">
+<circle cx="50" cy="50" fill="none" r="45" stroke="currentColor" stroke-dasharray="2 1" stroke-width="0.5"></circle>
+<circle cx="50" cy="50" fill="none" r="35" stroke="currentColor" stroke-width="0.75"></circle>
+<circle cx="50" cy="50" fill="none" r="25" stroke="currentColor" stroke-width="0.5"></circle>
+<path d="M50 5 L50 95 M5 50 L95 50 M18 18 L82 82 M18 82 L82 18" stroke="currentColor" stroke-width="0.4"></path>
+<polygon fill="none" points="50,15 62,38 85,50 62,62 50,85 38,62 15,50 38,38" stroke="currentColor" stroke-width="0.5"></polygon>
+</svg>
+<svg class="fixed bottom-0 right-0 w-[30rem] h-[30rem] pointer-events-none opacity-10 text-primary translate-x-40 translate-y-40 z-0" fill="currentColor" viewBox="0 0 100 100">
+<circle cx="50" cy="50" fill="none" r="48" stroke="currentColor" stroke-width="0.5"></circle>
+<circle cx="50" cy="50" fill="none" r="38" stroke="currentColor" stroke-width="0.6"></circle>
+<circle cx="50" cy="50" fill="none" r="28" stroke="currentColor" stroke-dasharray="1 1" stroke-width="0.4"></circle>
+<polygon fill="none" points="50,10 65,35 90,50 65,65 50,90 35,65 10,50 35,35" stroke="currentColor" stroke-width="0.5"></polygon>
+</svg>
+<!-- TopNavBar (Shared Component Anchor) -->
+<header class="bg-surface sticky top-0 z-50 shadow-sm border-b border-outline-variant">
+<div class="w-full max-w-7xl mx-auto px-8 py-5 flex items-center justify-between">
+<!-- Brand Logo -->
+<a class="font-headline text-2xl tracking-widest text-primary font-normal focus:outline-none flex items-center gap-2" href="#">
+<span class="">KRUTIK</span>
+<span class="text-[9px] tracking-[0.3em] uppercase block font-label text-on-surface-variant font-light -mt-1">Vastu Art</span>
+</a>
+<!-- Desktop Nav Links -->
+<nav class="hidden md:flex items-center space-x-10">
+<a class="text-on-surface-variant hover:text-primary transition-colors tracking-widest text-xs font-label uppercase" href="#">Gallery</a>
+<a class="text-primary border-b-2 border-primary pb-1 font-medium tracking-widest text-xs font-label uppercase" href="#">Vastu Guide</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors tracking-widest text-xs font-label uppercase" href="#">Artisans</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors tracking-widest text-xs font-label uppercase" href="#">About</a>
+</nav>
+<!-- Trailing Action Cluster -->
+<div class="flex items-center space-x-4">
+<button class="px-5 py-2 border border-primary text-primary hover:bg-primary hover:text-on-primary transition-all duration-300 font-label text-xs uppercase tracking-widest flex items-center gap-2 active:scale-95 shadow-sm">
+<span class="">Save Progress</span>
+</button>
+<button aria-label="Close Questionnaire" class="p-2 text-on-surface-variant hover:text-primary transition-colors focus:outline-none">
+<span class="material-symbols-outlined text-xl leading-none">close</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content Container: Two Column Vedic Questionnaire -->
+<main class="flex-1 w-full max-w-7xl mx-auto px-8 py-10 z-10">
+<div class="flex flex-col lg:flex-row items-start gap-12">
+<!-- LEFT COLUMN: Questionnaire Form (60% width) -->
+<div class="w-full lg:w-[60%] flex flex-col">
+<!-- Step & Progress Header -->
+<div class="mb-6">
+<div class="flex items-center justify-between mb-3">
+<span class="font-label uppercase tracking-[0.25em] text-xs text-primary font-semibold">
+              Step 01 / 05
+            </span>
+<span class="font-label text-xs tracking-wider text-on-surface-variant">Intention Alignment</span>
+</div>
+<!-- Progress Bar (20% Fill for Step 1 of 5) -->
+<div class="w-full h-1 bg-[#E8E0D2] rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[20%] transition-all duration-500 ease-out"></div>
+</div>
+</div>
+<!-- Question Title & Vedic Subtitle -->
+<div class="mb-8">
+<h1 class="font-headline text-3xl md:text-4xl text-[#1E2229] font-normal leading-tight mb-2 tracking-normal">
+            What would you like your space to represent?
+          </h1>
+<p class="font-body text-sm md:text-base text-on-surface-variant font-normal tracking-wide">
+            Choose the primary intention for your space. Each vibration resonates with specific cosmic directions and sacred geometries.
+          </p>
+</div>
+<!-- 3x3 Selectable Intentions Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-10">
+<!-- Card 1: SELECTED STATE (Prosperity & Abundance) -->
+<button class="relative group bg-primary-container text-left p-5 rounded border-[1.5px] border-primary card-selected-glow transition-all duration-300 flex flex-col justify-between h-40 focus:outline-none" type="button">
+<!-- Checkmark Indicator -->
+<div class="absolute top-3 right-3 w-5 h-5 rounded-full bg-primary/20 border border-primary flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-xs leading-none" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<!-- Vedic Icon (Kalash / Stacked Prosperity Pot) -->
+<div class="w-10 h-10 rounded-full bg-primary/10 border border-primary/40 flex items-center justify-center text-primary group-hover:scale-105 transition-transform">
+<svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewBox="0 0 24 24">
+<path d="M12 2v3m-3-1l3 1 3-1"></path>
+<path d="M5 10c0-2.5 3-4 7-4s7 1.5 7 4c0 4-3 7-7 7s-7-3-7-7z"></path>
+<path d="M8 17l-1 4h10l-1-4"></path>
+<circle cx="12" cy="11" fill="currentColor" r="1.5"></circle>
+</svg>
+</div>
+<div>
+<p class="font-label font-medium tracking-wide text-sm text-[#E6CFA3] leading-snug">
+                Prosperity &amp; Abundance
+              </p>
+<span class="text-[10px] uppercase font-label tracking-widest text-primary/70 block mt-1">North • Kubera</span>
+</div>
+</button>
+<!-- Card 2: Career & Success -->
+<button class="group bg-surface-bright hover:bg-surface-dim/40 text-left p-5 rounded border border-primary/40 hover:border-primary transition-all duration-300 flex flex-col justify-between h-40 focus:outline-none hover:-translate-y-0.5 hover:shadow-md" type="button">
+<div class="w-10 h-10 rounded-full bg-surface-dim border border-primary/20 flex items-center justify-center text-primary group-hover:border-primary/50 transition-colors">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewBox="0 0 24 24">
+<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+</svg>
+</div>
+<div>
+<p class="font-label font-medium tracking-wide text-sm text-on-surface leading-snug group-hover:text-primary transition-colors">
+                Career &amp; Success
+              </p>
+<span class="text-[10px] uppercase font-label tracking-widest text-on-surface-variant block mt-1">Solar Ascendance</span>
+</div>
+</button>
+<!-- Card 3: Peace & Positive Atmosphere -->
+<button class="group bg-surface-bright hover:bg-surface-dim/40 text-left p-5 rounded border border-primary/40 hover:border-primary transition-all duration-300 flex flex-col justify-between h-40 focus:outline-none hover:-translate-y-0.5 hover:shadow-md" type="button">
+<div class="w-10 h-10 rounded-full bg-surface-dim border border-primary/20 flex items-center justify-center text-primary group-hover:border-primary/50 transition-colors">
+<!-- Lotus Blossom Motif -->
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewBox="0 0 24 24">
+<path d="M12 22s-7-4.5-7-11c0-3 3-5 7-5s7 2 7 5c0 6.5-7 11-7 11z"></path>
+<path d="M12 6c-2 3-3 7-3 10"></path>
+<path d="M12 6c2 3 3 7 3 10"></path>
+<path d="M5 14c2-1 4-1 7-1s5 0 7 1"></path>
+</svg>
+</div>
+<div>
+<p class="font-label font-medium tracking-wide text-sm text-on-surface leading-snug group-hover:text-primary transition-colors">
+                Peace &amp; Positive Atmosphere
+              </p>
+<span class="text-[10px] uppercase font-label tracking-widest text-on-surface-variant block mt-1">Northeast • Ishanya</span>
+</div>
+</button>
+<!-- Card 4: Love & Harmonious Relationships -->
+<button class="group bg-surface-bright hover:bg-surface-dim/40 text-left p-5 rounded border border-primary/40 hover:border-primary transition-all duration-300 flex flex-col justify-between h-40 focus:outline-none hover:-translate-y-0.5 hover:shadow-md" type="button">
+<div class="w-10 h-10 rounded-full bg-surface-dim border border-primary/20 flex items-center justify-center text-primary group-hover:border-primary/50 transition-colors">
+<!-- Spiral Sacred Union Heart -->
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewBox="0 0 24 24">
+<path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
+<circle cx="12" cy="11" r="2"></circle>
+</svg>
+</div>
+<div>
+<p class="font-label font-medium tracking-wide text-sm text-on-surface leading-snug group-hover:text-primary transition-colors">
+                Love &amp; Harmonious Relationships
+              </p>
+<span class="text-[10px] uppercase font-label tracking-widest text-on-surface-variant block mt-1">Southwest • Nairutya</span>
+</div>
+</button>
+<!-- Card 5: Health & Vitality -->
+<button class="group bg-surface-bright hover:bg-surface-dim/40 text-left p-5 rounded border border-primary/40 hover:border-primary transition-all duration-300 flex flex-col justify-between h-40 focus:outline-none hover:-translate-y-0.5 hover:shadow-md" type="button">
+<div class="w-10 h-10 rounded-full bg-surface-dim border border-primary/20 flex items-center justify-center text-primary group-hover:border-primary/50 transition-colors">
+<!-- Radiant Sun / Sacred Agni Flame -->
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewBox="0 0 24 24">
+<circle cx="12" cy="12" r="4"></circle>
+<path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+</svg>
+</div>
+<div>
+<p class="font-label font-medium tracking-wide text-sm text-on-surface leading-snug group-hover:text-primary transition-colors">
+                Health &amp; Vitality
+              </p>
+<span class="text-[10px] uppercase font-label tracking-widest text-on-surface-variant block mt-1">East • Surya</span>
+</div>
+</button>
+<!-- Card 6: Spirituality & Devotion -->
+<button class="group bg-surface-bright hover:bg-surface-dim/40 text-left p-5 rounded border border-primary/40 hover:border-primary transition-all duration-300 flex flex-col justify-between h-40 focus:outline-none hover:-translate-y-0.5 hover:shadow-md" type="button">
+<div class="w-10 h-10 rounded-full bg-surface-dim border border-primary/20 flex items-center justify-center text-primary group-hover:border-primary/50 transition-colors">
+<!-- Sacred Diya Lamp -->
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewBox="0 0 24 24">
+<path d="M12 2c0 2-2 4-2 6a2 2 0 1 0 4 0c0-2-2-4-2-6z"></path>
+<path d="M4 14c0 3 3.5 5 8 5s8-2 8-5H4z"></path>
+<path d="M7 19l-1 2h12l-1-2"></path>
+</svg>
+</div>
+<div>
+<p class="font-label font-medium tracking-wide text-sm text-on-surface leading-snug group-hover:text-primary transition-colors">
+                Spirituality &amp; Devotion
+              </p>
+<span class="text-[10px] uppercase font-label tracking-widest text-on-surface-variant block mt-1">Brahmasthan Center</span>
+</div>
+</button>
+<!-- Card 7: Growth & New Beginnings -->
+<button class="group bg-surface-bright hover:bg-surface-dim/40 text-left p-5 rounded border border-primary/40 hover:border-primary transition-all duration-300 flex flex-col justify-between h-40 focus:outline-none hover:-translate-y-0.5 hover:shadow-md" type="button">
+<div class="w-10 h-10 rounded-full bg-surface-dim border border-primary/20 flex items-center justify-center text-primary group-hover:border-primary/50 transition-colors">
+<!-- Blooming Sprout / Kalpavriksha Motif -->
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewBox="0 0 24 24">
+<path d="M12 22v-9"></path>
+<path d="M12 13c-3-2-6-1-7 2 0 0 1-4 6-4"></path>
+<path d="M12 9c3-2 6-1 7 2 0 0-1-4-6-4"></path>
+<path d="M12 5V2"></path>
+</svg>
+</div>
+<div>
+<p class="font-label font-medium tracking-wide text-sm text-on-surface leading-snug group-hover:text-primary transition-colors">
+                Growth &amp; New Beginnings
+              </p>
+<span class="text-[10px] uppercase font-label tracking-widest text-on-surface-variant block mt-1">East • Prana Gate</span>
+</div>
+</button>
+<!-- Card 8: Protection & Courage -->
+<button class="group bg-surface-bright hover:bg-surface-dim/40 text-left p-5 rounded border border-primary/40 hover:border-primary transition-all duration-300 flex flex-col justify-between h-40 focus:outline-none hover:-translate-y-0.5 hover:shadow-md" type="button">
+<div class="w-10 h-10 rounded-full bg-surface-dim border border-primary/20 flex items-center justify-center text-primary group-hover:border-primary/50 transition-colors">
+<!-- Protective Trishula Motif -->
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewBox="0 0 24 24">
+<path d="M12 2v20"></path>
+<path d="M6 4c0 4 3 7 6 7s6-3 6-7"></path>
+<path d="M5 4h2M17 4h2"></path>
+</svg>
+</div>
+<div>
+<p class="font-label font-medium tracking-wide text-sm text-on-surface leading-snug group-hover:text-primary transition-colors">
+                Protection &amp; Courage
+              </p>
+<span class="text-[10px] uppercase font-label tracking-widest text-on-surface-variant block mt-1">South • Yama/Mars</span>
+</div>
+</button>
+<!-- Card 9: Simply Beautiful Meaningful Art -->
+<button class="group bg-surface-bright hover:bg-surface-dim/40 text-left p-5 rounded border border-primary/40 hover:border-primary transition-all duration-300 flex flex-col justify-between h-40 focus:outline-none hover:-translate-y-0.5 hover:shadow-md" type="button">
+<div class="w-10 h-10 rounded-full bg-surface-dim border border-primary/20 flex items-center justify-center text-primary group-hover:border-primary/50 transition-colors">
+<!-- Ornate Geometry Frame / Aesthetic Canvas -->
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewBox="0 0 24 24">
+<rect height="18" rx="1" width="18" x="3" y="3"></rect>
+<circle cx="12" cy="12" r="3"></circle>
+<path d="M3 9h18M3 15h18M9 3v18M15 3v18" stroke-dasharray="1 3"></path>
+</svg>
+</div>
+<div>
+<p class="font-label font-medium tracking-wide text-sm text-on-surface leading-snug group-hover:text-primary transition-colors">Simply Beautiful, Meaningful Art</p>
+<span class="text-[10px] uppercase font-label tracking-widest text-on-surface-variant block mt-1">Universal Aesthetics</span>
+</div>
+</button>
+</div>
+<!-- Navigation Actions at Bottom of Left Column -->
+<div class="flex items-center justify-between pt-6 border-t border-outline-variant">
+<button class="px-5 py-3 text-on-surface-variant opacity-60 cursor-not-allowed font-label text-xs uppercase tracking-widest flex items-center gap-2" disabled="">
+<span class="material-symbols-outlined text-sm">cloud_upload</span>
+<span class="">Back to Guide</span>
+</button>
+<button class="bg-primary hover:bg-[#b89a64] text-deep-charcoal font-semibold px-8 py-3.5 rounded font-label text-xs uppercase tracking-[0.2em] shadow-md hover:shadow-lg transition-all duration-300 flex items-center gap-3 group active:scale-95">
+<span class="">Next: Room &amp; Direction</span>
+<span class="material-symbols-outlined text-sm transition-transform duration-300 group-hover:translate-x-1">arrow_forward</span>
+</button>
+</div>
+<!-- Treatise Footnote Anchor -->
+<div class="mt-8 flex items-center gap-2 text-on-surface-variant/80 text-xs font-label">
+<span class="text-primary text-sm">✦</span>
+<span class="">Aligned with <em>Manasara</em> &amp; <em>Mayamata</em> Vedic treatises on architecture and sacred art form resonance.</span>
+</div>
+</div>
+<!-- RIGHT COLUMN: Sticky Dynamic Preview Panel (40% width) -->
+<aside class="w-full lg:w-[40%] sticky top-28">
+<div class="bg-surface-bright border border-primary/30 rounded p-7 shadow-sm relative overflow-hidden">
+<!-- Subtle Vedic Background Motif on Panel -->
+<div class="absolute -right-8 -top-8 w-36 h-36 rounded-full border border-primary/10 pointer-events-none"></div>
+<!-- Section Heading -->
+<div class="mb-5">
+<span class="font-label text-[10px] uppercase tracking-[0.25em] text-primary block mb-1 font-semibold">
+              Live Vedic Alignment
+            </span>
+<h2 class="font-headline text-2xl text-on-surface font-normal">
+              Recommended Artwork
+            </h2>
+<p class="font-body text-xs text-on-surface-variant mt-1 leading-relaxed">
+              Curated sacred artwork responding directly to your chosen intention.
+            </p>
+</div>
+<!-- Active Preview Directive Tag -->
+<div class="mb-6 bg-surface-dim/50 border-l-2 border-primary px-3.5 py-2.5 rounded-r flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-base">explore</span>
+<span class="font-label text-xs text-on-surface font-medium tracking-wide">
+              Direction: North (Kubera) &amp; Northeast (Ishanya)
+            </span>
+</div>
+<!-- Artwork Slots Preview Stack -->
+<div class="space-y-4 mb-6">
+<!-- Slot 1: Active Curated Artwork Preview Card -->
+<div class="bg-surface p-4 rounded border border-primary/40 hover:border-primary transition-all duration-300 group">
+<div class="flex gap-4">
+<div class="w-20 h-20 rounded overflow-hidden flex-shrink-0 relative border border-primary/30">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A sacred Hindu Shree Yantra mandala painting on textured raw silk with intricate 24-karat antique gold leaf geometric linework. The concentric triangles and lotus petals glow under warm ambient gallery spotlighting against a rich midnight indigo and charcoal background. The composition exudes refined Vedic opulence, balance, and transcendental harmony." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgXfdTcofxjKolBaaKoPWgQFE6sqQ3KAAQIfkxDMGtUYMC0PRybQK9R6f65tVZE9nl6uYAU4XESNzl8CT7NLV9tmzUzLGQAWGLANTG8qc19IhOD2HLw5CkhKm5yVEarKFbW6vcFAjOpDZRjwaXd20osQMwZ0Iwhnbd6FznNB6Cl8jedWtfNfw_Cr8SqL7z5q7E4AM490gTOvYx0uIFSDLr5KolGB-8TGf6c_FMOn4IaTDv4WuLYWpszFIZMeaG0aZPCYtDlX5w6oqk">
+<div class="absolute inset-0 bg-primary/10 mix-blend-overlay"></div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between mb-1">
+<span class="font-label text-[9px] uppercase tracking-widest text-primary font-semibold">Resonance: 98%</span>
+<span class="px-1.5 py-0.5 rounded text-[8px] uppercase tracking-wider font-label bg-primary/20 text-primary border border-primary/30 font-medium">Primary Match</span>
+</div>
+<h3 class="font-headline text-base text-on-surface font-medium truncate group-hover:text-primary transition-colors">
+                    Golden Shree Yantra on Raw Silk
+                  </h3>
+<p class="font-body text-xs text-on-surface-variant mt-0.5">
+                    Element: Water / Ether
+                  </p>
+<p class="font-label text-[11px] text-primary/90 mt-1 font-medium">
+                    Hand-guilded with 24K gold leaf
+                  </p>
+</div>
+</div>
+</div>
+<!-- Slot 2: Locked Pending Direction -->
+<div class="p-4 rounded border border-dashed border-primary/40 bg-surface-bright/50 flex items-center gap-3 text-on-surface-variant">
+<div class="w-12 h-12 rounded border border-dashed border-primary/30 flex items-center justify-center flex-shrink-0 text-primary/50">
+<span class="material-symbols-outlined text-lg">lock_clock</span>
+</div>
+<div class="flex-1">
+<p class="font-label text-xs uppercase tracking-wider text-on-surface font-medium">
+                  Artwork Slot 2
+                </p>
+<p class="text-[11px] text-on-surface-variant font-body">
+                  Unlocks with Room &amp; Direction selection
+                </p>
+</div>
+</div>
+<!-- Slot 3: Locked Pairing -->
+<div class="p-4 rounded border border-dashed border-primary/40 bg-surface-bright/50 flex items-center gap-3 text-on-surface-variant">
+<div class="w-12 h-12 rounded border border-dashed border-primary/30 flex items-center justify-center flex-shrink-0 text-primary/50">
+<span class="material-symbols-outlined text-lg">auto_awesome</span>
+</div>
+<div class="flex-1">
+<p class="font-label text-xs uppercase tracking-wider text-on-surface font-medium">
+                  Artwork Slot 3
+                </p>
+<p class="text-[11px] text-on-surface-variant font-body">
+                  Curated Vedic Pairing revealed in Step 3
+                </p>
+</div>
+</div>
+</div>
+<!-- Traditional Consecration Artisan Trust Note -->
+<div class="pt-5 border-t border-outline-variant flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-lg flex-shrink-0 mt-0.5" style="font-variation-settings: 'FILL' 1;">verified</span>
+<p class="font-body text-xs text-on-surface-variant leading-relaxed">
+              Every artwork is consecrated and handcrafted by master traditional artisans in Tanjore &amp; Rajasthan.
+            </p>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Footer (Shared Component Anchor) -->
+<footer class="bg-surface border-t border-outline-variant mt-16 z-10">
+
+</footer>
+<script>
+    // Micro-interaction for Intentions cards (Interactive Selection)
+    document.querySelectorAll('.grid button').forEach(button => {
+      button.addEventListener('click', function() {
+        document.querySelectorAll('.grid button').forEach(btn => {
+          btn.classList.remove('bg-primary-container', 'border-primary', 'card-selected-glow');
+          btn.classList.add('bg-surface-bright', 'border-primary/40');
+          const title = btn.querySelector('p');
+          if (title) {
+            title.classList.remove('text-[#E6CFA3]');
+            title.classList.add('text-on-surface');
+          }
+          const check = btn.querySelector('.material-symbols-outlined');
+          if (check && check.innerText === 'check') {
+            check.parentElement.remove();
+          }
+        });
+
+        this.classList.remove('bg-surface-bright', 'border-primary/40');
+        this.classList.add('bg-primary-container', 'border-primary', 'card-selected-glow');
+        const title = this.querySelector('p');
+        if (title) {
+          title.classList.remove('text-on-surface');
+          title.classList.add('text-[#E6CFA3]');
+        }
+
+        if (!this.querySelector('.material-symbols-outlined[style*="FILL"]')) {
+          const badge = document.createElement('div');
+          badge.className = 'absolute top-3 right-3 w-5 h-5 rounded-full bg-primary/20 border border-primary flex items-center justify-center text-primary';
+          badge.innerHTML = '<span class="material-symbols-outlined text-xs leading-none" style="font-variation-settings: \'FILL\' 1;">check</span>';
+          this.appendChild(badge);
+        }
+      });
+    });
+  </script>
+
+
+
+
+</body></html>

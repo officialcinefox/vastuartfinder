@@ -1,0 +1,513 @@
+<!DOCTYPE html><html class="dark" lang="en" style=""><svg class="inline-defs-container" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden"></svg><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Krutik Vastu Art Finder — Step 03: Wall Orientation</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&amp;family=Public+Sans:wght@300;400;500;600;700&amp;family=Raleway:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            surface: "#F8F4EB",
+            "surface-subtle": "#FAF7F2",
+            "surface-pure": "#FFFDF8",
+            "surface-card": "#EAE0CF",
+            primary: "#C5A875",
+            "primary-focus": "#B39055",
+            "on-surface": "#222222",
+            "on-surface-variant": "#716b60",
+            "outline-variant": "rgba(197, 168, 117, 0.25)",
+            "outline-gold": "#C5A875",
+            charcoal: "#222222",
+            "charcoal-soft": "#2D2D2D",
+            indigo: {
+              900: "#1B2038",
+              800: "#252C4A",
+              700: "#323B61"
+            }
+          },
+          borderRadius: {
+            DEFAULT: "0.125rem",
+            lg: "0.25rem",
+            xl: "0.5rem",
+            full: "0.75rem"
+          },
+          fontFamily: {
+            headline: ["Playfair Display", "serif"],
+            display: ["Playfair Display", "serif"],
+            body: ["Raleway", "Public Sans", "sans-serif"],
+            label: ["Raleway", "Public Sans", "sans-serif"]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .material-symbols-outlined.fill-icon {
+      font-variation-settings: 'FILL' 1, 'wght' 400;
+    }
+    
+    /* Sacred Geometry Subtle Lattice Overlay */
+    .bg-sacred-lattice {
+      background-image: 
+        radial-gradient(circle at 50% 50%, rgba(197, 168, 117, 0.04) 1px, transparent 1px),
+        radial-gradient(circle at 0% 0%, rgba(197, 168, 117, 0.03) 1px, transparent 1px);
+      background-size: 32px 32px, 64px 64px;
+    }
+
+    /* Directional Ray Pulse on compass */
+    @keyframes compassPulse {
+      0%, 100% { opacity: 0.85; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.02); }
+    }
+    .compass-ambient {
+      animation: compassPulse 6s ease-in-out infinite;
+    }
+    
+    /* Live Feed Pulse */
+    @keyframes goldBeacon {
+      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(197, 168, 117, 0.7); }
+      70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(197, 168, 117, 0); }
+      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(197, 168, 117, 0); }
+    }
+    .pulse-gold {
+      animation: goldBeacon 2.2s infinite;
+    }
+  </style>
+</head>
+<body class="bg-[#FAF7F2] text-[#222222] font-body min-h-screen flex flex-col antialiased selection:bg-[#C5A875] selection:text-[#252C4A] relative bg-sacred-lattice">
+<!-- TOP APP BAR (Shared Component: Web Header) -->
+<header class="docked full-width top-0 sticky z-50 bg-[#FAF7F2] border-b border-[#C5A875]/20 shadow-sm backdrop-blur-md">
+<div class="w-full max-w-7xl mx-auto px-6 lg:px-8 py-4 flex items-center justify-between">
+<!-- Brand Logo / Wordmark -->
+<a class="flex items-center gap-3 group" href="#">
+<div class="w-8 h-8 rounded-full border border-[#C5A875] flex items-center justify-center bg-[#252C4A] text-[#C5A875] shadow-xs">
+<span class="material-symbols-outlined text-sm font-light">flare</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline text-2xl tracking-[0.25em] text-[#222222] font-medium leading-tight">KRUTIK</span>
+<span class="font-label text-[9px] tracking-[0.3em] uppercase text-[#C5A875] -mt-0.5">Sacred Vastu Art</span>
+</div>
+</a>
+<!-- Desktop Navigation Cluster (Active: Vastu Guide) -->
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-[#716b60] hover:text-[#C5A875] transition-colors tracking-widest text-xs uppercase font-medium" href="#">Gallery</a>
+<a class="text-[#C5A875] border-b-2 border-[#C5A875] pb-1 font-medium tracking-widest text-xs uppercase" href="#">Vastu Guide</a>
+<a class="text-[#716b60] hover:text-[#C5A875] transition-colors tracking-widest text-xs uppercase font-medium" href="#">Artisans</a>
+<a class="text-[#716b60] hover:text-[#C5A875] transition-colors tracking-widest text-xs uppercase font-medium" href="#">About</a>
+</nav>
+<!-- Trailing Primary & Icon Actions -->
+<div class="flex items-center gap-4">
+<button class="px-4 py-2 border border-[#C5A875] text-[#222222] hover:bg-[#C5A875]/10 font-label text-xs uppercase tracking-widest transition-all duration-300 ease-out active:scale-95 flex items-center gap-2" type="button">
+<span class="material-symbols-outlined text-sm text-[#C5A875]">bookmark</span>
+<span class="">Save Progress</span>
+</button>
+<button aria-label="Close questionnaire" class="text-[#716b60] hover:text-[#222222] p-1 transition-colors" type="button">
+<span class="material-symbols-outlined text-xl">close</span>
+</button>
+</div>
+</div>
+</header>
+<!-- MAIN CANVAS: Two-column split layout (~60% left, ~40% right) -->
+<main class="flex-1 w-full max-w-7xl mx-auto px-6 lg:px-8 py-8 lg:py-12">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+<!-- ========================================== -->
+<!-- LEFT COLUMN (60% ~ 7 cols): Selection & Compass -->
+<!-- ========================================== -->
+<section class="lg:col-span-7 flex flex-col space-y-8">
+<!-- Step Progress Breadcrumb -->
+<div class="space-y-3">
+<div class="flex items-center justify-between text-xs tracking-[0.2em] uppercase font-label">
+<span class="text-[#C5A875] font-semibold flex items-center gap-1.5">
+<span class="inline-block w-1.5 h-1.5 rounded-full bg-[#C5A875]"></span>
+              STEP 03 / 05
+            </span>
+<span class="text-[#716b60] font-medium tracking-[0.18em]">WALL ORIENTATION &amp; DIRECTION</span>
+</div>
+<!-- Visual Progress Bar (60% Filled) -->
+<div class="w-full h-1 bg-[#EAE0CF] overflow-hidden rounded-full">
+<div class="h-full bg-[#C5A875] transition-all duration-500 ease-out" style="width: 60%;"></div>
+</div>
+</div>
+<!-- Headline & Editorial Subtitle -->
+<div class="space-y-3">
+<h1 class="font-headline text-3xl sm:text-4xl lg:text-[40px] text-[#222222] font-normal leading-tight tracking-tight">
+            Do you know the direction of your wall?
+          </h1>
+<p class="font-body text-[#716b60] text-sm sm:text-base leading-relaxed max-w-2xl">This helps us provide more relevant Vastu-inspired recommendations.</p>
+</div>
+<!-- Sacred Compass Rose Decorative Motif (Refined Eight-Directional Mandala) -->
+<div class="relative py-2 flex flex-col items-center justify-center w-full max-w-md mx-auto">
+  <!-- Header Label with Title and Status -->
+  <div class="w-full flex items-center justify-between px-2 mb-2 text-xs font-label tracking-wider">
+    <span class="font-bold tracking-[0.18em] text-[#1B2038] uppercase text-[11px]">VASTU PURUSHA MANDALA ALIGNMENT</span>
+    <span class="text-[#716b60] font-medium text-[11px]">East Active</span>
+  </div>
+
+  <!-- Circular Vastu Purusha Mandala Compass SVG -->
+  <div class="w-full max-w-[310px] aspect-square relative flex items-center justify-center">
+    <svg viewBox="0 0 300 300" class="w-full h-full select-none">
+      <defs>
+        <!-- Subtle drop shadow for needle -->
+        <filter id="needle-shadow" x="-10%" y="-10%" width="130%" height="130%">
+          <feDropShadow dx="0" dy="1" stdDeviation="1.5" flood-color="#1B2038" flood-opacity="0.15"></feDropShadow>
+        </filter>
+      </defs>
+
+      <!-- Outer Dotted Perimeter Ring -->
+      <circle cx="150" cy="150" r="130" fill="none" stroke="#C5A875" stroke-width="1.2" stroke-dasharray="2 4" opacity="0.6"></circle>
+
+      <!-- Secondary Fine Solid Outer Ring -->
+      <circle cx="150" cy="150" r="115" fill="none" stroke="#C5A875" stroke-width="0.8" opacity="0.4"></circle>
+
+      <!-- Intermediate Solid Circle -->
+      <circle cx="150" cy="150" r="75" fill="none" stroke="#C5A875" stroke-width="0.8" opacity="0.45"></circle>
+
+      <!-- Active Quadrant Wedge: East (from -22.5 deg to +22.5 deg / centered at 0 deg East) -->
+      <!-- r=115 arc: starts at (150 + 115*cos(-22.5°), 150 + 115*sin(-22.5°)) = (256.24, 106.0) -->
+      <!-- ends at (150 + 115*cos(22.5°), 150 + 115*sin(22.5°)) = (256.24, 194.0) -->
+      <path d="M 150 150 L 256.24 106.01 A 115 115 0 0 1 256.24 193.99 Z" fill="#C5A875" fill-opacity="0.28" stroke="#C5A875" stroke-width="0.75" stroke-opacity="0.5"></path>
+
+      <!-- Inner Wedge Accent Sector up to intermediate ring -->
+      <path d="M 150 150 L 219.29 121.31 A 75 75 0 0 1 219.29 178.69 Z" fill="#C5A875" fill-opacity="0.12"></path>
+
+      <!-- 45-degree Diagonal Dashed Subdivision Lines -->
+      <!-- NE / SW (45 deg) -->
+      <line x1="68.39" y1="68.39" x2="231.61" y2="231.61" stroke="#C5A875" stroke-width="0.85" stroke-dasharray="3 3" opacity="0.45"></line>
+      <!-- NW / SE (135 deg) -->
+      <line x1="68.39" y1="231.61" x2="231.61" y2="68.39" stroke="#C5A875" stroke-width="0.85" stroke-dasharray="3 3" opacity="0.45"></line>
+
+      <!-- Full Cardinal Crosshairs: N-S and E-W -->
+      <line x1="150" y1="35" x2="150" y2="265" stroke="#C5A875" stroke-width="0.9" opacity="0.55"></line>
+      <line x1="35" y1="150" x2="265" y2="150" stroke="#C5A875" stroke-width="0.9" opacity="0.55"></line>
+
+      <!-- Direction Labels -->
+      <!-- North -->
+      <text x="150" y="30" text-anchor="middle" dominant-baseline="central" font-family="'Raleway', sans-serif" font-size="11" font-weight="700" fill="#1B2038" letter-spacing="0.05em">N</text>
+      <!-- East (Surya / Active) -->
+      <text x="272" y="150" text-anchor="middle" dominant-baseline="central" font-family="'Raleway', sans-serif" font-size="11" font-weight="700" fill="#C5A875" letter-spacing="0.05em">E</text>
+      <!-- South -->
+      <text x="150" y="272" text-anchor="middle" dominant-baseline="central" font-family="'Raleway', sans-serif" font-size="11" font-weight="700" fill="#716b60" letter-spacing="0.05em">S</text>
+      <!-- West -->
+      <text x="28" y="150" text-anchor="middle" dominant-baseline="central" font-family="'Raleway', sans-serif" font-size="11" font-weight="700" fill="#716b60" letter-spacing="0.05em">W</text>
+
+      <!-- Intercardinal Labels -->
+      <text x="235" y="75" text-anchor="middle" dominant-baseline="central" font-family="'Raleway', sans-serif" font-size="9" font-weight="600" fill="#C5A875">NE</text>
+      <text x="235" y="225" text-anchor="middle" dominant-baseline="central" font-family="'Raleway', sans-serif" font-size="9" font-weight="500" fill="#716b60">SE</text>
+      <text x="65" y="225" text-anchor="middle" dominant-baseline="central" font-family="'Raleway', sans-serif" font-size="9" font-weight="500" fill="#716b60">SW</text>
+      <text x="65" y="75" text-anchor="middle" dominant-baseline="central" font-family="'Raleway', sans-serif" font-size="9" font-weight="500" fill="#716b60">NW</text>
+
+      <!-- Needle: East Direction Pointer (Matching Reference Needle Exactly) -->
+      <!-- Light Beige / Neutral West Tail Needle -->
+      <polygon points="150,146.5 150,153.5 82,150" fill="#D5C7B0" opacity="0.9"></polygon>
+      <line x1="150" y1="150" x2="82" y2="150" stroke="#FAF7F2" stroke-width="0.5" opacity="0.6"></line>
+
+      <!-- Dark Navy/Indigo Sharp East Pointer Needle with Shadow -->
+      <g filter="url(#needle-shadow)">
+        <polygon points="150,145.5 150,154.5 218,150" fill="#1B2038"></polygon>
+        <!-- Subtle Needle Center Ridge Highlight -->
+        <polygon points="150,145.5 150,150 218,150" fill="#252C4A"></polygon>
+      </g>
+
+      <!-- Center Hub Pivot Rings -->
+      <circle cx="150" cy="150" r="16" fill="none" stroke="#C5A875" stroke-width="1.75"></circle>
+      <circle cx="150" cy="150" r="18.5" fill="none" stroke="#C5A875" stroke-width="0.5" stroke-dasharray="1 2" opacity="0.5"></circle>
+      <circle cx="150" cy="150" r="4.5" fill="#FAF7F2" stroke="#1B2038" stroke-width="1.5"></circle>
+    </svg>
+  </div>
+</div>
+<!-- 3x3 Grid of 9 Directional Selection Cards -->
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3.5 pt-1">
+<!-- 1. North -->
+<div class="group relative p-4 rounded-sm border border-[#EAE0CF] bg-[#FFFDF8] hover:border-[#C5A875] transition-all duration-300 text-left cursor-pointer flex flex-col justify-between h-[108px] hover:shadow-sm" role="button" tabindex="0">
+<div class="flex items-start justify-between">
+<div class="w-7 h-7 rounded-full bg-[#FAF7F2] border border-[#EAE0CF] group-hover:border-[#C5A875] flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-[#716b60] group-hover:text-[#C5A875] text-sm">north</span>
+</div>
+<span class="font-label text-[10px] uppercase tracking-wider text-[#716b60] opacity-75">N</span>
+</div>
+<div>
+<p class="font-headline text-base text-[#222222] font-semibold leading-tight">North</p>
+<p class="font-label text-[11px] text-[#716b60] mt-0.5 truncate">Kuber • Wealth &amp; Prosperity</p>
+</div>
+</div>
+<!-- 2. North-East -->
+<div class="group relative p-4 rounded-sm border border-[#EAE0CF] bg-[#FFFDF8] hover:border-[#C5A875] transition-all duration-300 text-left cursor-pointer flex flex-col justify-between h-[108px] hover:shadow-sm" role="button" tabindex="0">
+<div class="flex items-start justify-between">
+<div class="w-7 h-7 rounded-full bg-[#FAF7F2] border border-[#EAE0CF] group-hover:border-[#C5A875] flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-[#716b60] group-hover:text-[#C5A875] text-sm">north_east</span>
+</div>
+<span class="font-label text-[10px] uppercase tracking-wider text-[#716b60] opacity-75">NE</span>
+</div>
+<div>
+<p class="font-headline text-base text-[#222222] font-semibold leading-tight">North-East</p>
+<p class="font-label text-[11px] text-[#716b60] mt-0.5 truncate">Ishanya • Clarity &amp; Spirit</p>
+</div>
+</div>
+<!-- 3. East — SELECTED CARD -->
+<div class="relative p-4 rounded-sm border-2 border-[#C5A875] bg-[#252C4A] shadow-md shadow-[#C5A875]/10 text-left cursor-pointer flex flex-col justify-between h-[108px] transform ring-1 ring-[#C5A875]/50" role="button" tabindex="0">
+<!-- Top Right Checkmark Badge -->
+<div class="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-[#C5A875] text-[#252C4A] flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined text-xs font-bold">check</span>
+</div>
+<div class="flex items-start justify-between">
+<div class="w-7 h-7 rounded-full bg-[#1B2038] border border-[#C5A875] flex items-center justify-center">
+<span class="material-symbols-outlined text-[#C5A875] text-sm">east</span>
+</div>
+<span class="font-label text-[10px] uppercase tracking-wider text-[#C5A875] font-semibold">Active Selection</span>
+</div>
+<div>
+<p class="font-headline text-base text-[#FAF7F2] font-semibold leading-tight flex items-center gap-2">
+                East
+                <span class="inline-block w-1.5 h-1.5 rounded-full bg-[#C5A875]"></span>
+</p>
+<p class="font-label text-[11px] text-[#C5A875] mt-0.5 font-medium truncate">Surya • Vitality &amp; Beginnings</p>
+</div>
+</div>
+<!-- 4. South-East -->
+<div class="group relative p-4 rounded-sm border border-[#EAE0CF] bg-[#FFFDF8] hover:border-[#C5A875] transition-all duration-300 text-left cursor-pointer flex flex-col justify-between h-[108px] hover:shadow-sm" role="button" tabindex="0">
+<div class="flex items-start justify-between">
+<div class="w-7 h-7 rounded-full bg-[#FAF7F2] border border-[#EAE0CF] group-hover:border-[#C5A875] flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-[#716b60] group-hover:text-[#C5A875] text-sm">south_east</span>
+</div>
+<span class="font-label text-[10px] uppercase tracking-wider text-[#716b60] opacity-75">SE</span>
+</div>
+<div>
+<p class="font-headline text-base text-[#222222] font-semibold leading-tight">South-East</p>
+<p class="font-label text-[11px] text-[#716b60] mt-0.5 truncate">Agni • Energy &amp; Fire</p>
+</div>
+</div>
+<!-- 5. South -->
+<div class="group relative p-4 rounded-sm border border-[#EAE0CF] bg-[#FFFDF8] hover:border-[#C5A875] transition-all duration-300 text-left cursor-pointer flex flex-col justify-between h-[108px] hover:shadow-sm" role="button" tabindex="0">
+<div class="flex items-start justify-between">
+<div class="w-7 h-7 rounded-full bg-[#FAF7F2] border border-[#EAE0CF] group-hover:border-[#C5A875] flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-[#716b60] group-hover:text-[#C5A875] text-sm">south</span>
+</div>
+<span class="font-label text-[10px] uppercase tracking-wider text-[#716b60] opacity-75">S</span>
+</div>
+<div>
+<p class="font-headline text-base text-[#222222] font-semibold leading-tight">South</p>
+<p class="font-label text-[11px] text-[#716b60] mt-0.5 truncate">Yama • Legal &amp; Strength</p>
+</div>
+</div>
+<!-- 6. South-West -->
+<div class="group relative p-4 rounded-sm border border-[#EAE0CF] bg-[#FFFDF8] hover:border-[#C5A875] transition-all duration-300 text-left cursor-pointer flex flex-col justify-between h-[108px] hover:shadow-sm" role="button" tabindex="0">
+<div class="flex items-start justify-between">
+<div class="w-7 h-7 rounded-full bg-[#FAF7F2] border border-[#EAE0CF] group-hover:border-[#C5A875] flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-[#716b60] group-hover:text-[#C5A875] text-sm">south_west</span>
+</div>
+<span class="font-label text-[10px] uppercase tracking-wider text-[#716b60] opacity-75">SW</span>
+</div>
+<div>
+<p class="font-headline text-base text-[#222222] font-semibold leading-tight">South-West</p>
+<p class="font-label text-[11px] text-[#716b60] mt-0.5 truncate">Nairutya • Ancestral Stability</p>
+</div>
+</div>
+<!-- 7. West -->
+<div class="group relative p-4 rounded-sm border border-[#EAE0CF] bg-[#FFFDF8] hover:border-[#C5A875] transition-all duration-300 text-left cursor-pointer flex flex-col justify-between h-[108px] hover:shadow-sm" role="button" tabindex="0">
+<div class="flex items-start justify-between">
+<div class="w-7 h-7 rounded-full bg-[#FAF7F2] border border-[#EAE0CF] group-hover:border-[#C5A875] flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-[#716b60] group-hover:text-[#C5A875] text-sm">west</span>
+</div>
+<span class="font-label text-[10px] uppercase tracking-wider text-[#716b60] opacity-75">W</span>
+</div>
+<div>
+<p class="font-headline text-base text-[#222222] font-semibold leading-tight">West</p>
+<p class="font-label text-[11px] text-[#716b60] mt-0.5 truncate">Varuna • Sustained Gains</p>
+</div>
+</div>
+<!-- 8. North-West -->
+<div class="group relative p-4 rounded-sm border border-[#EAE0CF] bg-[#FFFDF8] hover:border-[#C5A875] transition-all duration-300 text-left cursor-pointer flex flex-col justify-between h-[108px] hover:shadow-sm" role="button" tabindex="0">
+<div class="flex items-start justify-between">
+<div class="w-7 h-7 rounded-full bg-[#FAF7F2] border border-[#EAE0CF] group-hover:border-[#C5A875] flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-[#716b60] group-hover:text-[#C5A875] text-sm">north_west</span>
+</div>
+<span class="font-label text-[10px] uppercase tracking-wider text-[#716b60] opacity-75">NW</span>
+</div>
+<div>
+<p class="font-headline text-base text-[#222222] font-semibold leading-tight">North-West</p>
+<p class="font-label text-[11px] text-[#716b60] mt-0.5 truncate">Vayu • Social &amp; Movement</p>
+</div>
+</div>
+<!-- 9. I'm Not Sure / Guided Finder -->
+<div class="group relative p-4 rounded-sm border border-dashed border-[#C5A875]/50 bg-[#FAF7F2] hover:border-[#C5A875] hover:bg-[#FFFDF8] transition-all duration-300 text-left cursor-pointer flex flex-col justify-between h-[108px]" role="button" tabindex="0">
+<div class="flex items-start justify-between">
+<div class="w-7 h-7 rounded-full bg-[#EAE0CF]/60 group-hover:bg-[#C5A875]/20 flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-[#716b60] group-hover:text-[#C5A875] text-sm">help_outline</span>
+</div>
+<span class="font-label text-[9px] uppercase tracking-wider text-[#C5A875] font-semibold">Assist</span>
+</div>
+<div>
+<p class="font-headline text-base text-[#222222] font-semibold leading-tight">I'm Not Sure</p>
+<p class="font-label text-[11px] text-[#716b60] mt-0.5 truncate">Guided Compass Tool</p>
+</div>
+</div>
+</div>
+<!-- Navigation Bar / Bottom CTAs -->
+<div class="pt-6 border-t border-[#C5A875]/20 flex flex-col sm:flex-row items-center justify-between gap-4">
+<a class="inline-flex items-center gap-2 font-label text-xs uppercase tracking-[0.2em] text-[#716b60] hover:text-[#222222] transition-colors py-2 font-medium" href="#">
+<span class="material-symbols-outlined text-sm">cloud_upload</span>
+<span class="">BACK TO ROOM SELECTION</span>
+</a>
+<a class="w-full sm:w-auto px-8 py-3.5 bg-[#C5A875] hover:bg-[#B39055] text-[#222222] font-label text-xs uppercase tracking-[0.2em] font-bold transition-all duration-300 ease-out active:scale-95 shadow-md flex items-center justify-center gap-3" href="#">
+<span class="">NEXT: ARTWORK PREFERENCES</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+<!-- Vedic Treatise Citations Footnote -->
+<div class="pt-1 text-center sm:text-left">
+<p class="font-label text-[11px] text-[#716b60]/80 tracking-wide flex items-center justify-center sm:justify-start gap-1.5">
+<span class="text-[#C5A875]">✦</span>
+            Aligned with Manasara &amp; Mayamata Vedic treatises on solar architecture and directional resonance.
+          </p>
+</div>
+</section>
+<!-- ========================================== -->
+<!-- RIGHT COLUMN (40% ~ 5 cols): Vedic Live Resonance -->
+<!-- ========================================== -->
+<aside class="lg:col-span-5 sticky top-24">
+<div class="bg-[#252C4A] border border-[#C5A875] rounded-sm p-6 lg:p-7 shadow-xl shadow-black/20 text-[#FAF7F2] space-y-6 relative overflow-hidden">
+<!-- Subtle Sacred Watermark in Dark Panel -->
+<div class="absolute -right-16 -top-16 w-56 h-56 rounded-full border border-[#C5A875]/10 pointer-events-none"></div>
+<div class="absolute -right-10 -top-10 w-44 h-44 rounded-full border border-dashed border-[#C5A875]/10 pointer-events-none"></div>
+<!-- Header & Active Feed Badge -->
+<div class="flex items-center justify-between border-b border-[#C5A875]/20 pb-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#C5A875] text-lg">explore</span>
+<span class="font-label text-[11px] uppercase tracking-[0.25em] text-[#C5A875] font-semibold">LIVE VEDIC ALIGNMENT</span>
+</div>
+<div class="flex items-center gap-2 bg-[#1B2038] px-2.5 py-1 rounded-full border border-[#C5A875]/30">
+<span class="w-2 h-2 rounded-full bg-[#C5A875] pulse-gold"></span>
+<span class="font-label text-[9px] uppercase tracking-widest text-[#FAF7F2] font-medium">ACTIVE FEED</span>
+</div>
+</div>
+<!-- Alignment Narrative -->
+<div class="space-y-2">
+<h2 class="font-headline text-2xl text-[#FAF7F2] font-normal leading-snug">
+              6 Matching Artworks for East Wall
+            </h2>
+<p class="font-body text-xs text-[#FAF7F2]/75 leading-relaxed">
+              Curated sacred artworks channeling solar ascendance, vitality and harmonious morning prana for the East direction.
+            </p>
+</div>
+<!-- Directional Summary Pill Row -->
+<div class="grid grid-cols-2 gap-2 p-3 bg-[#1B2038] border border-[#C5A875]/30 rounded-sm">
+<div>
+<span class="block font-label text-[9px] uppercase tracking-widest text-[#C5A875]/80">Direction</span>
+<span class="font-headline text-xs font-semibold text-[#FAF7F2] mt-0.5 block">East (Surya)</span>
+</div>
+<div>
+<span class="block font-label text-[9px] uppercase tracking-widest text-[#C5A875]/80">Element</span>
+<span class="font-headline text-xs font-semibold text-[#FAF7F2] mt-0.5 block">Sun &amp; Prana Fire</span>
+</div>
+</div>
+<!-- 3 Curated Product Preview Cards -->
+<div class="space-y-3.5">
+<span class="font-label text-[10px] uppercase tracking-[0.2em] text-[#C5A875] block font-semibold">RECOMMENDED WORKS</span>
+<!-- Product 1 -->
+<div class="bg-[#1B2038] border border-[#C5A875]/30 hover:border-[#C5A875] p-3 rounded-sm transition-all duration-300 flex gap-3 group">
+<div class="w-20 h-20 shrink-0 bg-[#252C4A] overflow-hidden rounded-xs relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A luxurious handcrafted Golden Surya Mandala art piece embossed on pure brass leaf with intricate radiant sacred geometry sun rays. The art rests elegantly in an architectural dark setting with soft warm antique gold lighting, deep shadows, and subtle warm amber reflections that convey deep spiritual sanctity and luxury." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCo5o23blaPV-vslPEJzwD0iMWVh3daMUfW5cGuy3eag0yhIoSlPtxbHSu9cbSuxJFGd-xYMfkJzqxkvGH6IygbKbPpy-qzDLMAU_9WPCOaEY3qNKS5V3mpPysbnjegVuwIvq-5lAyaLGXb6LeHUrWBAD7cEbRObxZOgOJJILIXon8nnF-YCpCTMvkm-V5PwNzyrW2sPYvqVr5XEaK2GVuwptjf_Kj6LhPSw_mGxKKerr1dj6XZShF0AZdY30NoAumy4ngSBJqow1Vm">
+<span class="absolute bottom-1 right-1 bg-[#252C4A]/90 text-[#C5A875] text-[8px] font-label font-bold px-1 rounded">99%</span>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between">
+<span class="font-label text-[9px] text-[#C5A875] tracking-wider uppercase">Solar Match</span>
+<span class="font-label text-[9px] text-[#FAF7F2]/60">Consecrated</span>
+</div>
+<h3 class="font-headline text-sm text-[#FAF7F2] font-medium leading-snug mt-0.5">Golden Surya Mandala on Brass Leaf</h3>
+</div>
+<div class="flex items-center justify-between pt-1 border-t border-white/5">
+<span class="font-headline text-xs text-[#FAF7F2] font-semibold">$1,650</span>
+<button class="text-[10px] font-label uppercase tracking-widest text-[#C5A875] hover:text-[#FFFDF8] transition-colors flex items-center gap-1" type="button">
+<span class="">RESERVE</span>
+<span class="material-symbols-outlined text-[10px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product 2 -->
+<div class="bg-[#1B2038] border border-[#C5A875]/30 hover:border-[#C5A875] p-3 rounded-sm transition-all duration-300 flex gap-3 group">
+<div class="w-20 h-20 shrink-0 bg-[#252C4A] overflow-hidden rounded-xs relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="An authentic Gayatri Yantra artwork created with genuine gold leaf detailing and geometric Vedic triangles on dark midnight indigo canvas. Studio illumination reveals exquisite metallic textures and precise concentric sacred lines that evoke profound mental clarity and spiritual transcendence." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJwoXsGm5cHc1jFg61oGHnkG1xD_izK9ZKqyslD1rU1lLsAkGB6gBEOvrdNxKus0779pTTjqEd8qRIT8iHbr081WLhwdurzSxuBAuRYcjx_iC96WGOGz6AlGqX1pALU_JXhm5r7FA5ntDKBBECDLyC69no7j04tQh6bzT00umWmNH_8IAFm9oI1B8VsGGx7vIvRXuZJCd8tyivY5ek5nkG3YqUdMn_xLmiekZsRLmu3xa0B-XKvFzo83RY_WKaNUdAMSTx36-f1Vxa">
+<span class="absolute bottom-1 right-1 bg-[#252C4A]/90 text-[#C5A875] text-[8px] font-label font-bold px-1 rounded">96%</span>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between">
+<span class="font-label text-[9px] text-[#C5A875] tracking-wider uppercase">Illuminating Mind</span>
+<span class="font-label text-[9px] text-[#FAF7F2]/60">Consecrated</span>
+</div>
+<h3 class="font-headline text-sm text-[#FAF7F2] font-medium leading-snug mt-0.5">Gayatri Yantra in Sacred Geometry Gold</h3>
+</div>
+<div class="flex items-center justify-between pt-1 border-t border-white/5">
+<span class="font-headline text-xs text-[#FAF7F2] font-semibold">$1,890</span>
+<button class="text-[10px] font-label uppercase tracking-widest text-[#C5A875] hover:text-[#FFFDF8] transition-colors flex items-center gap-1" type="button">
+<span class="">RESERVE</span>
+<span class="material-symbols-outlined text-[10px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product 3 -->
+<div class="bg-[#1B2038] border border-[#C5A875]/30 hover:border-[#C5A875] p-3 rounded-sm transition-all duration-300 flex gap-3 group">
+<div class="w-20 h-20 shrink-0 bg-[#252C4A] overflow-hidden rounded-xs relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A masterfully painted traditional Rajasthan Pichwai textile painting portraying a stylized rising dawn sun over blooming lotus petals. The color palette centers on antique gold leaf, deep indigo background, and mineral pigments, styled as a modern heritage luxury art statement." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-mGS4WkA-YRYecRrbrUxH-fKM_6kKFkAXg-qHRee1v3oGy7TsMupySh2_zpb6tHYtwDmtuClPiPXHl1DyTPmqYmSxNONZ6oiXsakN3TXfEnKFGynK1cJrJ51PgcEcxNT-Q_c_jp9IMtrBrdxYUxFezWxiGj-wS1h6WH2SVEOcYRx_ezqC9VZIs5kxRaUl8hz4gAj-mpEDeDq4PBb25Z439HjUeZG016nL6mpApbFAqPWwQ5gDTElyrC2b4QbYxuXZ9faPNZpTf0ED">
+<span class="absolute bottom-1 right-1 bg-[#252C4A]/90 text-[#C5A875] text-[8px] font-label font-bold px-1 rounded">94%</span>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between">
+<span class="font-label text-[9px] text-[#C5A875] tracking-wider uppercase">Vitality &amp; Health</span>
+<span class="font-label text-[9px] text-[#FAF7F2]/60">Consecrated</span>
+</div>
+<h3 class="font-headline text-sm text-[#FAF7F2] font-medium leading-snug mt-0.5">Rising Sun Pichwai with Sacred Lotus</h3>
+</div>
+<div class="flex items-center justify-between pt-1 border-t border-white/5">
+<span class="font-headline text-xs text-[#FAF7F2] font-semibold">$2,250</span>
+<button class="text-[10px] font-label uppercase tracking-widest text-[#C5A875] hover:text-[#FFFDF8] transition-colors flex items-center gap-1" type="button">
+<span class="">RESERVE</span>
+<span class="material-symbols-outlined text-[10px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Artisan Consecration & Authenticity Guarantee -->
+<div class="p-4 bg-[#1B2038]/80 border border-[#C5A875]/25 rounded-sm flex items-start gap-3.5">
+<span class="material-symbols-outlined text-[#C5A875] text-xl shrink-0 mt-0.5">verified</span>
+<p class="font-label text-[11px] text-[#FAF7F2]/80 leading-relaxed">
+              Every artwork is consecrated and handcrafted by master traditional artisans in Tanjore &amp; Rajasthan.
+            </p>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- FOOTER (Shared Component: Minimal Web Footer) -->
+<footer class="docked full-width bottom mt-auto border-t border-[#C5A875]/20 bg-[#FAF7F2]">
+
+</footer>
+
+
+
+
+
+
+</body></html>
