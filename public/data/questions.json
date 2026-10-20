@@ -1,0 +1,295 @@
+[
+  {
+    "id": "q1_intentions",
+    "step": 1,
+    "dimension_key": "intentions",
+    "title": "Intention Alignment",
+    "subtitle": "Choose the primary intention for your space. Each vibration resonates with specific cosmic directions and sacred geometries.",
+    "is_active": true,
+    "skip_special_answer": null,
+    "options": [
+      {
+        "id": "prosperity",
+        "label": "Prosperity & Abundance",
+        "description": "North • Kubera (Lord of Wealth)",
+        "icon": "payments",
+        "is_active": true
+      },
+      {
+        "id": "career",
+        "label": "Career & Success",
+        "description": "East / Solar • Ascendance & Authority",
+        "icon": "trending_up",
+        "is_active": true
+      },
+      {
+        "id": "peace",
+        "label": "Peace & Positive Atmosphere",
+        "description": "North-East • Ishanya Tranquility",
+        "icon": "spa",
+        "is_active": true
+      },
+      {
+        "id": "love",
+        "label": "Love & Harmonious Relationships",
+        "description": "South-West • Anchoring Union",
+        "icon": "favorite",
+        "is_active": true
+      },
+      {
+        "id": "vitality",
+        "label": "Health & Vitality",
+        "description": "East • Surya Prana & Vigour",
+        "icon": "wb_sunny",
+        "is_active": true
+      },
+      {
+        "id": "spiritual",
+        "label": "Spirituality & Devotion",
+        "description": "North-East • Sacred Meditative Grace",
+        "icon": "self_improvement",
+        "is_active": true
+      },
+      {
+        "id": "growth",
+        "label": "Growth & New Beginnings",
+        "description": "North-East • Fresh Cosmic Flow",
+        "icon": "eco",
+        "is_active": true
+      },
+      {
+        "id": "protection",
+        "label": "Protection & Courage",
+        "description": "South • Unshakable Guardianship",
+        "icon": "shield",
+        "is_active": true
+      },
+      {
+        "id": "aesthetic",
+        "label": "Simply Beautiful, Meaningful Art",
+        "description": "Universal Harmonious Aesthetics",
+        "icon": "auto_awesome",
+        "is_active": true
+      }
+    ]
+  },
+  {
+    "id": "q2_rooms",
+    "step": 2,
+    "dimension_key": "rooms",
+    "title": "Room Sanctum",
+    "subtitle": "Select the sacred living space where the artwork will be consecrated.",
+    "is_active": true,
+    "skip_special_answer": null,
+    "options": [
+      {
+        "id": "foyer",
+        "label": "Entrance / Foyer",
+        "description": "Mahadwara Threshold & Welcome",
+        "icon": "door_front",
+        "is_active": true
+      },
+      {
+        "id": "living",
+        "label": "Living Room",
+        "description": "Central Social Harmony Gathering",
+        "icon": "chair",
+        "is_active": true
+      },
+      {
+        "id": "bedroom",
+        "label": "Bedroom",
+        "description": "Restful Sanctuary & Intimacy",
+        "icon": "bed",
+        "is_active": true
+      },
+      {
+        "id": "pooja",
+        "label": "Puja Room / Meditation Area",
+        "description": "Divine Consecration Sanctum",
+        "icon": "temple_hindu",
+        "is_active": true
+      },
+      {
+        "id": "office",
+        "label": "Home Office / Study",
+        "description": "Intellectual Focus & Career Vigor",
+        "icon": "desk",
+        "is_active": true
+      },
+      {
+        "id": "dining",
+        "label": "Dining Room",
+        "description": "Nourishing Hearth & Abundance",
+        "icon": "restaurant",
+        "is_active": true
+      },
+      {
+        "id": "other",
+        "label": "Other Space",
+        "description": "Galleries, Corridors & Balconies",
+        "icon": "apartment",
+        "is_active": true
+      }
+    ]
+  },
+  {
+    "id": "q3_directions",
+    "step": 3,
+    "dimension_key": "directions",
+    "title": "Cardinal Direction",
+    "subtitle": "Choose the wall orientation facing the artwork, or select 'I'm Not Sure' for guidance.",
+    "is_active": true,
+    "skip_special_answer": "I'm Not Sure",
+    "options": [
+      {
+        "id": "north",
+        "label": "North",
+        "description": "0° • Kubera (Lord of Wealth)",
+        "icon": "explore",
+        "is_active": true
+      },
+      {
+        "id": "northeast",
+        "label": "North-East",
+        "description": "45° • Ishanya (Spiritual Grace)",
+        "icon": "explore",
+        "is_active": true
+      },
+      {
+        "id": "east",
+        "label": "East",
+        "description": "90° • Surya (Vitality & Authority)",
+        "icon": "explore",
+        "is_active": true
+      },
+      {
+        "id": "southeast",
+        "label": "South-East",
+        "description": "135° • Agni (Passion & Drive)",
+        "icon": "explore",
+        "is_active": true
+      },
+      {
+        "id": "south",
+        "label": "South",
+        "description": "180° • Yama (Fame & Willpower)",
+        "icon": "explore",
+        "is_active": true
+      },
+      {
+        "id": "southwest",
+        "label": "South-West",
+        "description": "225° • Nirruti (Stability & Roots)",
+        "icon": "explore",
+        "is_active": true
+      },
+      {
+        "id": "west",
+        "label": "West",
+        "description": "270° • Varuna (Gains & Fulfillment)",
+        "icon": "explore",
+        "is_active": true
+      },
+      {
+        "id": "northwest",
+        "label": "North-West",
+        "description": "315° • Vayu (Support & Motion)",
+        "icon": "explore",
+        "is_active": true
+      },
+      {
+        "id": "assist",
+        "label": "I'm Not Sure",
+        "description": "Skip direction check & show all valid artworks",
+        "icon": "help_outline",
+        "is_active": true
+      }
+    ]
+  },
+  {
+    "id": "q4_styles",
+    "step": 4,
+    "dimension_key": "styles",
+    "title": "Art Style Preference",
+    "subtitle": "Select your favored artistic expression and craft heritage.",
+    "is_active": true,
+    "skip_special_answer": "Open to Suggestions",
+    "options": [
+      {
+        "id": "traditional",
+        "label": "Traditional Indian Art / Pichwai",
+        "description": "Heritage Guilds, 24K Leaf & Stone Pigments",
+        "icon": "palette",
+        "is_active": true
+      },
+      {
+        "id": "nature",
+        "label": "Nature & Landscapes",
+        "description": "Organic Horizons, Sacred Rivers & Forestry",
+        "icon": "forest",
+        "is_active": true
+      },
+      {
+        "id": "symbolic",
+        "label": "Symbolic Vastu Art",
+        "description": "7 Horses, Kalpavriksha & Sacred Geometry",
+        "icon": "token",
+        "is_active": true
+      },
+      {
+        "id": "devotional",
+        "label": "Devotional Art",
+        "description": "Consecrated Deities & Sacred Icons",
+        "icon": "temple_hindu",
+        "is_active": true
+      },
+      {
+        "id": "contemporary",
+        "label": "Contemporary / Modern Art",
+        "description": "Minimalist Sacred Geometry & Modern Gold",
+        "icon": "architecture",
+        "is_active": true
+      },
+      {
+        "id": "suggestions",
+        "label": "Open to Suggestions",
+        "description": "Skip style filtering to view all styles",
+        "icon": "auto_awesome",
+        "is_active": true
+      }
+    ]
+  },
+  {
+    "id": "q5_devotional",
+    "step": 5,
+    "dimension_key": "devotional_preferences",
+    "title": "Devotional Preference",
+    "subtitle": "Define whether you prefer sacred deific representations or non-religious symbolic artwork.",
+    "is_active": true,
+    "skip_special_answer": "Open to Both",
+    "options": [
+      {
+        "id": "devotional",
+        "label": "Devotional Artwork",
+        "description": "Deity forms, temple iconography & divine avatars",
+        "icon": "temple_hindu",
+        "is_active": true
+      },
+      {
+        "id": "symbolic",
+        "label": "Non-Religious Symbolic Artwork",
+        "description": "Universal nature, mandalas & sacred geometry",
+        "icon": "all_inclusive",
+        "is_active": true
+      },
+      {
+        "id": "both",
+        "label": "Open to Both",
+        "description": "Pass through all artworks regardless of religious theme",
+        "icon": "done_all",
+        "is_active": true
+      }
+    ]
+  }
+]

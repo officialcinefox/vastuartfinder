@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>KRUTIK — Vastu Art Finder</title>
+  
+  <!-- Google Fonts: Playfair Display, Cinzel & Raleway -->
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  
+  <!-- Material Symbols Outlined -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            surface: "#F8F4EB",
+            "surface-dim": "#EAE0CF",
+            "surface-bright": "#FFFDF8",
+            "surface-card": "#252C4A",
+            "on-surface": "#1E2229",
+            "on-surface-variant": "#6B655B",
+            "outline-variant": "rgba(197, 168, 117, 0.25)",
+            "primary": "#C5A875",
+            "primary-container": "#252C4A",
+            "primary-focus": "#B39055",
+            "deep-charcoal": "#222222",
+            "antique-gold": "#C5A875",
+            "gold-bright": "#E5C583",
+            "warm-ivory": "#F8F4EB",
+            "warm-cream": "#FFFDF8",
+            "sandstone": "#DACFBD"
+          },
+          fontFamily: {
+            headline: ["'Playfair Display'", "serif"],
+            display: ["'Playfair Display'", "serif"],
+            title: ["'Cinzel'", "serif"],
+            body: ["'Raleway'", "sans-serif"],
+            label: ["'Raleway'", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+
+<body class="bg-[#FAF7F2] text-[#1E2229] font-body overflow-x-hidden min-h-screen relative flex flex-col justify-between selection:bg-[#C5A875] selection:text-[#222222]">
+
+
+  <!-- ======================================================== -->
+  <!-- TOP APP BAR / BRAND HEADER (Adapts Dark/Light)           -->
+  <!-- ======================================================== -->
+  <header id="app-header" class="bg-[#222222]/95 text-[#F8F4EB] border-b border-[#C5A875]/25 sticky top-0 z-50 shadow-md backdrop-blur-md transition-colors duration-300">
+    <div class="w-full max-w-7xl mx-auto px-6 md:px-8 py-4.5 flex items-center justify-between">
+      <!-- Brand Wordmark -->
+      <a class="brand-logo font-headline text-2xl tracking-widest text-[#C5A875] font-normal flex items-center gap-3 group" href="#" data-nav="hero">
+        <span class="inline-block w-2.5 h-2.5 bg-[#C5A875] rotate-45 transition-transform duration-500 group-hover:rotate-180 shadow-[0_0_8px_#C5A875]"></span>
+        <span>KRUTIK</span>
+        <span class="text-[9px] tracking-[0.3em] uppercase block font-label opacity-70 font-light -mt-0.5">Vastu Art</span>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="hidden md:flex items-center space-x-10 text-xs font-label uppercase tracking-widest">
+        <a class="nav-link text-[#D8D2C5] hover:text-[#C5A875] transition-colors" href="#" data-nav="hero">Home</a>
+        <a class="nav-link text-[#D8D2C5] hover:text-[#C5A875] transition-colors" href="#" data-nav="quiz">Art Finder</a>
+        <a class="nav-link text-[#D8D2C5] hover:text-[#C5A875] transition-colors" href="#" data-nav="gallery">Gallery</a>
+        <a class="nav-link text-[#D8D2C5] hover:text-[#C5A875] transition-colors" href="#" data-nav="about">About</a>
+      </nav>
+
+      <!-- Trailing Action Cluster -->
+      <div class="flex items-center space-x-4">
+        <!-- Start / Take Art Finder Quiz CTA -->
+        <button class="gold-shimmer-btn text-[#181818] px-5 py-2 rounded text-xs font-label uppercase font-bold tracking-wider shadow-sm transition-all duration-300 hover:scale-102 active:scale-95 flex items-center gap-1.5" data-nav="quiz">
+          <span class="material-symbols-outlined text-sm font-semibold">auto_awesome</span>
+          <span>Start Art Finder</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ======================================================== -->
+  <!-- VIEW 1: HERO & INTRODUCTION (LANDING PAGE)               -->
+  <!-- ======================================================== -->
+  <div id="view-landing" class="relative z-10 flex-grow flex flex-col">
+    <!-- CENTERPIECE HERO & SACRED VASTU CHAKRA STAGE -->
+    <main class="relative flex-grow flex flex-col justify-center items-center px-6 md:px-12 py-16 md:py-24 min-h-[calc(100vh-140px)] bg-[#131417] text-[#F8F4EB] overflow-hidden">
+      <!-- Subtle Golden Center Ambient Glow (Layer 0) -->
+      <div class="absolute inset-0 pointer-events-none gold-radial-vignette z-0"></div>
+      <div class="absolute w-[360px] sm:w-[560px] md:w-[760px] aspect-square rounded-full bg-[#C5A875]/15 blur-[120px] md:blur-[160px] pointer-events-none ambient-glow z-0"></div>
+
+      <!-- Sacred Vastu Chakra Geometry Canvas (Layer 1 - Subtle Ambient Gold & Active Spinning) -->
+      <div class="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden z-[1] opacity-40">
+        <svg class="w-[720px] h-[720px] sm:w-[920px] sm:h-[920px] md:w-[1100px] md:h-[1100px] lg:w-[1260px] lg:h-[1260px] xl:w-[1380px] xl:h-[1380px] max-w-none text-[#C5A875] select-none" fill="none" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
+          <!-- Layer 1: Clockwise Radiating Rays & Sacred Ashtakona Diamonds -->
+          <g class="chakra-rotate-slow" style="transform-origin: 500px 500px; transform-box: view-box;">
+            <!-- 8 Radial Coordinate Axes -->
+            <g stroke="currentColor" stroke-opacity="0.25" stroke-width="0.75">
+              <line x1="500" y1="36" x2="500" y2="964"></line>
+              <line x1="36" y1="500" x2="964" y2="500"></line>
+              <line transform="rotate(22.5 500 500)" x1="500" y1="45" x2="500" y2="955"></line>
+              <line transform="rotate(45 500 500)" x1="500" y1="40" x2="500" y2="960"></line>
+              <line transform="rotate(67.5 500 500)" x1="500" y1="45" x2="500" y2="955"></line>
+              <line transform="rotate(112.5 500 500)" x1="500" y1="45" x2="500" y2="955"></line>
+              <line transform="rotate(135 500 500)" x1="500" y1="40" x2="500" y2="960"></line>
+              <line transform="rotate(157.5 500 500)" x1="500" y1="45" x2="500" y2="955"></line>
+            </g>
+            <!-- Sacred Geometry Concentric Interlocking Squares (Ashtakona / Sri Yantra Star) -->
+            <rect x="230" y="230" width="540" height="540" stroke="currentColor" stroke-opacity="0.32" stroke-width="0.8" fill="none"></rect>
+            <rect transform="rotate(45 500 500)" x="230" y="230" width="540" height="540" stroke="currentColor" stroke-opacity="0.28" stroke-width="0.8" fill="none"></rect>
+            <rect x="280" y="280" width="440" height="440" stroke="currentColor" stroke-opacity="0.22" stroke-width="0.7" fill="none"></rect>
+            <rect transform="rotate(45 500 500)" x="280" y="280" width="440" height="440" stroke="currentColor" stroke-opacity="0.18" stroke-width="0.7" fill="none"></rect>
+            <circle cx="500" cy="500" r="380" stroke="currentColor" stroke-dasharray="4 8" stroke-opacity="0.28" stroke-width="0.7"></circle>
+            <circle cx="500" cy="500" r="320" stroke="currentColor" stroke-opacity="0.32" stroke-width="0.8"></circle>
+          </g>
+
+          <!-- Layer 2: Counter-Clockwise Outer Astrolabe Ticks & Rings -->
+          <g class="chakra-rotate-counter" style="transform-origin: 500px 500px; transform-box: view-box;">
+            <circle cx="500" cy="500" r="472" stroke="currentColor" stroke-opacity="0.32" stroke-width="0.8" stroke-dasharray="2 6"></circle>
+            <circle cx="500" cy="500" r="454" stroke="currentColor" stroke-opacity="0.65" stroke-width="1.1"></circle>
+            <circle cx="500" cy="500" r="442" stroke="currentColor" stroke-opacity="0.28" stroke-width="0.7" stroke-dasharray="4 6"></circle>
+            <!-- 36 Precision Compass Astrolabe Ticks (every 10 degrees) -->
+            <g stroke="currentColor">
+              <line x1="500" y1="36" x2="500" y2="64" stroke-opacity="0.8" stroke-width="1.3"></line>
+              <line transform="rotate(10 500 500)" x1="500" y1="46" x2="500" y2="58" stroke-opacity="0.4" stroke-width="0.8"></line>
+              <line transform="rotate(20 500 500)" x1="500" y1="46" x2="500" y2="58" stroke-opacity="0.4" stroke-width="0.8"></line>
+              <line transform="rotate(30 500 500)" x1="500" y1="42" x2="500" y2="60" stroke-opacity="0.55" stroke-width="1"></line>
+              <line transform="rotate(40 500 500)" x1="500" y1="46" x2="500" y2="58" stroke-opacity="0.4" stroke-width="0.8"></line>
+              <line transform="rotate(45 500 500)" x1="500" y1="36" x2="500" y2="64" stroke-opacity="0.8" stroke-width="1.3"></line>
+              <line transform="rotate(50 500 500)" x1="500" y1="46" x2="500" y2="58" stroke-opacity="0.4" stroke-width="0.8"></line>
+              <line transform="rotate(60 500 500)" x1="500" y1="42" x2="500" y2="60" stroke-opacity="0.55" stroke-width="1"></line>
+              <line transform="rotate(70 500 500)" x1="500" y1="46" x2="500" y2="58" stroke-opacity="0.4" stroke-width="0.8"></line>
+              <line transform="rotate(80 500 500)" x1="500" y1="46" x2="500" y2="58" stroke-opacity="0.4" stroke-width="0.8"></line>
+              <line transform="rotate(90 500 500)" x1="500" y1="36" x2="500" y2="64" stroke-opacity="0.8" stroke-width="1.3"></line>
+              <line transform="rotate(100 500 500)" x1="500" y1="46" x2="500" y2="58" stroke-opacity="0.4" stroke-width="0.8"></line>
+              <line transform="rotate(110 500 500)" x1="500" y1="46" x2="500" y2="58" stroke-opacity="0.4" stroke-width="0.8"></line>
+              <line transform="rotate(120 500 500)" x1="500" y1="42" x2="500" y2="60" stroke-opacity="0.55" stroke-width="1"></line>
+              <line transform="rotate(130 500 500)" x1="500" y1="46" x2="500" y2="58" stroke-opacity="0.4" stroke-width="0.8"></line>
+              <line transform="rotate(135 500 500)" x1="500" y1="36" x2="500" y2="64" stroke-opacity="0.8" stroke-width="1.3"></line>
+              <line transform="rotate(140 500 500)" x1="500" y1="46" x2="500" y2="58" stroke-opacity="0.4" stroke-width="0.8"></line>
+              <line transform="rotate(150 500 500)" x1="500" y1="42" x2="500" y2="60" stroke-opacity="0.55" stroke-width="1"></line>
+              <line transform="rotate(160 500 500)" x1="500" y1="46" x2="500" y2="58" stroke-opacity="0.4" stroke-width="0.8"></line>
+              <line transform="rotate(170 500 500)" x1="500" y1="46" x2="500" y2="58" stroke-opacity="0.4" stroke-width="0.8"></line>
+              <line transform="rotate(180 500 500)" x1="500" y1="36" x2="500" y2="64" stroke-opacity="0.8" stroke-width="1.3"></line>
+              <line transform="rotate(190 500 500)" x1="500" y1="46" x2="500" y2="58" stroke-opacity="0.4" stroke-width="0.8"></line>
+              <line transform="rotate(200 500 500)" x1="500" y1="46" x2="500" y2="58" stroke-opacity="0.4" stroke-width="0.8"></line>
+              <line transform="rotate(210 500 500)" x1="500" y1="42" x2="500" y2="60" stroke-opacity="0.55" stroke-width="1"></line>
+              <line transform="rotate(220 500 500)" x1="500" y1="46" x2="500" y2="58" stroke-opacity="0.4" stroke-width="0.8"></line>
+              <line transform="rotate(225 500 500)" x1="500" y1="36" x2="500" y2="64" stroke-opacity="0.8" stroke-width="1.3"></line>
+              <line transform="rotate(230 500 500)" x1="500" y1="46" x2="500" y2="58" stroke-opacity="0.4" stroke-width="0.8"></line>
+              <line transform="rotate(240 500 500)" x1="500" y1="42" x2="500" y2="60" stroke-opacity="0.55" stroke-width="1"></line>
+              <line transform="rotate(250 500 500)" x1="500" y1="46" x2="500" y2="58" stroke-opacity="0.4" stroke-width="0.8"></line>
+              <line transform="rotate(260 500 500)" x1="500" y1="46" x2="500" y2="58" stroke-opacity="0.4" stroke-width="0.8"></line>
+              <line transform="rotate(270 500 500)" x1="500" y1="36" x2="500" y2="64" stroke-opacity="0.8" stroke-width="1.3"></line>
+              <line transform="rotate(280 500 500)" x1="500" y1="46" x2="500" y2="58" stroke-opacity="0.4" stroke-width="0.8"></line>
+              <line transform="rotate(290 500 500)" x1="500" y1="46" x2="500" y2="58" stroke-opacity="0.4" stroke-width="0.8"></line>
+              <line transform="rotate(300 500 500)" x1="500" y1="42" x2="500" y2="60" stroke-opacity="0.55" stroke-width="1"></line>
+              <line transform="rotate(310 500 500)" x1="500" y1="46" x2="500" y2="58" stroke-opacity="0.4" stroke-width="0.8"></line>
+              <line transform="rotate(315 500 500)" x1="500" y1="36" x2="500" y2="64" stroke-opacity="0.8" stroke-width="1.3"></line>
+              <line transform="rotate(320 500 500)" x1="500" y1="46" x2="500" y2="58" stroke-opacity="0.4" stroke-width="0.8"></line>
+              <line transform="rotate(330 500 500)" x1="500" y1="42" x2="500" y2="60" stroke-opacity="0.55" stroke-width="1"></line>
+              <line transform="rotate(340 500 500)" x1="500" y1="46" x2="500" y2="58" stroke-opacity="0.4" stroke-width="0.8"></line>
+              <line transform="rotate(350 500 500)" x1="500" y1="46" x2="500" y2="58" stroke-opacity="0.4" stroke-width="0.8"></line>
+            </g>
+            <!-- Sacred 16-Petal Central Lotus / Spirograph Mandala (Softened) -->
+            <g stroke="currentColor" stroke-opacity="0.28" stroke-width="0.8" fill="none">
+              <ellipse cx="500" cy="380" rx="44" ry="120"></ellipse>
+              <ellipse cx="500" cy="380" rx="44" ry="120" transform="rotate(22.5 500 500)"></ellipse>
+              <ellipse cx="500" cy="380" rx="44" ry="120" transform="rotate(45 500 500)"></ellipse>
+              <ellipse cx="500" cy="380" rx="44" ry="120" transform="rotate(67.5 500 500)"></ellipse>
+              <ellipse cx="500" cy="380" rx="44" ry="120" transform="rotate(90 500 500)"></ellipse>
+              <ellipse cx="500" cy="380" rx="44" ry="120" transform="rotate(112.5 500 500)"></ellipse>
+              <ellipse cx="500" cy="380" rx="44" ry="120" transform="rotate(135 500 500)"></ellipse>
+              <ellipse cx="500" cy="380" rx="44" ry="120" transform="rotate(157.5 500 500)"></ellipse>
+              <ellipse cx="500" cy="380" rx="44" ry="120" transform="rotate(180 500 500)"></ellipse>
+              <ellipse cx="500" cy="380" rx="44" ry="120" transform="rotate(202.5 500 500)"></ellipse>
+              <ellipse cx="500" cy="380" rx="44" ry="120" transform="rotate(225 500 500)"></ellipse>
+              <ellipse cx="500" cy="380" rx="44" ry="120" transform="rotate(247.5 500 500)"></ellipse>
+              <ellipse cx="500" cy="380" rx="44" ry="120" transform="rotate(270 500 500)"></ellipse>
+              <ellipse cx="500" cy="380" rx="44" ry="120" transform="rotate(292.5 500 500)"></ellipse>
+              <ellipse cx="500" cy="380" rx="44" ry="120" transform="rotate(315 500 500)"></ellipse>
+              <ellipse cx="500" cy="380" rx="44" ry="120" transform="rotate(337.5 500 500)"></ellipse>
+            </g>
+          </g>
+
+          <!-- Layer 3: Fixed Cardinal & Intercardinal Vastu Deities / Directions (Unrotated for crisp legibility) -->
+          <g class="font-headline text-[13px] md:text-[14px] font-normal tracking-[0.25em] select-none" fill="#C5A875">
+            <text opacity="0.9" text-anchor="middle" x="500" y="32">N · KUBERA</text>
+            <text opacity="0.85" text-anchor="middle" x="830" y="165">NE · ISHANYA</text>
+            <text opacity="0.9" text-anchor="end" x="980" y="505">E · SURYA</text>
+            <text opacity="0.85" text-anchor="middle" x="830" y="845">SE · AGNI</text>
+            <text opacity="0.9" text-anchor="middle" x="500" y="980">S · YAMA</text>
+            <text opacity="0.85" text-anchor="middle" x="170" y="845">SW · NIRRUTI</text>
+            <text opacity="0.9" text-anchor="start" x="20" y="505">W · VARUNA</text>
+            <text opacity="0.85" text-anchor="middle" x="170" y="165">NW · VAYU</text>
+          </g>
+
+          <!-- Layer 4: Central Sacred Concentric Rings & Bindu -->
+          <circle cx="500" cy="500" r="180" stroke="currentColor" stroke-opacity="0.3" stroke-width="0.8"></circle>
+          <circle cx="500" cy="500" r="140" stroke="currentColor" stroke-dasharray="3 6" stroke-opacity="0.25" stroke-width="0.7"></circle>
+          <circle cx="500" cy="500" r="70" stroke="currentColor" stroke-opacity="0.35" stroke-width="0.8"></circle>
+          <circle cx="500" cy="500" r="12" stroke="currentColor" stroke-opacity="0.45" stroke-width="0.9"></circle>
+          <circle cx="500" cy="500" fill="currentColor" opacity="0.8" r="4"></circle>
+        </svg>
+      </div>
+
+      <!-- Soft Center Contrast Pocket (Layer 2 - Ensures High Contrast & Crystal Clear Readability) -->
+      <div class="absolute w-[520px] sm:w-[720px] md:w-[920px] aspect-square rounded-full bg-[radial-gradient(circle,_rgba(19,20,23,0.85)_0%,_rgba(19,20,23,0.48)_55%,_transparent_75%)] pointer-events-none z-[2]"></div>
+
+      <!-- Hero Content -->
+      <div class="max-w-4xl mx-auto text-center flex flex-col items-center relative z-20">
+        <div class="inline-flex items-center gap-3 px-5 py-1.5 rounded-full border border-[#C5A875]/40 bg-[#131417]/85 backdrop-blur-md mb-8 shadow-lg shadow-black/30">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#C5A875] animate-pulse"></span>
+          <span class="font-label text-xs uppercase tracking-[0.25em] text-[#C5A875] font-semibold">
+            KRUTIK · THE ART OF YOUR SPACE
+          </span>
+          <span class="w-1.5 h-1.5 rounded-full bg-[#C5A875] animate-pulse"></span>
+        </div>
+
+        <h1 class="font-headline text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-normal tracking-tight text-[#FAF7EE] leading-[1.12] mb-6 drop-shadow-[0_2px_14px_rgba(0,0,0,0.95)]">
+          Discover the Art of Your Space
+        </h1>
+
+        <p class="font-body text-base sm:text-lg md:text-xl text-[#F2ECE1] max-w-2xl font-normal tracking-wide leading-relaxed mb-10 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+          Explore meaningful artwork inspired by your intentions, your interiors and traditional Vastu principles.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center gap-5 justify-center mb-12">
+          <button class="group relative inline-flex items-center justify-center gap-3 bg-[#C5A875] text-[#181818] px-9 py-4 text-xs font-label uppercase font-bold tracking-[0.22em] shadow-xl hover:shadow-[#C5A875]/25 hover:bg-[#D4BC8C] transition-all duration-300 ease-out active:scale-95" data-action="start-journey">
+            <span>BEGIN YOUR JOURNEY</span>
+            <span class="material-symbols-outlined text-base transition-transform duration-300 group-hover:translate-x-1">arrow_forward</span>
+          </button>
+          <button class="inline-flex items-center justify-center px-8 py-4 text-xs font-label uppercase font-semibold tracking-[0.22em] text-[#C5A875] border border-[#C5A875]/60 bg-[#131417]/85 backdrop-blur-sm hover:border-[#C5A875] hover:bg-[#C5A875]/15 transition-all duration-300 ease-out shadow-lg shadow-black/40" data-action="explore-directions">
+            Explore Directions
+          </button>
+        </div>
+
+        <a class="group inline-flex flex-col items-center gap-2 text-[#C5A875] hover:text-[#F8F4EB] transition-colors duration-300 mt-2 drop-shadow-[0_1px_6px_rgba(0,0,0,0.9)]" href="#vastu-collections">
+          <span class="font-label text-[11px] uppercase tracking-[0.25em] opacity-80 group-hover:opacity-100">
+            Scroll to discover
+          </span>
+          <span class="material-symbols-outlined text-lg animate-bounce">keyboard_arrow_down</span>
+        </a>
+      </div>
+
+      <div class="mt-14 md:mt-16 flex items-center gap-2.5 px-5 py-2 text-[#C5A875]/90 text-xs font-label tracking-widest uppercase border-t border-b border-[#C5A875]/25 bg-[#131417]/85 backdrop-blur-sm relative z-20 shadow-md">
+        <span class="material-symbols-outlined text-sm text-[#C5A875]">explore</span>
+        <span>Aligned with Manasara &amp; Mayamata Vedic Treatises</span>
+      </div>
+    </main>
+
+    <!-- ======================================================== -->
+    <!-- SECTION: SACRED COLLECTIONS BY VASTU CATEGORIES           -->
+    <!-- ======================================================== -->
+    <section id="vastu-collections" class="relative py-20 px-6 md:px-12 bg-[#FAF7F2] text-[#1E2229] border-t border-[#C5A875]/30">
+      <div class="max-w-7xl mx-auto space-y-12">
+        <!-- Section Header -->
+        <div class="text-center max-w-3xl mx-auto">
+          <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#FFFDF8] border border-[#C5A875]/40 shadow-sm mb-4">
+            <span class="w-2 h-2 rounded-full bg-[#C5A875]"></span>
+            <span class="text-[11px] font-label uppercase tracking-[0.25em] text-[#C5A875] font-semibold">
+              The Royal Krutik Vault
+            </span>
+          </div>
+          <h2 class="font-headline text-3xl sm:text-5xl text-[#1E2229] font-normal leading-tight">
+            Curated Collections by Vastu Energy
+          </h2>
+          <p class="font-body text-sm sm:text-base text-[#6B655B] font-light mt-3 leading-relaxed">
+            Explore authentic sacred masterworks categorized by cardinal directions, sacred sanctum spaces, and traditional heritage mediums.
+          </p>
+        </div>
+
+        <!-- Category Tabs -->
+        <div class="flex flex-wrap items-center justify-center gap-2.5 max-w-4xl mx-auto">
+          <button type="button" class="landing-cat-tab active px-5 py-2.5 rounded-full text-xs font-label uppercase tracking-wider font-semibold border transition-all bg-[#C5A875] text-[#181818] border-[#C5A875] shadow-sm" data-category="all">
+            All Sacred Works
+          </button>
+          <button type="button" class="landing-cat-tab px-5 py-2.5 rounded-full text-xs font-label uppercase tracking-wider font-semibold border transition-all bg-[#FFFDF8] text-[#6B655B] border-[#C5A875]/40 hover:border-[#C5A875] hover:text-[#C5A875] shadow-sm" data-category="north">
+            North (Kubera • Wealth)
+          </button>
+          <button type="button" class="landing-cat-tab px-5 py-2.5 rounded-full text-xs font-label uppercase tracking-wider font-semibold border transition-all bg-[#FFFDF8] text-[#6B655B] border-[#C5A875]/40 hover:border-[#C5A875] hover:text-[#C5A875] shadow-sm" data-category="east">
+            East (Surya • Vitality)
+          </button>
+          <button type="button" class="landing-cat-tab px-5 py-2.5 rounded-full text-xs font-label uppercase tracking-wider font-semibold border transition-all bg-[#FFFDF8] text-[#6B655B] border-[#C5A875]/40 hover:border-[#C5A875] hover:text-[#C5A875] shadow-sm" data-category="northeast">
+            North-East (Ishanya • Peace)
+          </button>
+          <button type="button" class="landing-cat-tab px-5 py-2.5 rounded-full text-xs font-label uppercase tracking-wider font-semibold border transition-all bg-[#FFFDF8] text-[#6B655B] border-[#C5A875]/40 hover:border-[#C5A875] hover:text-[#C5A875] shadow-sm" data-category="pichwai">
+            Sacred Pichwai
+          </button>
+          <button type="button" class="landing-cat-tab px-5 py-2.5 rounded-full text-xs font-label uppercase tracking-wider font-semibold border transition-all bg-[#FFFDF8] text-[#6B655B] border-[#C5A875]/40 hover:border-[#C5A875] hover:text-[#C5A875] shadow-sm" data-category="tanjore">
+            24K Gold Tanjore
+          </button>
+        </div>
+
+        <!-- Dynamic Product Showcase Grid -->
+        <div id="landing-products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+
+        <!-- Explore Complete Collection CTA -->
+        <div class="text-center pt-2">
+          <button type="button" class="px-8 py-3.5 border border-[#C5A875] text-[#1E2229] hover:bg-[#C5A875] hover:text-[#181818] transition-all text-xs font-label uppercase tracking-widest font-semibold rounded shadow-sm inline-flex items-center gap-2" data-nav="gallery">
+            <span>Explore Complete Royal Gallery (40+ Masterpieces)</span>
+            <span class="material-symbols-outlined text-sm">arrow_forward</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- SECTION: THE 3 PRINCIPLES OF VASTU ART ALIGNMENT          -->
+    <!-- ======================================================== -->
+    <section class="py-20 px-6 md:px-12 bg-[#FFFDF8] text-[#1E2229] border-t border-[#C5A875]/25">
+      <div class="max-w-7xl mx-auto space-y-12">
+        <div class="text-center max-w-3xl mx-auto">
+          <span class="font-label text-xs uppercase tracking-[0.28em] text-[#C5A875] font-semibold block mb-2">
+            A Personalized Art Discovery Experience
+          </span>
+          <h2 class="font-headline text-3xl sm:text-5xl text-[#1E2229] leading-tight font-normal">
+            Your Space. Your Intention. Your Art.
+          </h2>
+          <p class="font-body text-sm sm:text-base text-[#6B655B] font-light mt-3 leading-relaxed">
+            Every artwork is calibrated according to the sacred directional geometry of the Vastu Purusha Mandala and ancient Shilpa Shastras.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="bg-[#FAF7F2] rounded-2xl p-8 border border-[#C5A875]/30 hover:border-[#C5A875] transition-all duration-300 hover:-translate-y-1 shadow-sm flex flex-col justify-between">
+            <div class="w-10 h-[2px] bg-[#C5A875] mb-6"></div>
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-[#C5A875]/10 border border-[#C5A875]/40 flex items-center justify-center mb-6 text-[#C5A875]">
+                <span class="material-symbols-outlined text-2xl">explore</span>
+              </div>
+              <h3 class="font-headline text-xl text-[#1E2229] font-medium mb-3">1. Directional Alignment</h3>
+              <p class="font-body text-xs sm:text-sm text-[#6B655B] leading-relaxed font-light">
+                Calibrate your wall direction with the presiding guardian deity (Surya East, Kubera North, Ishanya Northeast) to enhance vital prana and dissolve spatial stagnation.
+              </p>
+            </div>
+            <div class="mt-8 pt-4 border-t border-[#C5A875]/20 flex items-center justify-between text-[11px] font-label text-[#6B655B] uppercase tracking-wider">
+              <span>Orientations</span>
+              <span class="text-[#C5A875] font-semibold">01 / VASTU</span>
+            </div>
+          </div>
+
+          <div class="bg-[#FAF7F2] rounded-2xl p-8 border border-[#C5A875]/30 hover:border-[#C5A875] transition-all duration-300 hover:-translate-y-1 shadow-sm flex flex-col justify-between">
+            <div class="w-10 h-[2px] bg-[#C5A875] mb-6"></div>
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-[#C5A875]/10 border border-[#C5A875]/40 flex items-center justify-center mb-6 text-[#C5A875]">
+                <span class="material-symbols-outlined text-2xl">palette</span>
+              </div>
+              <h3 class="font-headline text-xl text-[#1E2229] font-medium mb-3">2. Pure 24K Gold &amp; Relief</h3>
+              <p class="font-body text-xs sm:text-sm text-[#6B655B] leading-relaxed font-light">
+                Handcrafted using ancestral Sukka Mavu chalk relief and certified 24-karat gold leaf foil that permanently reflects and amplifies solar energy.
+              </p>
+            </div>
+            <div class="mt-8 pt-4 border-t border-[#C5A875]/20 flex items-center justify-between text-[11px] font-label text-[#6B655B] uppercase tracking-wider">
+              <span>Aesthetics</span>
+              <span class="text-[#C5A875] font-semibold">02 / 24K GOLD</span>
+            </div>
+          </div>
+
+          <div class="bg-[#FAF7F2] rounded-2xl p-8 border border-[#C5A875]/30 hover:border-[#C5A875] transition-all duration-300 hover:-translate-y-1 shadow-sm flex flex-col justify-between">
+            <div class="w-10 h-[2px] bg-[#C5A875] mb-6"></div>
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-[#C5A875]/10 border border-[#C5A875]/40 flex items-center justify-center mb-6 text-[#C5A875]">
+                <span class="material-symbols-outlined text-2xl">verified</span>
+              </div>
+              <h3 class="font-headline text-xl text-[#1E2229] font-medium mb-3">3. Sacred Vastu Curation</h3>
+              <p class="font-body text-xs sm:text-sm text-[#6B655B] leading-relaxed font-light">
+                Each consecrated artwork is mathematically aligned to your room cardinal axis, balancing Pancha Bhoota prana and harmonizing your sanctum.
+              </p>
+            </div>
+            <div class="mt-8 pt-4 border-t border-[#C5A875]/20 flex items-center justify-between text-[11px] font-label text-[#6B655B] uppercase tracking-wider">
+              <span>Prana Harmony</span>
+              <span class="text-[#C5A875] font-semibold">03 / VASTU ALIGNED</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Banner CTA -->
+        <div class="p-8 sm:p-12 rounded-2xl bg-gradient-to-r from-[#FAF7F2] via-[#FFFDF8] to-[#FAF7F2] border border-[#C5A875]/40 text-center space-y-4 shadow-sm">
+          <span class="text-xs uppercase tracking-[0.25em] text-[#C5A875] font-semibold block">Begin Spatial Calibration</span>
+          <h3 class="font-headline text-2xl sm:text-4xl text-[#1E2229]">Find the Perfect Consecrated Art for Your Home</h3>
+          <p class="text-xs sm:text-sm text-[#6B655B] max-w-xl mx-auto font-light leading-relaxed">
+            Answer 5 quick intuitive questions about your intention, room, and wall direction to see instant deterministic Vastu matches.
+          </p>
+          <div class="pt-2">
+            <button class="gold-shimmer-btn text-[#181818] px-10 py-4 text-xs font-label uppercase font-bold tracking-[0.22em] shadow-lg hover:scale-105 transition-all duration-300 active:scale-95" data-nav="quiz">
+              Start Vastu Art Finder
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- VIEW 2: QUIZ STEPS (EXACT STITCH LIGHT WARM IVORY THEME) -->
+  <!-- ======================================================== -->
+  <div id="view-quiz" class="hidden relative z-10 flex-grow flex flex-col bg-[#FAF7F2] text-[#222222] min-h-screen">
+    <!-- Content injected dynamically by js/app.js for Steps 1 through 6 -->
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- ======================================================== -->
+  <!-- VIEW 3: CALIBRATED CURATION REVEAL (RESULTS)             -->
+  <!-- ======================================================== -->
+  <div id="view-results" class="hidden relative z-10 flex-grow flex flex-col py-12 px-6 lg:px-12 w-full max-w-7xl mx-auto space-y-16 text-[#1E2229]">
+    <div class="flex flex-col items-center text-center">
+      <div class="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-[#FFFDF8] border border-[#C5A875]/40 shadow-sm mb-6">
+        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+        <span class="text-[11px] font-medium tracking-widest uppercase text-[#C5A875]">✨ Curated Sanctuary Report • Vastu Purusha Alignment: <span id="results-resonance-badge" class="font-bold">99.4% Resonance</span></span>
+        <span class="hidden sm:inline w-1 h-1 rounded-full bg-[#C5A875]/60"></span>
+        <span class="hidden sm:inline text-[10px] uppercase tracking-wider text-[#6B655B] font-mono">Folio #VT-8802</span>
+      </div>
+      <h1 class="font-headline text-4xl sm:text-5xl lg:text-6xl text-[#1E2229] font-normal tracking-wide max-w-4xl leading-tight">
+        Your Calibrated <span class="italic font-normal text-[#C5A875]">Vedic Sanctuary</span>
+      </h1>
+      <p class="font-body text-base text-[#6B655B] max-w-2xl mt-4 font-light leading-relaxed">
+        Consecrated to anchor auspicious cosmic prana across your sanctum based on traditional Shilpa Shastra treatises.
+      </p>
+    </div>
+
+    <!-- PRIMARY MASTERPIECE SPOTLIGHT CARD -->
+    <div class="rounded-2xl border border-[#C5A875]/40 bg-[#FFFDF8] overflow-hidden shadow-xl grid grid-cols-1 lg:grid-cols-12">
+      <div class="lg:col-span-7 relative min-h-[460px] lg:min-h-[580px] bg-black flex flex-col justify-between p-6 overflow-hidden">
+        <img id="results-primary-img" src="" alt="Primary Masterpiece" class="absolute inset-0 w-full h-full object-cover opacity-90 hover:scale-105 transition-transform duration-1000" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30"></div>
+
+        <div class="relative z-10 flex items-center justify-between">
+          <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-black/70 backdrop-blur-md text-[11px] font-semibold text-[#C5A875] border border-[#C5A875]/40 shadow">
+            <span class="material-symbols-outlined text-[16px]">stars</span>
+            <span>Primary Curation Match #1</span>
+          </span>
+          <span class="px-3 py-1 bg-[#C5A875] text-[#181818] rounded font-semibold text-xs tracking-wider shadow">
+            Prana Consecrated
+          </span>
+        </div>
+
+        <div class="relative z-10 flex flex-wrap items-center justify-between gap-4 bg-black/80 backdrop-blur-md p-4 rounded-xl border border-[#C5A875]/30">
+          <div class="flex items-center gap-2 text-xs text-[#FAF7F2]">
+            <span class="material-symbols-outlined text-[#C5A875] text-sm">filter_vintage</span>
+            <span id="results-primary-artisan" class="font-light">Thanjavur Royal Guild Verified Provenance</span>
+          </div>
+          <span class="text-[11px] text-[#C5A875] font-mono tracking-wider uppercase font-semibold">
+            Certified Masterpiece
+          </span>
+        </div>
+      </div>
+
+      <div class="lg:col-span-5 p-8 lg:p-10 flex flex-col justify-between bg-[#FFFDF8] border-t lg:border-t-0 lg:border-l border-[#C5A875]/25 text-[#1E2229]">
+        <div class="space-y-5">
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+            <span class="text-[10px] uppercase tracking-widest text-[#C5A875] font-semibold">Prana Pratishtha Consecrated</span>
+          </div>
+
+          <div>
+            <h2 id="results-primary-title" class="font-headline text-3xl sm:text-4xl text-[#1E2229] font-normal leading-tight">
+              Surya Mandala in 24K Gold &amp; Aged Teak
+            </h2>
+            <div class="mt-3 flex items-baseline gap-3">
+              <span id="results-primary-price" class="font-headline text-3xl text-[#C5A875] font-normal">$2,850</span>
+              <span class="text-xs text-[#6B655B] uppercase tracking-wider font-light">USD • Global White-Glove Crated</span>
+            </div>
+          </div>
+
+          <p id="results-primary-desc" class="text-sm text-[#6B655B] leading-relaxed font-light">
+            Handcrafted over 140 continuous artisan hours in the ancestral Tanjore district. Employs genuine 24-karat gold leaf foil, natural gum-chalk relief work, and Jaipur ruby stone inlays on reclaimed 80-year aged Burmese teakwood.
+          </p>
+
+          <div class="p-4 rounded-xl bg-[#FAF7F2] border border-[#C5A875]/25 space-y-3 text-xs">
+            <div class="flex items-center gap-2 text-[#C5A875]">
+              <span class="material-symbols-outlined text-base">architecture</span>
+              <span class="font-semibold tracking-wider uppercase">Spatial Vastu Prescription</span>
+            </div>
+            <div class="grid grid-cols-2 gap-3 pt-1 text-[11px]">
+              <div>
+                <span class="text-[#6B655B] block font-light">Hanging Elevation</span>
+                <span id="results-primary-elevation" class="text-[#1E2229] font-semibold mt-0.5 block">5.5 ft center from floor</span>
+              </div>
+              <div>
+                <span class="text-[#6B655B] block font-light">Lighting Temp</span>
+                <span id="results-primary-lighting" class="text-[#1E2229] font-semibold mt-0.5 block">Warm 2700K beam spotlight</span>
+              </div>
+            </div>
+            <div class="pt-2 border-t border-[#C5A875]/15 text-[11px]">
+              <span class="text-[#6B655B] block font-light">Auspicious Installation Muhurat</span>
+              <span id="results-primary-muhurat" class="text-[#C5A875] font-mono font-semibold mt-0.5 block">Shukla Paksha • Pushya Nakshatra</span>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-3 gap-2 text-center text-[11px]">
+            <div class="p-2.5 rounded-lg bg-[#FAF7F2] border border-[#C5A875]/20">
+              <span class="text-[9px] uppercase tracking-widest text-[#6B655B] block">Canvas</span>
+              <span id="results-primary-dim" class="font-medium text-[#1E2229] mt-0.5 block font-mono">42″ × 42″</span>
+            </div>
+            <div class="p-2.5 rounded-lg bg-[#FAF7F2] border border-[#C5A875]/20">
+              <span class="text-[9px] uppercase tracking-widest text-[#6B655B] block">Medium</span>
+              <span id="results-primary-medium" class="font-medium text-[#1E2229] mt-0.5 block">Pure 24K Leaf</span>
+            </div>
+            <div class="p-2.5 rounded-lg bg-[#FAF7F2] border border-[#C5A875]/20">
+              <span class="text-[9px] uppercase tracking-widest text-[#6B655B] block">Weight</span>
+              <span id="results-primary-weight" class="font-medium text-[#1E2229] mt-0.5 block font-mono">14.8 kg Teak</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-8 pt-6 border-t border-[#C5A875]/25 space-y-3">
+          <button id="results-primary-buy-btn" class="w-full py-4 gold-shimmer-btn text-[#181818] text-xs uppercase font-bold tracking-[0.2em] rounded shadow-xl hover:scale-102 transition-all flex items-center justify-center gap-2 cursor-pointer" type="button">
+            <span class="material-symbols-outlined text-[18px]">shopping_bag</span>
+            <span>Acquire Consecrated Masterpiece</span>
+          </button>
+          <div>
+            <button class="w-full py-2.5 bg-[#FAF7F2] hover:bg-[#EAE0CF]/70 border border-[#C5A875]/35 text-[#C5A875] text-xs uppercase tracking-wider rounded transition-colors flex items-center justify-center gap-1.5" type="button" onclick="alert('Concierge consultation booked for your Folio #VT-8802!')">
+              <span class="material-symbols-outlined text-[16px]">support_agent</span>
+              <span>Speak to Vastu Art Concierge</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5 ELEMENTS SECTION -->
+    <div class="p-8 lg:p-10 rounded-2xl bg-[#FFFDF8] border border-[#C5A875]/30 shadow-md space-y-6">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+          <span class="text-xs uppercase tracking-widest text-[#C5A875] font-semibold">Energetic Calibration</span>
+          <h3 class="font-headline text-2xl text-[#1E2229] mt-1">Pancha Bhoota (Five Elements) Distribution</h3>
+        </div>
+        <span id="results-axis-heading" class="text-xs text-[#C5A875] font-mono px-3.5 py-1.5 rounded-full bg-[#FAF7F2] border border-[#C5A875]/30 font-semibold">
+          Purva (True East) • 88° - 94° Heading
+        </span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-6 text-xs">
+        <div class="space-y-2">
+          <div class="flex justify-between font-medium">
+            <span class="text-[#1E2229] flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-amber-600"></span>Prithvi (Earth)</span>
+            <span class="text-[#C5A875] font-mono font-semibold">45%</span>
+          </div>
+          <div class="w-full h-2 rounded-full bg-[#EAE0CF] overflow-hidden">
+            <div id="bar-prithvi" class="h-full bg-gradient-to-r from-amber-700 to-amber-500 rounded-full" style="width: 45%"></div>
+          </div>
+        </div>
+        <div class="space-y-2">
+          <div class="flex justify-between font-medium">
+            <span class="text-[#1E2229] flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-orange-500"></span>Agni (Fire)</span>
+            <span class="text-[#C5A875] font-mono font-semibold">25%</span>
+          </div>
+          <div class="w-full h-2 rounded-full bg-[#EAE0CF] overflow-hidden">
+            <div id="bar-agni" class="h-full bg-gradient-to-r from-orange-600 to-amber-400 rounded-full" style="width: 25%"></div>
+          </div>
+        </div>
+        <div class="space-y-2">
+          <div class="flex justify-between font-medium">
+            <span class="text-[#1E2229] flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-cyan-600"></span>Vayu (Air)</span>
+            <span class="text-[#C5A875] font-mono font-semibold">15%</span>
+          </div>
+          <div class="w-full h-2 rounded-full bg-[#EAE0CF] overflow-hidden">
+            <div id="bar-vayu" class="h-full bg-gradient-to-r from-cyan-600 to-cyan-400 rounded-full" style="width: 15%"></div>
+          </div>
+        </div>
+        <div class="space-y-2">
+          <div class="flex justify-between font-medium">
+            <span class="text-[#1E2229] flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-blue-600"></span>Jala (Water)</span>
+            <span class="text-[#C5A875] font-mono font-semibold">10%</span>
+          </div>
+          <div class="w-full h-2 rounded-full bg-[#EAE0CF] overflow-hidden">
+            <div id="bar-jala" class="h-full bg-gradient-to-r from-blue-700 to-blue-400 rounded-full" style="width: 10%"></div>
+          </div>
+        </div>
+        <div class="space-y-2">
+          <div class="flex justify-between font-medium">
+            <span class="text-[#1E2229] flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-purple-600"></span>Akasha (Ether)</span>
+            <span class="text-[#C5A875] font-mono font-semibold">5%</span>
+          </div>
+          <div class="w-full h-2 rounded-full bg-[#EAE0CF] overflow-hidden">
+            <div id="bar-akasha" class="h-full bg-gradient-to-r from-purple-700 to-purple-400 rounded-full" style="width: 5%"></div>
+          </div>
+        </div>
+      </div>
+
+      <p id="results-primary-quote" class="pt-4 text-xs text-[#6B655B] font-light italic leading-relaxed border-t border-[#C5A875]/20">
+        “When solar gold resides upon the eastern bulkhead, Agni combusts indolence, allowing Prithvi to crystallize tangible legacy and wealth.” — Mayamata Treatise, Folio 44
+      </p>
+    </div>
+
+    <!-- COUNTERPARTS -->
+    <div class="space-y-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div>
+          <div class="flex items-center gap-2 mb-2">
+            <span class="material-symbols-outlined text-[#C5A875] text-sm">auto_awesome</span>
+            <span class="text-xs uppercase tracking-widest text-[#C5A875] font-semibold">Harmonic Counterparts</span>
+          </div>
+          <h2 class="font-headline text-3xl sm:text-4xl text-[#1E2229] font-normal">Curated Pairings &amp; Secondary Resonances</h2>
+        </div>
+        <p class="text-xs sm:text-sm text-[#6B655B] max-w-md font-light leading-relaxed">
+          Complementary sacred masterworks hand-selected to balance adjacent cardinal axes and amplify your sanctuary's energetic vortex.
+        </p>
+      </div>
+
+      <div id="results-counterparts-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+    </div>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- VIEW 4: MASTER GALLERY CATALOG                           -->
+  <!-- ======================================================== -->
+  <div id="view-gallery" class="hidden relative z-10 flex-grow flex flex-col py-12 px-6 lg:px-12 w-full max-w-7xl mx-auto space-y-10 text-[#1E2229]">
+    <div class="text-center max-w-3xl mx-auto">
+      <span class="text-xs uppercase tracking-widest text-[#C5A875] font-semibold block mb-2">The Royal Krutik Collection</span>
+      <h1 class="font-headline text-4xl sm:text-5xl text-[#1E2229] font-normal">Sacred Vastu Artworks</h1>
+      <p class="text-sm text-[#6B655B] font-light mt-3 leading-relaxed">
+        Explore consecrated Pichwai, Tanjore, and Sacred Geometry masterpieces crafted by hereditary Indian master craftsmen in alignment with ancient shilpa shastras.
+      </p>
+    </div>
+
+    <!-- Filter Bar -->
+    <div class="flex flex-wrap items-center justify-between gap-4 p-5 rounded-xl bg-[#FFFDF8] border border-[#C5A875]/35 shadow-sm">
+      <div class="flex flex-wrap items-center gap-4 text-xs">
+        <div class="flex items-center gap-2">
+          <span class="text-[#C5A875] font-semibold uppercase tracking-wider">Direction:</span>
+          <select id="filter-direction" class="bg-[#FAF7F2] border border-[#C5A875]/40 text-[#1E2229] rounded px-3 py-1.5 text-xs focus:outline-none">
+            <option value="all">All Directions</option>
+            <option value="east">East (Purva • Surya)</option>
+            <option value="north">North (Uttara • Kubera)</option>
+            <option value="northeast">North-East (Ishanya • Shiva)</option>
+            <option value="northwest">North-West (Vayu • Movement)</option>
+            <option value="southwest">South-West (Nirruti • Earth)</option>
+          </select>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <span class="text-[#C5A875] font-semibold uppercase tracking-wider">Room:</span>
+          <select id="filter-room" class="bg-[#FAF7F2] border border-[#C5A875]/40 text-[#1E2229] rounded px-3 py-1.5 text-xs focus:outline-none">
+            <option value="all">All Rooms</option>
+            <option value="living">Living Room</option>
+            <option value="office">Executive Study</option>
+            <option value="pooja">Pooja Mandir</option>
+            <option value="bedroom">Master Bedroom</option>
+          </select>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <span class="text-[#C5A875] font-semibold uppercase tracking-wider">Style:</span>
+          <select id="filter-style" class="bg-[#FAF7F2] border border-[#C5A875]/40 text-[#1E2229] rounded px-3 py-1.5 text-xs focus:outline-none">
+            <option value="all">All Styles</option>
+            <option value="traditional">Traditional Pichwai / Tanjore</option>
+            <option value="symbolic">Symbolic Vastu Yantras</option>
+            <option value="devotional">Devotional Deific</option>
+          </select>
+        </div>
+      </div>
+
+      <button class="gold-shimmer-btn text-[#181818] font-bold text-xs uppercase tracking-wider px-5 py-2 rounded shadow-sm" data-nav="quiz">
+        Take Art Finder Quiz
+      </button>
+    </div>
+
+    <!-- Gallery Grid -->
+    <div id="gallery-artworks-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- VIEW: ABOUT KRUTIK VASTU ART & SACRED HERITAGE            -->
+  <!-- ======================================================== -->
+  <div id="view-about" class="hidden relative z-10 flex-grow flex flex-col py-16 px-6 lg:px-12 w-full max-w-7xl mx-auto space-y-16 text-[#1E2229]">
+    <!-- Hero Header -->
+    <div class="text-center max-w-3xl mx-auto">
+      <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#FFFDF8] border border-[#C5A875]/40 shadow-sm mb-4">
+        <span class="w-2 h-2 rounded-full bg-[#C5A875]"></span>
+        <span class="text-[11px] font-label uppercase tracking-[0.25em] text-[#C5A875] font-semibold">About Krutik Vastu Art</span>
+      </div>
+      <h1 class="font-headline text-4xl sm:text-5xl lg:text-6xl text-[#1E2229] font-normal leading-tight">
+        Architectural Harmony from Ancient Treatises
+      </h1>
+      <p class="font-body text-base text-[#6B655B] font-light mt-4 leading-relaxed">
+        Curating sacred Indian masterworks that align interior spaces with the timeless principles of the <strong class="text-[#C5A875] font-semibold">Manasara</strong> and <strong class="text-[#C5A875] font-semibold">Mayamata</strong> Shilpa Shastras.
+      </p>
+    </div>
+
+    <!-- The 4 Sacred Pillars Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="p-7 rounded-2xl bg-[#FFFDF8] border border-[#C5A875]/35 shadow-sm space-y-4 hover:border-[#C5A875] transition-all duration-300 flex flex-col justify-between">
+        <div class="w-12 h-12 rounded-xl bg-[#C5A875]/10 border border-[#C5A875]/40 flex items-center justify-center text-[#C5A875]">
+          <span class="material-symbols-outlined text-2xl">stars</span>
+        </div>
+        <div>
+          <h3 class="font-headline text-lg font-medium text-[#1E2229]">100% 24K Gold Foil</h3>
+          <p class="font-body text-xs text-[#6B655B] mt-2 leading-relaxed">
+            Every masterpiece utilizes certified 24-karat precious gold leaf foil. Zero synthetic foils or brass imitations, ensuring radiant solar prana that never fades.
+          </p>
+        </div>
+        <span class="text-[10px] font-label uppercase tracking-widest text-[#C5A875] font-semibold">01 / SOLAR PRANA</span>
+      </div>
+
+      <div class="p-7 rounded-2xl bg-[#FFFDF8] border border-[#C5A875]/35 shadow-sm space-y-4 hover:border-[#C5A875] transition-all duration-300 flex flex-col justify-between">
+        <div class="w-12 h-12 rounded-xl bg-[#C5A875]/10 border border-[#C5A875]/40 flex items-center justify-center text-[#C5A875]">
+          <span class="material-symbols-outlined text-2xl">handyman</span>
+        </div>
+        <div>
+          <h3 class="font-headline text-lg font-medium text-[#1E2229]">Sukka Mavu Relief</h3>
+          <p class="font-body text-xs text-[#6B655B] mt-2 leading-relaxed">
+            Ancestral gesso formulation using unrefined chalk and natural Arabic gums on aged Burmese teakwood, preserved since the 11th century Chola Dynasty.
+          </p>
+        </div>
+        <span class="text-[10px] font-label uppercase tracking-widest text-[#C5A875] font-semibold">02 / HERITAGE RELIEF</span>
+      </div>
+
+      <div class="p-7 rounded-2xl bg-[#FFFDF8] border border-[#C5A875]/35 shadow-sm space-y-4 hover:border-[#C5A875] transition-all duration-300 flex flex-col justify-between">
+        <div class="w-12 h-12 rounded-xl bg-[#C5A875]/10 border border-[#C5A875]/40 flex items-center justify-center text-[#C5A875]">
+          <span class="material-symbols-outlined text-2xl">self_improvement</span>
+        </div>
+        <div>
+          <h3 class="font-headline text-lg font-medium text-[#1E2229]">Prana Pratishtha</h3>
+          <p class="font-body text-xs text-[#6B655B] mt-2 leading-relaxed">
+            Consecrated in traditional temple shrines under Vedic muhurat alignments to bestow auspicious energy, peace, and spiritual shielding upon your home.
+          </p>
+        </div>
+        <span class="text-[10px] font-label uppercase tracking-widest text-[#C5A875] font-semibold">03 / CONSECRATION</span>
+      </div>
+
+      <div class="p-7 rounded-2xl bg-[#FFFDF8] border border-[#C5A875]/35 shadow-sm space-y-4 hover:border-[#C5A875] transition-all duration-300 flex flex-col justify-between">
+        <div class="w-12 h-12 rounded-xl bg-[#C5A875]/10 border border-[#C5A875]/40 flex items-center justify-center text-[#C5A875]">
+          <span class="material-symbols-outlined text-2xl">explore</span>
+        </div>
+        <div>
+          <h3 class="font-headline text-lg font-medium text-[#1E2229]">Cardinal Alignment</h3>
+          <p class="font-body text-xs text-[#6B655B] mt-2 leading-relaxed">
+            Each composition is calibrated according to the 8 directions of the Vastu Purusha Mandala to balance Pancha Bhoota (Five Elements) in each living quadrant.
+          </p>
+        </div>
+        <span class="text-[10px] font-label uppercase tracking-widest text-[#C5A875] font-semibold">04 / MANDALA MATRIX</span>
+      </div>
+    </div>
+
+    <!-- Heritage Story & Guild Preservation -->
+    <div class="p-8 lg:p-12 rounded-2xl bg-[#FFFDF8] border border-[#C5A875]/40 shadow-md grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+      <div class="lg:col-span-5 relative rounded-xl overflow-hidden aspect-[4/3] border border-[#C5A875]/30 shadow-md bg-stone-100">
+        <img src="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?w=900&auto=format&fit=crop&q=80" alt="Master Craftsman Painting 24K Gold" class="w-full h-full object-cover" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+        <div class="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-md p-3 rounded-lg border border-[#C5A875]/40 text-xs">
+          <strong class="text-[#1E2229] block font-headline">Hereditary Temple Guild Preservation</strong>
+          <span class="text-[#6B655B] text-[11px]">Nathdwara (Rajasthan) &amp; Thanjavur (Tamil Nadu)</span>
+        </div>
+      </div>
+
+      <div class="lg:col-span-7 space-y-5">
+        <span class="text-xs uppercase tracking-widest text-[#C5A875] font-semibold">The Krutik Heritage</span>
+        <h2 class="font-headline text-3xl sm:text-4xl text-[#1E2229] font-normal leading-tight">
+          Where Sacred Geometry Meets Ancestral Artistry
+        </h2>
+        <p class="font-body text-sm text-[#6B655B] leading-relaxed font-light">
+          In ancient India, art was never merely decorative—it was an energetic gateway (*Yantra*). When placed on the correct cardinal bulkhead at an auspicious elevation, sacred artwork harmonizes the subtle bio-energetic field of the residence with cosmic prana.
+        </p>
+        <p class="font-body text-sm text-[#6B655B] leading-relaxed font-light">
+          At Krutik, we work directly with hereditary artisan families in Nathdwara and Thanjavur to ensure every single brushstroke, relief line, and pure gold foil adheres to the geometric precision of the Shilpa Shastras.
+        </p>
+
+        <div class="p-4 rounded-xl bg-[#FAF7F2] border border-[#C5A875]/30 text-xs text-[#1E2229] italic leading-relaxed">
+          “As is the macrocosm, so is the microcosm. When the home is aligned with the cosmic mandala, the dwelling radiates sovereign grace, prosperity, and peace.” — <span class="font-semibold text-[#C5A875] not-italic">Mayamata Treatise, Folio 44</span>
+        </div>
+
+        <div class="pt-4 flex flex-wrap gap-4">
+          <button type="button" class="gold-shimmer-btn text-[#181818] font-bold text-xs uppercase tracking-wider px-7 py-3.5 rounded shadow-md" data-nav="quiz">
+            Start Vastu Art Finder
+          </button>
+          <button type="button" class="px-7 py-3.5 rounded border border-[#C5A875] text-[#1E2229] hover:bg-[#C5A875]/10 text-xs uppercase tracking-wider font-semibold transition-colors" data-nav="gallery">
+            Explore Full Gallery
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MASTER FOOTER -->
+  <footer class="relative z-10 w-full bg-[#12141A] border-t border-[#C5A875]/20 py-12 px-6 lg:px-12 mt-auto">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-3">
+        <span class="inline-block w-2.5 h-2.5 bg-[#C5A875] rotate-45 shadow-[0_0_8px_#C5A875]"></span>
+        <span class="font-headline text-lg tracking-widest text-[#C5A875]">KRUTIK</span>
+        <span class="text-xs text-[#D8D2C5]/70 font-light">| Sacred Vastu Art &amp; Architecture</span>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-6 text-xs uppercase tracking-wider text-[#D8D2C5]">
+        <a href="#" class="hover:text-[#C5A875] transition-colors" data-nav="hero">Home</a>
+        <a href="#" class="hover:text-[#C5A875] transition-colors" data-nav="quiz">Art Finder</a>
+        <a href="#" class="hover:text-[#C5A875] transition-colors" data-nav="gallery">Gallery</a>
+        <a href="#" class="hover:text-[#C5A875] transition-colors" data-nav="about">About</a>
+      </div>
+
+      <span class="text-xs text-[#D8D2C5]/50 font-light">
+        © 2026 Krutik Vastu Art Finder. Handcrafted Heritage.
+      </span>
+    </div>
+  </footer>
+
+  <!-- Master Logic Bootstrap -->
+  <script type="module" src="/js/app.js"></script>
+</body>
+</html>

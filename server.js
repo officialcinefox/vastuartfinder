@@ -833,7 +833,11 @@ const server = http.createServer(async (req, res) => {
     reqPath = '/admin.html';
   }
 
-  const fullPath = path.join(__dirname, reqPath);
+  let fullPath = path.join(__dirname, reqPath);
+  if (!fs.existsSync(fullPath)) {
+    const pubPath = path.join(__dirname, 'public', reqPath);
+    if (fs.existsSync(pubPath)) fullPath = pubPath;
+  }
   const ext = path.extname(fullPath).toLowerCase();
   const contentType = MIME_TYPES[ext] || 'application/octet-stream';
 

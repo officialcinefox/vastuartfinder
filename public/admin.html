@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KRUTIK — Admin Curation &amp; Recommendation Control</title>
+
+  <!-- Google Fonts: Playfair Display, Cinzel & Raleway -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Material Symbols Outlined -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface": "#FFFFFF",
+            "surface-ground": "#FAF7F2",
+            "surface-card": "#FFFFFF",
+            "surface-hover": "#F7F3EB",
+            "primary": "#C5A875",
+            "primary-hover": "#B39055",
+            "border-gold": "rgba(197, 168, 117, 0.4)",
+            "border-soft": "#EAE2D5",
+            "text-dark": "#1E2229",
+            "text-muted": "#6B655B"
+          },
+          fontFamily: {
+            headline: ["'Playfair Display'", "serif"],
+            title: ["'Cinzel'", "serif"],
+            body: ["'Raleway'", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    .gold-glow {
+      box-shadow: 0 4px 20px rgba(197, 168, 117, 0.22);
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #F2ECE1;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #D8CEBD;
+      border-radius: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: #C5A875;
+    }
+  </style>
+</head>
+
+<body class="bg-[#FAF7F2] text-[#1E2229] font-body min-h-screen flex flex-col selection:bg-[#C5A875] selection:text-[#181818]">
+
+  <!-- TOP APP BAR: KRUTIK CENTERED (LUXURY HERITAGE DESIGN) -->
+  <header class="bg-[#FFFFFF] border-b border-[#EAE2D5] sticky top-0 z-40 backdrop-blur-md shadow-xs">
+    <div class="w-full px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between relative">
+      
+      <!-- Left: Mobile Menu Toggle & Admin Pill -->
+      <div class="flex items-center gap-3">
+        <button id="btn-sidebar-toggle" class="lg:hidden p-2 text-[#8C6D37] hover:bg-[#FAF7F2] rounded-lg border border-[#EAE2D5] transition-colors" title="Toggle Navigation">
+          <span class="material-symbols-outlined text-xl">menu</span>
+        </button>
+        <div class="hidden sm:inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FAF7F2] border border-[#EAE2D5] text-[#8C6D37] text-[11px] font-semibold tracking-wider uppercase font-mono">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#C5A875]"></span>
+          <span>Admin Console</span>
+        </div>
+      </div>
+
+      <!-- CENTER: KRUTIK BRAND LOGO (DEAD CENTER) -->
+      <div class="absolute left-1/2 -translate-x-1/2 flex items-center gap-2.5 sm:gap-3 pointer-events-auto">
+        <span class="inline-block w-2.5 h-2.5 bg-[#C5A875] rotate-45 shadow-[0_0_8px_#C5A875]"></span>
+        <a href="/" class="font-headline text-2xl sm:text-3xl tracking-[0.28em] text-[#C5A875] font-normal uppercase hover:opacity-90 transition-opacity">
+          KRUTIK
+        </a>
+        <span class="inline-block w-2.5 h-2.5 bg-[#C5A875] rotate-45 shadow-[0_0_8px_#C5A875]"></span>
+      </div>
+
+      <!-- Right: Sacred Engine Badge -->
+      <div class="flex items-center gap-3">
+        <span class="hidden md:inline-flex items-center gap-1.5 text-[11px] font-mono text-[#8C6D37] tracking-wider uppercase bg-[#FAF7F2] px-3 py-1 rounded-full border border-[#EAE2D5]">
+          <span>Deterministic Vastu Engine</span>
+        </span>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- DASHBOARD WRAPPER: SIDEBAR + MAIN CONTENT -->
+  <div class="flex-grow flex w-full relative">
+
+    <!-- Mobile Drawer Backdrop -->
+    <div id="sidebar-backdrop" class="fixed inset-0 bg-black/40 backdrop-blur-xs z-30 hidden lg:hidden"></div>
+
+    <!-- LEFT SIDEBAR: TABS & SYSTEM LINKS ON THE SIDE -->
+    <aside id="dashboard-sidebar" class="w-64 flex-shrink-0 bg-[#FFFFFF] border-r border-[#EAE2D5] fixed lg:sticky top-[61px] h-[calc(100vh-61px)] z-30 transition-transform duration-300 -translate-x-full lg:translate-x-0 flex flex-col justify-between p-4 overflow-y-auto custom-scrollbar shadow-xs">
+      
+      <!-- Top: Navigation Tabs -->
+      <div class="space-y-4">
+        <div class="px-2 pt-1 pb-2 border-b border-[#EAE2D5]">
+          <span class="text-[10px] uppercase font-bold tracking-widest text-[#8C6D37]">Navigation</span>
+        </div>
+
+        <nav id="nav-tabs" class="space-y-1">
+          <button class="nav-tab active w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold uppercase tracking-wider transition-all text-[#1E2229] bg-[#FAF7F2] border border-[#C5A875]/40 font-bold shadow-xs text-left" data-section="overview">
+            <span class="material-symbols-outlined text-[19px] text-[#C5A875]">dashboard</span>
+            <span>Overview</span>
+          </button>
+
+          <button class="nav-tab w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold uppercase tracking-wider transition-all text-[#6B655B] hover:text-[#1E2229] hover:bg-[#FAF7F2] border border-transparent text-left" data-section="products">
+            <div class="flex items-center gap-3">
+              <span class="material-symbols-outlined text-[19px] text-[#C5A875]">inventory_2</span>
+              <span>Products</span>
+            </div>
+            <span id="sidebar-badge-products" class="text-[10px] font-mono px-2 py-0.5 rounded-md bg-[#FAF7F2] border border-[#EAE2D5] text-[#8C6D37]">--</span>
+          </button>
+
+          <button class="nav-tab w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold uppercase tracking-wider transition-all text-[#6B655B] hover:text-[#1E2229] hover:bg-[#FAF7F2] border border-transparent text-left" data-section="mappings">
+            <span class="material-symbols-outlined text-[19px] text-[#C5A875]">tune</span>
+            <span>Condition Mapping</span>
+          </button>
+
+          <button class="nav-tab w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold uppercase tracking-wider transition-all text-[#6B655B] hover:text-[#1E2229] hover:bg-[#FAF7F2] border border-transparent text-left" data-section="questions">
+            <div class="flex items-center gap-3">
+              <span class="material-symbols-outlined text-[19px] text-[#C5A875]">quiz</span>
+              <span>Questions &amp; Steps</span>
+            </div>
+            <span id="sidebar-badge-questions" class="text-[10px] font-mono px-2 py-0.5 rounded-md bg-[#FAF7F2] border border-[#EAE2D5] text-[#8C6D37]">--</span>
+          </button>
+
+          <button class="nav-tab w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold uppercase tracking-wider transition-all text-[#6B655B] hover:text-[#1E2229] hover:bg-[#FAF7F2] border border-transparent text-left" data-section="preview">
+            <span class="material-symbols-outlined text-[19px] text-[#C5A875]">visibility</span>
+            <span>Live Quiz Preview</span>
+          </button>
+
+          <button class="nav-tab w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold uppercase tracking-wider transition-all text-[#6B655B] hover:text-[#1E2229] hover:bg-[#FAF7F2] border border-transparent text-left" data-section="settings">
+            <span class="material-symbols-outlined text-[19px] text-[#C5A875]">settings</span>
+            <span>Settings</span>
+          </button>
+        </nav>
+      </div>
+
+      <!-- Bottom: System Status & Links (On the side) -->
+      <div class="pt-4 border-t border-[#EAE2D5] space-y-2">
+        <div class="px-2 pb-1">
+          <span class="text-[10px] uppercase font-bold tracking-widest text-[#8C6D37]">System &amp; Links</span>
+        </div>
+
+        <!-- Supabase Status (Uniform Luxury Neutral Palette) -->
+        <div id="status-supabase-pill" class="w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs bg-[#FAF7F2] border border-[#EAE2D5] text-[#8C6D37]" title="Supabase Connected & Synced">
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-[#C5A875]"></span>
+            <span class="font-medium text-[11px]">Database Online</span>
+          </div>
+          <span class="text-[10px] font-mono text-[#6B655B]">Supabase</span>
+        </div>
+
+        <!-- Public Site Link -->
+        <a href="/" target="_blank" class="w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold text-[#1E2229] hover:bg-[#FAF7F2] border border-[#EAE2D5] hover:border-[#C5A875]/40 transition-all uppercase tracking-wider">
+          <div class="flex items-center gap-2.5">
+            <span class="material-symbols-outlined text-[18px] text-[#C5A875]">open_in_new</span>
+            <span>Public Site</span>
+          </div>
+          <span class="material-symbols-outlined text-[14px] text-[#8C6D37]">arrow_outward</span>
+        </a>
+
+        <!-- Logout Button -->
+        <button id="btn-logout" class="w-full flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-[#6B655B] hover:text-[#1E2229] hover:bg-[#FAF7F2] border border-transparent hover:border-[#EAE2D5] transition-all uppercase tracking-wider text-left">
+          <span class="material-symbols-outlined text-[18px] text-[#8C6D37]">logout</span>
+          <span>Logout</span>
+        </button>
+      </div>
+
+    </aside>
+
+    <!-- MAIN VIEWPORT CONTAINER -->
+    <main class="flex-grow p-4 sm:p-6 lg:p-8 w-full min-w-0 max-w-7xl mx-auto">
+
+    <!-- ============================================================== -->
+    <!-- SECTION 1: OVERVIEW                                            -->
+    <!-- ============================================================== -->
+    <section id="section-overview" class="space-y-8">
+      <!-- Welcome Banner -->
+      <div class="rounded-2xl bg-gradient-to-r from-[#FFFDF9] via-[#FAF6EE] to-[#F5EFE6] border border-[#C5A875]/40 p-6 md:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-sm relative overflow-hidden">
+        <div class="absolute -right-12 -top-12 w-64 h-64 bg-[#C5A875]/15 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="relative z-10 space-y-2">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C5A875]/20 text-[#8C6D37] text-[11px] font-semibold tracking-widest uppercase">
+            <span>Deterministic Vastu Rule Engine Active</span>
+          </div>
+          <h1 class="font-headline text-3xl sm:text-4xl text-[#1E2229] font-normal">
+            Artwork Catalog &amp; Recommendation Control
+          </h1>
+          <p class="text-sm text-[#6B655B] max-w-2xl leading-relaxed">
+            Manage your authentic Krutik artwork collection, configure manual condition mappings across questionnaire dimensions, update or add questions, and preview filtering with mathematical certainty.
+          </p>
+        </div>
+
+        <div class="relative z-10 flex flex-wrap gap-3">
+          <button class="px-5 py-2.5 rounded-lg bg-[#C5A875] hover:bg-[#B39055] text-[#181818] font-semibold text-xs uppercase tracking-wider shadow-sm hover:shadow transition-all flex items-center gap-2" data-action="open-add-product">
+            <span class="material-symbols-outlined text-sm">add_circle</span>
+            <span>Add Artwork</span>
+          </button>
+          <button class="px-5 py-2.5 rounded-lg bg-[#FFFFFF] hover:bg-[#FAF7F2] text-[#1E2229] border border-[#C5A875]/40 font-semibold text-xs uppercase tracking-wider transition-all flex items-center gap-2 shadow-sm" data-nav-target="questions">
+            <span class="material-symbols-outlined text-sm">quiz</span>
+            <span>Manage Questions</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- KPI METRIC CARDS (UNIFORM LUXURY DESIGN) -->
+      <div class="grid grid-cols-2 lg:grid-cols-5 gap-4">
+        <!-- Total Products -->
+        <div class="bg-[#FFFFFF] border border-[#EAE2D5] hover:border-[#C5A875]/50 rounded-xl p-5 space-y-2 shadow-xs transition-all">
+          <div class="flex items-center justify-between text-[#8C6D37]">
+            <span class="text-xs uppercase tracking-wider font-semibold">Total Artworks</span>
+            <span class="material-symbols-outlined text-lg text-[#C5A875]">inventory_2</span>
+          </div>
+          <div id="stat-total-products" class="font-headline text-3xl text-[#1E2229] font-bold">--</div>
+          <div class="text-[11px] text-[#6B655B]">Stored in Supabase + Local DB</div>
+        </div>
+
+        <!-- Active Products -->
+        <div class="bg-[#FFFFFF] border border-[#EAE2D5] hover:border-[#C5A875]/50 rounded-xl p-5 space-y-2 shadow-xs transition-all">
+          <div class="flex items-center justify-between text-[#8C6D37]">
+            <span class="text-xs uppercase tracking-wider font-semibold">Active In Quiz</span>
+            <span class="material-symbols-outlined text-lg text-[#C5A875]">check_circle</span>
+          </div>
+          <div id="stat-active-products" class="font-headline text-3xl text-[#1E2229] font-bold">--</div>
+          <div class="text-[11px] text-[#6B655B]">Available for customer matching</div>
+        </div>
+
+        <!-- Inactive Products -->
+        <div class="bg-[#FFFFFF] border border-[#EAE2D5] hover:border-[#C5A875]/50 rounded-xl p-5 space-y-2 shadow-xs transition-all">
+          <div class="flex items-center justify-between text-[#8C6D37]">
+            <span class="text-xs uppercase tracking-wider font-semibold">Deactivated</span>
+            <span class="material-symbols-outlined text-lg text-[#C5A875]">pause_circle</span>
+          </div>
+          <div id="stat-inactive-products" class="font-headline text-3xl text-[#1E2229] font-bold">--</div>
+          <div class="text-[11px] text-[#6B655B]">Hidden from quiz recommendations</div>
+        </div>
+
+        <!-- Fully Mapped Products -->
+        <div class="bg-[#FFFFFF] border border-[#EAE2D5] hover:border-[#C5A875]/50 rounded-xl p-5 space-y-2 shadow-xs transition-all">
+          <div class="flex items-center justify-between text-[#8C6D37]">
+            <span class="text-xs uppercase tracking-wider font-semibold">Fully Mapped</span>
+            <span class="material-symbols-outlined text-lg text-[#C5A875]">verified</span>
+          </div>
+          <div id="stat-mapped-products" class="font-headline text-3xl text-[#1E2229] font-bold">--</div>
+          <div class="text-[11px] text-[#6B655B]">All dimensions configured</div>
+        </div>
+
+        <!-- Partial / Incomplete Mappings -->
+        <div class="bg-[#FFFFFF] border border-[#EAE2D5] hover:border-[#C5A875]/50 rounded-xl p-5 space-y-2 shadow-xs transition-all">
+          <div class="flex items-center justify-between text-[#8C6D37]">
+            <span class="text-xs uppercase tracking-wider font-semibold">Need Mapping</span>
+            <span class="material-symbols-outlined text-lg text-[#C5A875]">pending_actions</span>
+          </div>
+          <div id="stat-incomplete-products" class="font-headline text-3xl text-[#1E2229] font-bold">--</div>
+          <div class="text-[11px] text-[#6B655B]">Missing one or more dimensions</div>
+        </div>
+      </div>
+
+      <!-- Quick Guidance Reference -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-[#FFFFFF] border border-[#EAE2D5] rounded-xl p-6 space-y-3 shadow-sm">
+          <div class="flex items-center gap-2 text-[#8C6D37]">
+            <span class="material-symbols-outlined">rule</span>
+            <h3 class="font-semibold text-sm uppercase tracking-wider">Deterministic Rule Engine</h3>
+          </div>
+          <p class="text-xs text-[#6B655B] leading-relaxed">
+            Recommendations never rely on AI or inferred titles. A product is shown if and only if every answered questionnaire dimension is explicitly matched or mapped as <span class="text-[#8C6D37] font-mono font-bold">ANY</span>.
+          </p>
+        </div>
+
+        <div class="bg-[#FFFFFF] border border-[#EAE2D5] rounded-xl p-6 space-y-3 shadow-sm">
+          <div class="flex items-center gap-2 text-[#8C6D37]">
+            <span class="material-symbols-outlined">verified_user</span>
+            <h3 class="font-semibold text-sm uppercase tracking-wider">Approved Domain Validation</h3>
+          </div>
+          <p class="text-xs text-[#6B655B] leading-relaxed">
+            Every product URL is validated strictly to point to <span class="text-[#8C6D37] font-mono font-semibold">https://www.krutik.in/</span>. No external Shopify API mutations or untrusted links are permitted.
+          </p>
+        </div>
+
+        <div class="bg-[#FFFFFF] border border-[#EAE2D5] rounded-xl p-6 space-y-3 shadow-sm">
+          <div class="flex items-center gap-2 text-[#8C6D37]">
+            <span class="material-symbols-outlined">cloud_sync</span>
+            <h3 class="font-semibold text-sm uppercase tracking-wider">Supabase Persistence &amp; RLS</h3>
+          </div>
+          <p class="text-xs text-[#6B655B] leading-relaxed">
+            All records synchronize instantly to Supabase project <span class="text-[#8C6D37] font-mono">adqkvyjfayujwhdhjpne</span> with Postgres Row Level Security and survive page refreshes and new sessions.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- SECTION 2: PRODUCTS MANAGEMENT                                 -->
+    <!-- ============================================================== -->
+    <section id="section-products" class="hidden space-y-6">
+      <!-- Toolbar -->
+      <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 bg-[#FFFFFF] border border-[#EAE2D5] rounded-xl p-4 shadow-sm">
+        <div class="flex flex-wrap items-center gap-3 flex-1">
+          <!-- Search Input -->
+          <div class="relative flex-1 min-w-[220px]">
+            <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[#6B655B] text-lg">search</span>
+            <input type="text" id="prod-search" placeholder="Search artwork by title, ID or description..." class="w-full bg-[#FAF7F2] border border-[#D9D0C3] rounded-lg pl-9 pr-4 py-2 text-xs text-[#1E2229] placeholder-[#9E978B] focus:outline-none focus:border-[#C5A875]" />
+          </div>
+
+          <!-- Status Filter -->
+          <select id="prod-filter-status" class="bg-[#FAF7F2] border border-[#D9D0C3] rounded-lg px-3 py-2 text-xs text-[#1E2229] focus:outline-none focus:border-[#C5A875]">
+            <option value="all">All Products</option>
+            <option value="active">Active Only</option>
+            <option value="inactive">Deactivated Only</option>
+            <option value="mapped">Fully Mapped</option>
+            <option value="incomplete">Need Mapping</option>
+          </select>
+        </div>
+
+        <button class="px-5 py-2.5 rounded-lg bg-[#C5A875] hover:bg-[#B39055] text-[#181818] font-semibold text-xs uppercase tracking-wider shadow-sm transition-all flex items-center justify-center gap-2" data-action="open-add-product">
+          <span class="material-symbols-outlined text-sm">add</span>
+          <span>Add New Artwork</span>
+        </button>
+      </div>
+
+      <!-- Products Table View -->
+      <div class="bg-[#FFFFFF] border border-[#EAE2D5] rounded-xl overflow-hidden shadow-sm">
+        <div class="overflow-x-auto custom-scrollbar">
+          <table class="w-full text-left text-xs border-collapse">
+            <thead>
+              <tr class="bg-[#F8F5EE] text-[#6B655B] uppercase tracking-wider font-semibold border-b border-[#EAE2D5]">
+                <th class="py-3.5 px-4 w-16">Image</th>
+                <th class="py-3.5 px-4">Artwork Title &amp; Details</th>
+                <th class="py-3.5 px-4">Krutik.in URL</th>
+                <th class="py-3.5 px-4">Mapping Status</th>
+                <th class="py-3.5 px-4 text-center">Status</th>
+                <th class="py-3.5 px-4 text-center">Order</th>
+                <th class="py-3.5 px-4 text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="products-table-body" class="divide-y divide-[#F0EAE1]">
+              <!-- Injected by js/admin.js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- SECTION 3: CONDITION MAPPING EDITOR                           -->
+    <!-- ============================================================== -->
+    <section id="section-mappings" class="hidden space-y-6">
+      <!-- Product Selector Header -->
+      <div class="bg-[#FFFFFF] border border-[#EAE2D5] rounded-xl p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 shadow-sm">
+        <div class="flex-1 space-y-1">
+          <span class="text-xs font-semibold uppercase tracking-widest text-[#8C6D37]">Visual Condition Mapping Editor</span>
+          <h2 class="font-headline text-2xl text-[#1E2229]">Configure Vastu Recommendation Triggers</h2>
+          <p class="text-xs text-[#6B655B]">
+            Select an artwork to configure which intention, room, direction, style, and devotional answers will trigger its recommendation.
+          </p>
+        </div>
+
+        <div class="w-full md:w-auto min-w-[300px]">
+          <label class="block text-[11px] uppercase tracking-wider text-[#6B655B] font-semibold mb-1">Select Artwork to Map</label>
+          <select id="mapping-product-select" class="w-full bg-[#FAF7F2] border border-[#C5A875]/50 rounded-lg px-4 py-2.5 text-xs text-[#1E2229] focus:outline-none focus:border-[#C5A875]">
+            <!-- Injected by js/admin.js -->
+          </select>
+        </div>
+      </div>
+
+      <!-- Active Selected Product Banner -->
+      <div id="mapping-active-product-banner" class="bg-[#FFFDF9] border border-[#EAE2D5] rounded-xl p-4 flex flex-col sm:flex-row items-center gap-4 shadow-sm">
+        <!-- Injected by js/admin.js -->
+      </div>
+
+      <!-- Dynamic Dimensions Mapping Container (Renders All Questions Dynamically) -->
+      <div id="mapping-dimensions-container" class="space-y-6">
+        <!-- Injected dynamically by js/admin.js based on questions list -->
+      </div>
+
+      <!-- Action Footer Bar -->
+      <div class="sticky bottom-4 z-20 bg-[#FFFFFF]/95 border border-[#EAE2D5] rounded-xl p-4 backdrop-blur-md shadow-xl flex flex-wrap items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <span id="mapping-save-status" class="text-xs text-[#6B655B]">All changes synchronized</span>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <button id="btn-clear-mapping" class="px-4 py-2 rounded-lg border border-red-300 text-red-700 hover:bg-red-50 text-xs font-semibold uppercase tracking-wider transition-all">
+            Clear All Mappings
+          </button>
+          <button id="btn-cancel-mapping" class="px-4 py-2 rounded-lg border border-[#D9D0C3] text-[#1E2229] hover:bg-[#F5EFE6] text-xs font-semibold uppercase tracking-wider transition-all">
+            Cancel Changes
+          </button>
+          <button id="btn-save-mapping" class="px-6 py-2.5 rounded-lg bg-[#C5A875] hover:bg-[#B39055] text-[#181818] text-xs font-bold uppercase tracking-wider shadow-md hover:shadow-lg transition-all flex items-center gap-2 active:scale-95">
+            <span class="material-symbols-outlined text-sm">save</span>
+            <span>Save Mapping</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- SECTION 4: QUESTIONS & STEPS MANAGEMENT (NEW!)                -->
+    <!-- ============================================================== -->
+    <section id="section-questions" class="hidden space-y-6">
+      <!-- Toolbar Header -->
+      <div class="bg-[#FFFFFF] border border-[#EAE2D5] rounded-xl p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 shadow-sm">
+        <div class="space-y-1">
+          <div class="inline-flex items-center gap-2 px-3 py-0.5 rounded-full bg-[#C5A875]/15 text-[#8C6D37] text-[11px] font-semibold tracking-widest uppercase font-mono">
+            <span>Live Questionnaire Architecture</span>
+          </div>
+          <h2 class="font-headline text-2xl text-[#1E2229]">Questions &amp; Discovery Steps</h2>
+          <p class="text-xs text-[#6B655B] max-w-2xl leading-relaxed">
+            Customize question titles, subtext prompts, sequence order, and options. Add new questions or options to immediately expand your Vastu discovery quiz and condition mapping.
+          </p>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <button id="btn-add-question" class="px-5 py-2.5 rounded-lg bg-[#C5A875] hover:bg-[#B39055] text-[#181818] font-semibold text-xs uppercase tracking-wider shadow-sm transition-all flex items-center gap-2">
+            <span class="material-symbols-outlined text-sm">add_circle</span>
+            <span>Add New Question</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Quick Metrics Bar (Uniform Luxury Style) -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+        <div class="bg-[#FFFFFF] border border-[#EAE2D5] rounded-xl p-4 shadow-xs">
+          <span class="text-[11px] uppercase tracking-wider text-[#8C6D37] font-semibold block">Total Questions</span>
+          <span id="stat-total-questions" class="font-headline text-2xl font-bold text-[#1E2229]">5</span>
+          <span class="text-[10px] text-[#6B655B]">Steps in Customer Journey</span>
+        </div>
+        <div class="bg-[#FFFFFF] border border-[#EAE2D5] rounded-xl p-4 shadow-xs">
+          <span class="text-[11px] uppercase tracking-wider text-[#8C6D37] font-semibold block">Total Options</span>
+          <span id="stat-total-options" class="font-headline text-2xl font-bold text-[#1E2229]">31</span>
+          <span class="text-[10px] text-[#6B655B]">Across all questions</span>
+        </div>
+        <div class="bg-[#FFFFFF] border border-[#EAE2D5] rounded-xl p-4 shadow-xs">
+          <span class="text-[11px] uppercase tracking-wider text-[#8C6D37] font-semibold block">Status</span>
+          <span class="font-headline text-2xl font-bold text-[#1E2229]">Active</span>
+          <span class="text-[10px] text-[#6B655B]">Dynamic Quiz Engine</span>
+        </div>
+        <div class="bg-[#FFFFFF] border border-[#EAE2D5] rounded-xl p-4 shadow-xs">
+          <span class="text-[11px] uppercase tracking-wider text-[#8C6D37] font-semibold block">Persistence</span>
+          <span class="font-headline text-2xl font-bold text-[#1E2229]">Auto-Sync</span>
+          <span class="text-[10px] text-[#6B655B]">Supabase + questions.json</span>
+        </div>
+      </div>
+
+      <!-- Questions List (Dynamic Cards) -->
+      <div id="questions-list-container" class="space-y-6">
+        <!-- Rendered by js/admin.js -->
+      </div>
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- SECTION 5: LIVE QUIZ PREVIEW                                   -->
+    <!-- ============================================================== -->
+    <section id="section-preview" class="hidden space-y-8">
+      <!-- Header Banner -->
+      <div class="bg-[#FFFFFF] border border-[#EAE2D5] rounded-xl p-6 space-y-2 shadow-sm">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-semibold uppercase tracking-widest text-[#8C6D37]">Deterministic Stage-by-Stage Inspector</span>
+          <button id="btn-reset-preview-answers" class="px-3 py-1.5 rounded-lg bg-[#FAF7F2] hover:bg-[#F2ECE1] text-[#6B655B] hover:text-[#1E2229] border border-[#D9D0C3] text-xs font-semibold uppercase tracking-wider transition-all flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-sm">restart_alt</span>
+            <span>Reset All Answers</span>
+          </button>
+        </div>
+        <h2 class="font-headline text-2xl text-[#1E2229]">Interactive Quiz Simulation</h2>
+        <p class="text-xs text-[#6B655B] max-w-3xl leading-relaxed">
+          Select customer answers below to watch the live intersection filter progress through each stage. See exact pass/fail reasons for every artwork in the catalog.
+        </p>
+      </div>
+
+      <!-- Interactive Answer Selectors (Dynamic) -->
+      <div id="preview-selectors-container" class="grid grid-cols-1 md:grid-cols-5 gap-3 bg-[#FFFFFF] border border-[#EAE2D5] rounded-xl p-5 shadow-sm">
+        <!-- Q1 Intention -->
+        <div class="space-y-1.5">
+          <label class="block text-[11px] uppercase tracking-wider text-[#8C6D37] font-semibold">Q1: Intention</label>
+          <select id="prev-ans-intention" class="w-full bg-[#FAF7F2] border border-[#D9D0C3] rounded-lg p-2 text-xs text-[#1E2229] focus:outline-none focus:border-[#C5A875]">
+            <option value="">(Not answered)</option>
+          </select>
+        </div>
+
+        <!-- Q2 Room -->
+        <div class="space-y-1.5">
+          <label class="block text-[11px] uppercase tracking-wider text-[#8C6D37] font-semibold">Q2: Room</label>
+          <select id="prev-ans-room" class="w-full bg-[#FAF7F2] border border-[#D9D0C3] rounded-lg p-2 text-xs text-[#1E2229] focus:outline-none focus:border-[#C5A875]">
+            <option value="">(Not answered)</option>
+          </select>
+        </div>
+
+        <!-- Q3 Direction -->
+        <div class="space-y-1.5">
+          <label class="block text-[11px] uppercase tracking-wider text-[#8C6D37] font-semibold">Q3: Direction</label>
+          <select id="prev-ans-direction" class="w-full bg-[#FAF7F2] border border-[#D9D0C3] rounded-lg p-2 text-xs text-[#1E2229] focus:outline-none focus:border-[#C5A875]">
+            <option value="">(Not answered)</option>
+            <option value="I'm Not Sure">I'm Not Sure (Skip elimination)</option>
+          </select>
+        </div>
+
+        <!-- Q4 Style -->
+        <div class="space-y-1.5">
+          <label class="block text-[11px] uppercase tracking-wider text-[#8C6D37] font-semibold">Q4: Style</label>
+          <select id="prev-ans-style" class="w-full bg-[#FAF7F2] border border-[#D9D0C3] rounded-lg p-2 text-xs text-[#1E2229] focus:outline-none focus:border-[#C5A875]">
+            <option value="">(Not answered)</option>
+            <option value="Open to Suggestions">Open to Suggestions (Skip elimination)</option>
+          </select>
+        </div>
+
+        <!-- Q5 Devotional -->
+        <div class="space-y-1.5">
+          <label class="block text-[11px] uppercase tracking-wider text-[#8C6D37] font-semibold">Q5: Devotional</label>
+          <select id="prev-ans-devotional" class="w-full bg-[#FAF7F2] border border-[#D9D0C3] rounded-lg p-2 text-xs text-[#1E2229] focus:outline-none focus:border-[#C5A875]">
+            <option value="">(Not answered)</option>
+            <option value="Open to Both">Open to Both (Skip elimination)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Progressive Elimination Funnel Summary -->
+      <div class="grid grid-cols-2 md:grid-cols-6 gap-3">
+        <div class="bg-[#FFFFFF] border border-[#EAE2D5] rounded-lg p-3 text-center space-y-1 shadow-sm">
+          <span class="text-[10px] uppercase tracking-wider text-[#6B655B] font-semibold">Stage 0: Pool</span>
+          <div id="funnel-s0" class="font-headline text-2xl text-[#1E2229] font-bold">--</div>
+          <span class="text-[10px] text-[#6B655B]">Active Artworks</span>
+        </div>
+
+        <div class="bg-[#FFFFFF] border border-[#EAE2D5] rounded-lg p-3 text-center space-y-1 shadow-sm">
+          <span class="text-[10px] uppercase tracking-wider text-[#6B655B] font-semibold">After Q1 (Intention)</span>
+          <div id="funnel-s1" class="font-headline text-2xl text-[#8C6D37] font-bold">--</div>
+          <span class="text-[10px] text-[#6B655B]">Retained</span>
+        </div>
+
+        <div class="bg-[#FFFFFF] border border-[#EAE2D5] rounded-lg p-3 text-center space-y-1 shadow-sm">
+          <span class="text-[10px] uppercase tracking-wider text-[#6B655B] font-semibold">After Q2 (Room)</span>
+          <div id="funnel-s2" class="font-headline text-2xl text-[#8C6D37] font-bold">--</div>
+          <span class="text-[10px] text-[#6B655B]">Retained</span>
+        </div>
+
+        <div class="bg-[#FFFFFF] border border-[#EAE2D5] rounded-lg p-3 text-center space-y-1 shadow-sm">
+          <span class="text-[10px] uppercase tracking-wider text-[#6B655B] font-semibold">After Q3 (Direction)</span>
+          <div id="funnel-s3" class="font-headline text-2xl text-[#8C6D37] font-bold">--</div>
+          <span class="text-[10px] text-[#6B655B]">Retained</span>
+        </div>
+
+        <div class="bg-[#FFFFFF] border border-[#EAE2D5] rounded-lg p-3 text-center space-y-1 shadow-sm">
+          <span class="text-[10px] uppercase tracking-wider text-[#6B655B] font-semibold">After Q4 (Style)</span>
+          <div id="funnel-s4" class="font-headline text-2xl text-[#8C6D37] font-bold">--</div>
+          <span class="text-[10px] text-[#6B655B]">Retained</span>
+        </div>
+
+        <div class="bg-[#FFFFFF] border border-[#C5A875]/60 rounded-lg p-3 text-center space-y-1 shadow-xs">
+          <span class="text-[10px] uppercase tracking-wider text-[#8C6D37] font-bold">Final Matching</span>
+          <div id="funnel-s5" class="font-headline text-2xl text-[#1E2229] font-bold">--</div>
+          <span class="text-[10px] text-[#6B655B]">Final Recommendations</span>
+        </div>
+      </div>
+
+      <!-- FINAL RECOMMENDED SHOWCASE -->
+      <div class="space-y-4">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2.5">
+            <span class="w-2 h-2 rounded-full bg-[#C5A875]"></span>
+            <h3 class="font-headline text-xl text-[#1E2229]">Customer Recommendation Showcase</h3>
+            <span id="preview-final-count" class="text-xs px-2.5 py-0.5 rounded-full bg-[#FAF7F2] border border-[#C5A875]/40 text-[#8C6D37] font-mono">0 matches</span>
+          </div>
+        </div>
+
+        <div id="preview-final-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          <!-- Injected by js/admin.js -->
+        </div>
+      </div>
+
+      <!-- STAGE-BY-STAGE REASONS TABLE -->
+      <div class="space-y-4 pt-6 border-t border-[#EAE2D5]">
+        <div class="flex items-center justify-between">
+          <h3 class="font-headline text-lg text-[#1E2229]">Stage-by-Stage Mathematical Reason Log</h3>
+          <span class="text-xs text-[#6B655B]">Inspect why every single product passed or failed</span>
+        </div>
+
+        <div class="bg-[#FFFFFF] border border-[#EAE2D5] rounded-xl overflow-hidden shadow-sm">
+          <div class="overflow-x-auto custom-scrollbar max-h-[500px]">
+            <table class="w-full text-left text-xs border-collapse">
+              <thead class="sticky top-0 bg-[#F8F5EE] text-[#6B655B] uppercase tracking-wider font-semibold border-b border-[#EAE2D5] z-10">
+                <tr>
+                  <th class="py-3 px-4">Artwork</th>
+                  <th class="py-3 px-4">Q1: Intention</th>
+                  <th class="py-3 px-4">Q2: Room</th>
+                  <th class="py-3 px-4">Q3: Direction</th>
+                  <th class="py-3 px-4">Q4: Style</th>
+                  <th class="py-3 px-4">Q5: Devotional</th>
+                  <th class="py-3 px-4 text-center">Final Result</th>
+                </tr>
+              </thead>
+              <tbody id="preview-reasons-tbody" class="divide-y divide-[#F0EAE1]">
+                <!-- Injected by js/admin.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- SECTION 6: SETTINGS & PERSISTENCE                              -->
+    <!-- ============================================================== -->
+    <section id="section-settings" class="hidden space-y-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        <!-- Supabase Configuration Card -->
+        <div class="bg-[#FFFFFF] border border-[#EAE2D5] rounded-xl p-6 space-y-5 shadow-sm">
+          <div class="flex items-center justify-between border-b border-[#EAE2D5] pb-3">
+            <div class="flex items-center gap-2.5">
+              <span class="material-symbols-outlined text-[#8C6D37]">database</span>
+              <h3 class="font-headline text-lg text-[#1E2229]">Supabase Cloud Database</h3>
+            </div>
+            <span class="text-xs px-2.5 py-0.5 rounded-full bg-[#FAF7F2] text-[#8C6D37] border border-[#C5A875]/40 font-mono">Active &amp; Connected</span>
+          </div>
+
+          <div class="space-y-3 text-xs">
+            <div>
+              <span class="text-[#6B655B] block mb-1">Project ID</span>
+              <div class="font-mono bg-[#FAF7F2] p-2.5 rounded border border-[#EAE2D5] text-[#8C6D37] font-semibold">adqkvyjfayujwhdhjpne</div>
+            </div>
+            <div>
+              <span class="text-[#6B655B] block mb-1">API Endpoint URL</span>
+              <div class="font-mono bg-[#FAF7F2] p-2.5 rounded border border-[#EAE2D5] text-[#1E2229]">https://adqkvyjfayujwhdhjpne.supabase.co</div>
+            </div>
+            <div>
+              <span class="text-[#6B655B] block mb-1">Region</span>
+              <div class="font-mono bg-[#FAF7F2] p-2.5 rounded border border-[#EAE2D5] text-[#1E2229]">ap-south-1 (Mumbai, India)</div>
+            </div>
+            <div>
+              <span class="text-[#6B655B] block mb-1">Row Level Security (RLS)</span>
+              <div class="text-[#8C6D37] font-semibold flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-sm">lock</span>
+                <span>Enabled on products, product_mappings, admin_settings</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-2 flex items-center gap-3">
+            <button id="btn-ping-supabase" class="px-4 py-2 rounded-lg bg-[#FAF7F2] hover:bg-[#F2ECE1] text-[#8C6D37] border border-[#C5A875]/40 text-xs font-semibold uppercase tracking-wider transition-all flex items-center gap-2 shadow-sm">
+              <span class="material-symbols-outlined text-sm">wifi_tethering</span>
+              <span>Test Database Connection</span>
+            </button>
+            <span id="supabase-ping-result" class="text-xs text-[#6B655B]"></span>
+          </div>
+        </div>
+
+        <!-- Security & Admin Password Card -->
+        <div class="bg-[#FFFFFF] border border-[#EAE2D5] rounded-xl p-6 space-y-5 shadow-sm">
+          <div class="flex items-center justify-between border-b border-[#EAE2D5] pb-3">
+            <div class="flex items-center gap-2.5">
+              <span class="material-symbols-outlined text-[#8C6D37]">security</span>
+              <h3 class="font-headline text-lg text-[#1E2229]">Admin Access &amp; Authentication</h3>
+            </div>
+          </div>
+
+          <form id="form-change-password" class="space-y-4">
+            <div>
+              <label class="block text-xs uppercase tracking-wider text-[#6B655B] font-semibold mb-1">Update Admin Password</label>
+              <input type="password" id="input-new-password" placeholder="Enter new password (min 8 chars)..." class="w-full bg-[#FAF7F2] border border-[#D9D0C3] rounded-lg p-2.5 text-xs text-[#1E2229] focus:outline-none focus:border-[#C5A875]" />
+            </div>
+
+            <button type="submit" class="px-4 py-2.5 rounded-lg bg-[#C5A875] hover:bg-[#B39055] text-[#181818] text-xs font-bold uppercase tracking-wider transition-all shadow-sm">
+              Update Admin Password
+            </button>
+            <div id="password-change-feedback" class="text-xs"></div>
+          </form>
+
+          <div class="pt-4 border-t border-[#EAE2D5] space-y-2 text-xs text-[#6B655B]">
+            <p>• Default password: <code class="text-[#8C6D37] font-bold">KrutikVastu2026!</code></p>
+            <p>• Sessions are secured with cryptographic bearer tokens and expire after 24 hours.</p>
+          </div>
+        </div>
+
+        <!-- Backup & Catalog Export -->
+        <div class="bg-[#FFFFFF] border border-[#EAE2D5] rounded-xl p-6 space-y-4 md:col-span-2 shadow-sm">
+          <div class="flex items-center justify-between border-b border-[#EAE2D5] pb-3">
+            <div class="flex items-center gap-2.5">
+              <span class="material-symbols-outlined text-[#8C6D37]">archive</span>
+              <h3 class="font-headline text-lg text-[#1E2229]">Catalog &amp; Questions Portability</h3>
+            </div>
+          </div>
+
+          <p class="text-xs text-[#6B655B]">
+            Export the complete catalog of artworks, condition mappings, and customized questions to JSON.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-3 pt-2">
+            <button id="btn-export-catalog" class="px-5 py-2.5 rounded-lg bg-[#FAF7F2] hover:bg-[#F2ECE1] text-[#8C6D37] border border-[#C5A875]/40 text-xs font-semibold uppercase tracking-wider transition-all flex items-center gap-2 shadow-sm">
+              <span class="material-symbols-outlined text-sm">download</span>
+              <span>Export Full Catalog JSON</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+  </div>
+
+  <!-- ============================================================== -->
+  <!-- MODAL: ADD / EDIT PRODUCT                                      -->
+  <!-- ============================================================== -->
+  <div id="modal-product" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+    <div class="relative w-full max-w-2xl bg-[#FFFFFF] border border-[#EAE2D5] rounded-2xl p-6 md:p-8 shadow-2xl space-y-5 max-h-[90vh] overflow-y-auto custom-scrollbar text-[#1E2229]">
+      
+      <div class="flex items-center justify-between pb-3 border-b border-[#EAE2D5]">
+        <h3 id="modal-product-title" class="font-headline text-2xl text-[#1E2229]">Add New Artwork</h3>
+        <button id="modal-product-close" class="text-[#6B655B] hover:text-[#1E2229] transition-colors">
+          <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+      </div>
+
+      <form id="form-product" class="space-y-4">
+        <input type="hidden" id="prod-id" />
+
+        <!-- Name -->
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-[#8C6D37] font-semibold mb-1">Product Title *</label>
+          <input type="text" id="prod-name" required placeholder="e.g. Surya Mandala in 24K Gold &amp; Aged Teak" class="w-full bg-[#FAF7F2] border border-[#D9D0C3] rounded-lg p-2.5 text-xs text-[#1E2229] focus:outline-none focus:border-[#C5A875]" />
+        </div>
+
+        <!-- Product Image URL / Upload -->
+        <div class="space-y-2">
+          <label class="block text-xs uppercase tracking-wider text-[#8C6D37] font-semibold">Artwork Image *</label>
+          <div class="flex gap-2">
+            <input type="url" id="prod-image-url" required placeholder="https://..." class="flex-1 bg-[#FAF7F2] border border-[#D9D0C3] rounded-lg p-2.5 text-xs text-[#1E2229] focus:outline-none focus:border-[#C5A875]" />
+            <label class="px-4 py-2.5 rounded-lg bg-[#FAF7F2] hover:bg-[#F2ECE1] text-[#8C6D37] border border-[#C5A875]/40 text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer flex items-center gap-1.5 shrink-0">
+              <span class="material-symbols-outlined text-sm">upload_file</span>
+              <span>Upload</span>
+              <input type="file" id="prod-image-file" accept="image/*" class="hidden" />
+            </label>
+          </div>
+          <!-- Image Preview Thumbnail -->
+          <div id="prod-img-preview-box" class="hidden w-24 h-24 rounded-lg overflow-hidden border border-[#C5A875]/30 bg-[#FAF7F2]">
+            <img id="prod-img-preview" src="" alt="Preview" class="w-full h-full object-cover" />
+          </div>
+        </div>
+
+        <!-- Krutik Product URL (strictly validated) -->
+        <div>
+          <div class="flex items-center justify-between mb-1">
+            <label class="block text-xs uppercase tracking-wider text-[#8C6D37] font-semibold">Exact Original Krutik Product URL *</label>
+            <span class="text-[10px] text-[#8C6D37] font-mono">Approved domain: https://www.krutik.in/</span>
+          </div>
+          <input type="url" id="prod-url" required placeholder="https://www.krutik.in/products/..." class="w-full bg-[#FAF7F2] border border-[#D9D0C3] rounded-lg p-2.5 text-xs text-[#1E2229] focus:outline-none focus:border-[#C5A875]" />
+          <p class="text-[11px] text-[#6B655B] mt-1">
+            Customer "Buy Now" clicks in the quiz will navigate directly to this product URL.
+          </p>
+        </div>
+
+        <!-- Short Description -->
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-[#8C6D37] font-semibold mb-1">Optional Short Description</label>
+          <textarea id="prod-desc" rows="3" placeholder="Handcrafted gold leaf foil with aged teak frame..." class="w-full bg-[#FAF7F2] border border-[#D9D0C3] rounded-lg p-2.5 text-xs text-[#1E2229] focus:outline-none focus:border-[#C5A875] custom-scrollbar"></textarea>
+        </div>
+
+        <!-- Product Tags & Badges (Add, Edit, Remove) -->
+        <div class="space-y-2 pt-1">
+          <div class="flex items-center justify-between">
+            <label class="block text-xs uppercase tracking-wider text-[#8C6D37] font-semibold">Product Tags &amp; Badges</label>
+            <span class="text-[10px] text-[#6B655B]">Luxury badges on product cards</span>
+          </div>
+
+          <!-- Tags Chips Container -->
+          <div id="product-tags-container" class="flex flex-wrap gap-1.5 p-3 rounded-lg bg-[#FAF7F2] border border-[#D9D0C3] min-h-[46px] items-center">
+            <!-- Injected by js/admin.js -->
+          </div>
+
+          <!-- Add Tag Input Field -->
+          <div class="flex gap-2">
+            <input type="text" id="input-new-tag" placeholder="Type tag name and press Enter or Add..." class="flex-1 bg-[#FAF7F2] border border-[#D9D0C3] rounded-lg p-2.5 text-xs text-[#1E2229] focus:outline-none focus:border-[#C5A875]" />
+            <button type="button" id="btn-add-tag" class="px-4 py-2.5 rounded-lg bg-[#FAF7F2] hover:bg-[#F2ECE1] text-[#8C6D37] border border-[#C5A875]/40 text-xs font-semibold uppercase tracking-wider transition-all flex items-center gap-1 shrink-0">
+              <span class="material-symbols-outlined text-sm">add</span>
+              <span>Add Tag</span>
+            </button>
+          </div>
+
+          <!-- Quick Suggestion Buttons -->
+          <div class="flex flex-wrap items-center gap-1.5 pt-1">
+            <span class="text-[10px] text-[#8C6D37] font-semibold uppercase tracking-wider mr-1">Quick Add:</span>
+            <button type="button" class="quick-tag-btn text-[10px] px-2.5 py-0.5 rounded-full bg-[#FAF7F2] hover:bg-[#C5A875]/20 text-[#8C6D37] border border-[#C5A875]/40 transition-colors">24K GOLD FOIL</button>
+            <button type="button" class="quick-tag-btn text-[10px] px-2.5 py-0.5 rounded-full bg-[#FAF7F2] hover:bg-[#C5A875]/20 text-[#8C6D37] border border-[#C5A875]/40 transition-colors">99% Resonance</button>
+            <button type="button" class="quick-tag-btn text-[10px] px-2.5 py-0.5 rounded-full bg-[#FAF7F2] hover:bg-[#C5A875]/20 text-[#8C6D37] border border-[#C5A875]/40 transition-colors">Consecrated</button>
+            <button type="button" class="quick-tag-btn text-[10px] px-2.5 py-0.5 rounded-full bg-[#FAF7F2] hover:bg-[#C5A875]/20 text-[#8C6D37] border border-[#C5A875]/40 transition-colors">Vedic Yantra</button>
+            <button type="button" class="quick-tag-btn text-[10px] px-2.5 py-0.5 rounded-full bg-[#FAF7F2] hover:bg-[#C5A875]/20 text-[#8C6D37] border border-[#C5A875]/40 transition-colors">Sacred Brass</button>
+            <button type="button" class="quick-tag-btn text-[10px] px-2.5 py-0.5 rounded-full bg-[#FAF7F2] hover:bg-[#C5A875]/20 text-[#8C6D37] border border-[#C5A875]/40 transition-colors">Aged Teakwood</button>
+          </div>
+        </div>
+
+        <!-- Display Order & Active Toggle -->
+        <div class="grid grid-cols-2 gap-4 pt-2">
+          <div>
+            <label class="block text-xs uppercase tracking-wider text-[#6B655B] font-semibold mb-1">Display Order</label>
+            <input type="number" id="prod-order" min="1" value="1" class="w-full bg-[#FAF7F2] border border-[#D9D0C3] rounded-lg p-2.5 text-xs text-[#1E2229] focus:outline-none focus:border-[#C5A875]" />
+          </div>
+
+          <div class="flex flex-col justify-end pb-1">
+            <label class="inline-flex items-center gap-2 cursor-pointer">
+              <input type="checkbox" id="prod-active" checked class="rounded border-[#C5A875] text-[#C5A875] focus:ring-0" />
+              <span class="text-xs font-semibold text-[#1E2229]">Active in Quiz Recommendations</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Modal Action Buttons -->
+        <div class="flex items-center justify-end gap-3 pt-4 border-t border-[#EAE2D5]">
+          <button type="button" id="modal-product-cancel" class="px-5 py-2.5 rounded-lg border border-[#D9D0C3] text-[#1E2229] hover:bg-[#F5EFE6] text-xs font-semibold uppercase tracking-wider transition-all">
+            Cancel
+          </button>
+          <button type="submit" class="px-6 py-2.5 rounded-lg bg-[#C5A875] hover:bg-[#B39055] text-[#181818] text-xs font-bold uppercase tracking-wider shadow-sm transition-all">
+            Save Artwork Record
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============================================================== -->
+  <!-- MODAL: ADD / EDIT QUESTION (NEW!)                              -->
+  <!-- ============================================================== -->
+  <div id="modal-question" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+    <div class="relative w-full max-w-xl bg-[#FFFFFF] border border-[#EAE2D5] rounded-2xl p-6 md:p-8 shadow-2xl space-y-5 max-h-[90vh] overflow-y-auto custom-scrollbar text-[#1E2229]">
+      
+      <div class="flex items-center justify-between pb-3 border-b border-[#EAE2D5]">
+        <h3 id="modal-question-title" class="font-headline text-2xl text-[#1E2229]">Add New Question</h3>
+        <button id="modal-question-close" class="text-[#6B655B] hover:text-[#1E2229] transition-colors">
+          <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+      </div>
+
+      <form id="form-question" class="space-y-4">
+        <input type="hidden" id="q-id" />
+
+        <!-- Question Title -->
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-[#8C6D37] font-semibold mb-1">Question Title *</label>
+          <input type="text" id="q-title" required placeholder="e.g. Color Essence Resonance" class="w-full bg-[#FAF7F2] border border-[#D9D0C3] rounded-lg p-2.5 text-xs text-[#1E2229] focus:outline-none focus:border-[#C5A875]" />
+        </div>
+
+        <!-- Question Subtitle / Prompt -->
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-[#8C6D37] font-semibold mb-1">Customer Prompt / Subtitle *</label>
+          <textarea id="q-subtitle" rows="2.5" required placeholder="e.g. Choose the dominant color energy that resonates with your sanctuary's emotional aura." class="w-full bg-[#FAF7F2] border border-[#D9D0C3] rounded-lg p-2.5 text-xs text-[#1E2229] focus:outline-none focus:border-[#C5A875] custom-scrollbar"></textarea>
+        </div>
+
+        <!-- Dimension Key & Step Order -->
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs uppercase tracking-wider text-[#8C6D37] font-semibold mb-1">Dimension Key *</label>
+            <input type="text" id="q-dim" required placeholder="e.g. color_energy" class="w-full bg-[#FAF7F2] border border-[#D9D0C3] rounded-lg p-2.5 text-xs text-[#1E2229] font-mono focus:outline-none focus:border-[#C5A875]" />
+            <p class="text-[10px] text-[#6B655B] mt-1">Used in mapping storage (lowercase, underscores)</p>
+          </div>
+
+          <div>
+            <label class="block text-xs uppercase tracking-wider text-[#8C6D37] font-semibold mb-1">Step Number</label>
+            <input type="number" id="q-step" min="1" value="6" class="w-full bg-[#FAF7F2] border border-[#D9D0C3] rounded-lg p-2.5 text-xs text-[#1E2229] focus:outline-none focus:border-[#C5A875]" />
+          </div>
+        </div>
+
+        <!-- Skip Special Answer -->
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-[#6B655B] font-semibold mb-1">Special Pass-Through Answer (Optional)</label>
+          <input type="text" id="q-skip" placeholder="e.g. Open to Suggestions or I'm Not Sure" class="w-full bg-[#FAF7F2] border border-[#D9D0C3] rounded-lg p-2.5 text-xs text-[#1E2229] focus:outline-none focus:border-[#C5A875]" />
+          <p class="text-[11px] text-[#6B655B] mt-1">If the customer selects this answer, this dimension will skip elimination.</p>
+        </div>
+
+        <!-- Active Toggle -->
+        <div class="pt-2">
+          <label class="inline-flex items-center gap-2 cursor-pointer">
+            <input type="checkbox" id="q-active" checked class="rounded border-[#C5A875] text-[#C5A875] focus:ring-0" />
+            <span class="text-xs font-semibold text-[#1E2229]">Active in Discovery Quiz</span>
+          </label>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="flex items-center justify-end gap-3 pt-4 border-t border-[#EAE2D5]">
+          <button type="button" id="modal-question-cancel" class="px-5 py-2.5 rounded-lg border border-[#D9D0C3] text-[#1E2229] hover:bg-[#F5EFE6] text-xs font-semibold uppercase tracking-wider transition-all">
+            Cancel
+          </button>
+          <button type="submit" class="px-6 py-2.5 rounded-lg bg-[#C5A875] hover:bg-[#B39055] text-[#181818] text-xs font-bold uppercase tracking-wider shadow-sm transition-all">
+            Save Question
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============================================================== -->
+  <!-- MODAL: ADD / EDIT OPTION (NEW!)                                -->
+  <!-- ============================================================== -->
+  <div id="modal-option" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+    <div class="relative w-full max-w-lg bg-[#FFFFFF] border border-[#EAE2D5] rounded-2xl p-6 md:p-8 shadow-2xl space-y-5 max-h-[90vh] overflow-y-auto custom-scrollbar text-[#1E2229]">
+      
+      <div class="flex items-center justify-between pb-3 border-b border-[#EAE2D5]">
+        <h3 id="modal-option-title" class="font-headline text-2xl text-[#1E2229]">Add Question Option</h3>
+        <button id="modal-option-close" class="text-[#6B655B] hover:text-[#1E2229] transition-colors">
+          <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+      </div>
+
+      <form id="form-option" class="space-y-4">
+        <input type="hidden" id="opt-q-id" />
+        <input type="hidden" id="opt-id" />
+
+        <!-- Option Label -->
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-[#8C6D37] font-semibold mb-1">Option Title / Label *</label>
+          <input type="text" id="opt-label" required placeholder="e.g. Radiant Gold &amp; Amber" class="w-full bg-[#FAF7F2] border border-[#D9D0C3] rounded-lg p-2.5 text-xs text-[#1E2229] focus:outline-none focus:border-[#C5A875]" />
+        </div>
+
+        <!-- Option ID / Slug -->
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-[#8C6D37] font-semibold mb-1">Option ID / Key *</label>
+          <input type="text" id="opt-val" required placeholder="e.g. radiant_gold" class="w-full bg-[#FAF7F2] border border-[#D9D0C3] rounded-lg p-2.5 text-xs text-[#1E2229] font-mono focus:outline-none focus:border-[#C5A875]" />
+          <p class="text-[10px] text-[#6B655B] mt-1">Unique internal key used in condition mapping</p>
+        </div>
+
+        <!-- Description / Subtext -->
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-[#8C6D37] font-semibold mb-1">Description / Subtext</label>
+          <input type="text" id="opt-desc" placeholder="e.g. Solar Prana &amp; Supreme Vitality" class="w-full bg-[#FAF7F2] border border-[#D9D0C3] rounded-lg p-2.5 text-xs text-[#1E2229] focus:outline-none focus:border-[#C5A875]" />
+        </div>
+
+        <!-- Material Icon Name -->
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-[#8C6D37] font-semibold mb-1">Material Symbol Icon Name</label>
+          <div class="flex items-center gap-3">
+            <input type="text" id="opt-icon" value="palette" placeholder="e.g. palette, explore, spa, payments" class="flex-1 bg-[#FAF7F2] border border-[#D9D0C3] rounded-lg p-2.5 text-xs text-[#1E2229] focus:outline-none focus:border-[#C5A875]" />
+            <div id="opt-icon-preview" class="w-10 h-10 rounded-lg bg-[#FAF7F2] border border-[#D9D0C3] flex items-center justify-center text-[#8C6D37]">
+              <span class="material-symbols-outlined text-xl">palette</span>
+            </div>
+          </div>
+          <p class="text-[10px] text-[#6B655B] mt-1">Any valid Google Material Symbols Outlined icon</p>
+        </div>
+
+        <!-- Active Toggle -->
+        <div class="pt-2">
+          <label class="inline-flex items-center gap-2 cursor-pointer">
+            <input type="checkbox" id="opt-active" checked class="rounded border-[#C5A875] text-[#C5A875] focus:ring-0" />
+            <span class="text-xs font-semibold text-[#1E2229]">Option Active</span>
+          </label>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="flex items-center justify-end gap-3 pt-4 border-t border-[#EAE2D5]">
+          <button type="button" id="modal-option-cancel" class="px-5 py-2.5 rounded-lg border border-[#D9D0C3] text-[#1E2229] hover:bg-[#F5EFE6] text-xs font-semibold uppercase tracking-wider transition-all">
+            Cancel
+          </button>
+          <button type="submit" class="px-6 py-2.5 rounded-lg bg-[#C5A875] hover:bg-[#B39055] text-[#181818] text-xs font-bold uppercase tracking-wider shadow-sm transition-all">
+            Save Option
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============================================================== -->
+  <!-- MODAL: PRODUCT QUICK PREVIEW                                   -->
+  <!-- ============================================================== -->
+  <div id="modal-preview-single" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+    <div class="relative w-full max-w-lg bg-[#FFFFFF] border border-[#EAE2D5] rounded-2xl overflow-hidden shadow-2xl text-[#1E2229]">
+      <div id="single-preview-content" class="p-6 space-y-4">
+        <!-- Injected by js/admin.js -->
+      </div>
+      <div class="p-4 bg-[#FAF7F2] border-t border-[#EAE2D5] flex justify-end">
+        <button id="modal-preview-close" class="px-4 py-2 rounded-lg bg-[#FFFFFF] border border-[#D9D0C3] hover:bg-[#F2ECE1] text-xs uppercase tracking-wider font-semibold text-[#1E2229]">
+          Close Preview
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================== -->
+  <!-- AUTHENTICATION OVERLAY MODAL (Shown when not authenticated)    -->
+  <!-- ============================================================== -->
+  <div id="auth-overlay" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-md">
+    <div class="relative w-full max-w-md bg-[#FFFFFF] border border-[#C5A875]/50 rounded-2xl p-8 shadow-2xl space-y-6 text-center text-[#1E2229]">
+      
+      <div class="space-y-2">
+        <div class="w-12 h-12 mx-auto rounded-full bg-[#C5A875]/20 border border-[#C5A875]/40 flex items-center justify-center text-[#8C6D37]">
+          <span class="material-symbols-outlined text-2xl">admin_panel_settings</span>
+        </div>
+        <h2 class="font-headline text-3xl text-[#1E2229]">Admin Login</h2>
+        <p class="text-xs text-[#6B655B]">
+          Enter your authorized administrator email and password to access the Krutik Vastu Management Console.
+        </p>
+      </div>
+
+      <form id="form-login" class="space-y-4 text-left">
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-[#8C6D37] font-semibold mb-1">Administrator Email / Username</label>
+          <div class="relative">
+            <input type="text" id="input-admin-email" placeholder="admin@krutik.in" value="admin@krutik.in" class="w-full bg-[#FAF7F2] border border-[#C5A875]/40 rounded-lg pl-9 pr-3 py-2.5 text-xs text-[#1E2229] focus:outline-none focus:border-[#C5A875]" />
+            <span class="material-symbols-outlined absolute left-2.5 top-2.5 text-[18px] text-[#8C6D37]/70">mail</span>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-[#8C6D37] font-semibold mb-1">Administrator Password</label>
+          <div class="relative">
+            <input type="password" id="input-admin-password" placeholder="admin" value="admin" class="w-full bg-[#FAF7F2] border border-[#C5A875]/40 rounded-lg pl-9 pr-10 py-2.5 text-xs text-[#1E2229] focus:outline-none focus:border-[#C5A875]" />
+            <span class="material-symbols-outlined absolute left-2.5 top-2.5 text-[18px] text-[#8C6D37]/70">lock</span>
+            <button type="button" id="btn-toggle-pwd" class="absolute right-2.5 top-2 text-[#8C6D37] hover:text-[#1E2229] transition-colors p-0.5" title="Toggle password visibility">
+              <span class="material-symbols-outlined text-[18px]">visibility</span>
+            </button>
+          </div>
+        </div>
+
+        <div id="login-error-msg" class="hidden text-xs text-red-700 bg-red-50 border border-red-300 p-2.5 rounded-lg"></div>
+
+        <button type="submit" id="btn-submit-login" class="w-full py-3 rounded-lg bg-[#C5A875] hover:bg-[#B39055] text-[#181818] font-bold text-xs uppercase tracking-widest transition-all shadow-md active:scale-[0.99] flex items-center justify-center gap-2">
+          <span class="material-symbols-outlined text-sm">login</span>
+          <span id="btn-submit-login-text">Sign In to Dashboard</span>
+        </button>
+      </form>
+
+      <div class="text-[11px] text-[#6B655B]">
+        Protected Krutik Vastu Management System • 2026
+      </div>
+    </div>
+  </div>
+
+  <!-- Master Admin Controller -->
+  <script type="module" src="/js/admin.js"></script>
+</body>
+</html>
